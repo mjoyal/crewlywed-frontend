@@ -2,14 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'; 
 
-
-axios.get(`/players`)
+axios.get('/api/players')
   .then((response) => {
-    console.log(response.data.rows); 
+    console.log(response.data.players); 
   });
 
 function App() {
-  console.log('hello'); 
   return (
     <div className="App">
       <header className="App-header">
