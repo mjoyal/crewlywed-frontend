@@ -1,19 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
-import axios from 'axios';
+// import axios from 'axios';
 import {useEffect, useState} from 'react';
 import socketIOClient from 'socket.io-client';
 const ENDPOINT = "http://localhost:8080";
 
 
 function App() {
-  const [players, setPlayers] = useState([]);
+  // const [players, setPlayers] = useState([]);
   const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT);
     setLoading(false);
+    // const data = {
+    //   id: 1, 
+    //   name: 'will'
+    // }
+    // socket.emit('trial', (data) => {
+
+    // });
+    
+    socket.on('avatar', function(playerInfo) {
+      console.log(playerInfo);
+    });
   }, []);
 
 
