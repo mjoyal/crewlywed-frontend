@@ -1,8 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+
+import Button from './components/Button';
 // import axios from 'axios';
 import {useEffect, useState} from 'react';
 import socketIOClient from 'socket.io-client';
+
+
 const ENDPOINT = "http://localhost:8080";
 
 
@@ -10,27 +14,19 @@ function App() {
   // const [players, setPlayers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-
+ 
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT);
-    setLoading(false);
-    // const data = {
-    //   id: 1, 
-    //   name: 'will'
-    // }
-    // socket.emit('trial', (data) => {
-
-    // });
-    
+    setLoading(false);  
     socket.on('avatar', function(playerInfo) {
       console.log(playerInfo);
     });
-  }, []);
+    }, []);
 
+    const testButton = function() {
+      console.log('the button is working when clicked!')
+    }; 
 
-
-
-  
   // useEffect(() => {
   //   Promise.resolve(axios.get('/api/players'))
   //   .then((response) => {
@@ -47,16 +43,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button confirm onClick={testButton}>Click me!</Button>
+      </header> 
     </div>
   );
 }
