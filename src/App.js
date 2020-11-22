@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 
 import Button from './components/Button';
-// import axios from 'axios';
 import {useEffect, useState} from 'react';
 import { io } from 'socket.io-client';
 
@@ -53,13 +52,6 @@ function App() {
       console.log('message', messageData.message);
       console.log('from:', messageData.name);
     });
-  // useEffect(() => {
-  //   Promise.resolve(axios.get('/api/players'))
-  //   .then((response) => {
-  //     setPlayers(response.data.players);
-  //     setLoading(false);
-  //   })
-  // }, []);
 
   if (loading) {
     return null;
