@@ -1,10 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-
-import Button from './components/Button';
 // import axios from 'axios';
 import {useEffect, useState} from 'react';
 import socketIOClient from 'socket.io-client';
+
+import Button from './components/Button';
+import TextArea from './components/TextArea';
+
+import logo from './logo.svg';
 
 
 const ENDPOINT = "http://localhost:8080";
@@ -45,6 +47,7 @@ function App() {
       <header className="App-header">
       <Button confirm onClick={testButton}>Click me!</Button>
       </header> 
+      <TextArea label="your response" />
     </div>
   );
 }
