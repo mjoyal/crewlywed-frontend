@@ -4,16 +4,14 @@ import './App.css';
 import Button from './components/Button';
 // import axios from 'axios';
 import {useEffect, useState} from 'react';
-import socketIOClient from 'socket.io-client';
-
+import { io } from 'socket.io-client';
 
 const ENDPOINT = "http://localhost:8080";
-
+const socket = io(ENDPOINT);
 
 function App() {
   // const [players, setPlayers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const socket = socketIOClient(ENDPOINT);
  
   useEffect(() => {
     setLoading(false);  
