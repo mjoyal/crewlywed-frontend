@@ -1,0 +1,18 @@
+@import 'partials/_variables'; 
+@import 'partials/_helpers'; 
+
+.button {
+  -webkit-box-shadow: 5px 7px 0px 0px $main-blue; 
+  box-shadow: 5px 7px 0px 0px $main-blue;
+  border: $border-size solid $main-blue; 
+  color: $main-blue;
+  font-size: 50px;
+  padding: 1rem; 
+  &:hover {
+    border: scale($border-size, 1.25) solid $main-blue;
+  }
+}
+
+.button-confirm {
+  background-color: $light-main-blue; 
+}
