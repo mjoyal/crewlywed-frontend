@@ -1,0 +1,19 @@
+@import 'partials/_variables'; 
+@import 'partials/_helpers'; 
+
+
+.question {
+  @include flex(row); 
+  font-family: $normal-font;
+  color: $main-blue;
+  font-size: 200%;
+  span {
+    font-family: $bold-font;
+    border-bottom: $name-underline solid red;
+    padding: 0;
+  }
+  img {
+    margin: 0 1rem;
+    max-width: 20%; 
+  }
+}

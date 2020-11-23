@@ -6,7 +6,7 @@ import { io } from 'socket.io-client';
 import Button from './components/Button';
 import TextArea from './components/TextArea';
 import NameCard from './components/NameCard';
-
+import Question from './components/Question';
 
 const ENDPOINT = "http://localhost:8080";
 const socket = io(ENDPOINT);
@@ -123,17 +123,20 @@ function App() {
         <br></br>
         <p> Host Name Card </p>
         <NameCard
-          imageSource='https://techcrunch.com/wp-content/uploads/2014/08/cat-facts-3.jpg?w=1390&crop=1'
+          avatar='https://tcrn.ch/35VAVzn'
           playerName="will"
           host={true}
         />
 
       <p> Non-host Name Card (spacing is weird because of image sizes, will fix when have real images)</p>
         <NameCard
-          imageSource='https://techcrunch.com/wp-content/uploads/2014/08/cat-facts-3.jpg?w=1390&crop=1'
+          avatar='https://tcrn.ch/35VAVzn'
           playerName="will"
           host={false}
         />
+
+        <p>Question Prompt</p>
+        <Question avatar="https://tcrn.ch/35VAVzn" name="mac" >how would $name survive the apocalypse?</Question>
       </header>
       {/* <Button confirm onClick={testButton}>Click me!</Button> */}
       <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
