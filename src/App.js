@@ -2,9 +2,16 @@ import './App.css';
 
 import {useEffect, useState} from 'react';
 import { io } from 'socket.io-client';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 import Button from './components/Button';
 import TextArea from './components/TextArea';
+import TextInput from './components/TextInput';
 
 
 const ENDPOINT = "http://localhost:8080";
@@ -82,49 +89,58 @@ function App() {
 
 
   return (
-    <div className="App">
-      
-      {/* CHAT ROOMS TEST: */}
-      <header className="App-header">
-        <h3> Chat rooms test</h3>
-        <input id="test" type="text" placeholder="enter room code" />
-        <br></br>
-        <Button confirm onClick={joinRoom}>Join</Button>
-        <br></br>
-        <input id="name-test" type="text" placeholder="enter your name" />
-        <input id="message-test" type="text" placeholder="enter message" />
-        <Button confirm onClick={sendMessage}>Send</Button>
-      </header>
-      <br></br>
-      <br></br>
+    <Router>
 
-      <p> -------------------------------------------------- </p>
-      
-      {/* DATA FLOW TESTS: */}
-      <header className="App-header">
-        <h3> Data flow tests</h3>
+      <Route exact path="/">
+        <div className="App">
+          
+          {/* CHAT ROOMS TEST: */}
+          <header className="App-header">
+            <h3> Chat rooms test</h3>
+            <input id="test" type="text" placeholder="enter room code" />
+            <br></br>
+            <Button confirm onClick={joinRoom}>Join</Button>
+            <br></br>
+            <input id="name-test" type="text" placeholder="enter your name" />
+            <input id="message-test" type="text" placeholder="enter message" />
+            <Button confirm onClick={sendMessage}>Send</Button>
+          </header>
+          <br></br>
+          <br></br>
 
-        {/* 1. countRows */}
-        <p>1. Get the number of rows from one of the tables in the DB:</p>
-        <input id="getRowCount" type="text" placeholder="Insert table name" />
-        <Button onClick={getRowCount}>Get row count</Button>
-        <p>{numRows}</p>
-        <br></br>
+          <p> -------------------------------------------------- </p>
+          
+          {/* DATA FLOW TESTS: */}
+          <header className="App-header">
+            <h3> Data flow tests</h3>
 
-        {/* 2. getAvatar */}
-        <p>2. Get the avatar image for a player:</p>
-        <input id="getAvatar" type="text" placeholder="Insert player ID" />
-        <Button onClick={getAvatar}>Get avatar image</Button>
-        <img className="testImage"
-          src={avatar}
-          alt="Avatar"
-        />
-        <br></br>
+            {/* 1. countRows */}
+            <p>1. Get the number of rows from one of the tables in the DB:</p>
+            <input id="getRowCount" type="text" placeholder="Insert table name" />
+            <Button onClick={getRowCount}>Get row count</Button>
+            <p>{numRows}</p>
+            <br></br>
 
-      </header>
-      {/* <Button confirm onClick={testButton}>Click me!</Button> */}
-      <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
-    </div>
+            {/* 2. getAvatar */}
+            <p>2. Get the avatar image for a player:</p>
+            <input id="getAvatar" type="text" placeholder="Insert player ID" />
+            <Button onClick={getAvatar}>Get avatar image</Button>
+            <img className="testImage"
+              src={avatar}
+              alt="Avatar"
+            />
+            <br></br>
+
+          </header>
+          
+        </div>
+      </Route>
+      <Route path="/playground">
+        <Button confirm onClick={() => console.log("hello")}>Click me!</Button>
+        <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
+        <TextInput label="your name" placeholder="name" maxCount={8}/>
+      </Route>
+    </Router>
   );
 }
 
