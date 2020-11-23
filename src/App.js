@@ -121,6 +121,12 @@ function App() {
         />
         <br></br>
 
+        {/* 3. getScore */}
+        <p>2. Get the current score for a player:</p>
+        <input id="getScore" type="text" placeholder="Insert player ID" />
+        <Button onClick={getScore}>Get current score</Button>
+
+
       </header>
       {/* <Button confirm onClick={testButton}>Click me!</Button> */}
       <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
