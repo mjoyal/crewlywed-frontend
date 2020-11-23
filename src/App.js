@@ -19,9 +19,10 @@ const socket = io(ENDPOINT);
 
 function App() {
   
-  const [numRows, setNumRows] = useState("n/a")
-  const [avatar, setAvatar] = useState("https://www.seekpng.com/png/small/115-1150053_avatar-png-transparent-png-royalty-free-default-user.png")
-
+  const [numRows, setNumRows] = useState("n/a");
+  const [avatar, setAvatar] = useState("https://www.seekpng.com/png/small/115-1150053_avatar-png-transparent-png-royalty-free-default-user.png");
+  const [username, setUsername] = useState("______");
+  const [score, setScore] = useState("___");
 
   // BELOW: Example of getting data from the DB via JSON object from server, upon connection:
   useEffect(() => {
@@ -77,7 +78,7 @@ function App() {
   });
 
 
-  //2. countRows:
+  //2. getAvatar:
   const getAvatar = function () {
     const userID = document.querySelector('#getAvatar').value;
     socket.emit('avatar', userID)
@@ -87,6 +88,17 @@ function App() {
     setAvatar(avatar);
   });
 
+
+  //3. getScore:
+  const getScore = function () {
+    const userID = document.querySelector('#getScore').value;
+    socket.emit('score', userID)
+  };
+
+  socket.on('scoreReturn', scoreData => {
+    setUsername(scoreData.username);
+    setScore(scoreData.total_score);
+  });
 
   return (
     <Router>
@@ -130,7 +142,14 @@ function App() {
               alt="Avatar"
             />
             <br></br>
+            
 
+             {/* 3. getScore */}
+            <p>3. Get the current score for a player:</p>
+            <input id="getScore" type="text" placeholder="Insert player ID" />
+            <Button onClick={getScore}>Get current score</Button>
+            <p>{username}'s current score is {score}.</p>
+            <br></br>
           </header>
           
         </div>
@@ -141,6 +160,7 @@ function App() {
         <TextInput label="your name" placeholder="name" maxCount={8}/>
       </Route>
     </Router>
+   
   );
 }
 
