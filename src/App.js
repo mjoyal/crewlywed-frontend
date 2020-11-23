@@ -9,7 +9,10 @@ const ENDPOINT = "http://localhost:8080";
 const socket = io(ENDPOINT);
 
 function App() {
+  
   const [numRows, setNumRows] = useState("n/a")
+  const [avatar, setAvatar] = useState("https://www.seekpng.com/png/small/115-1150053_avatar-png-transparent-png-royalty-free-default-user.png")
+
 
   // BELOW: Example of getting data from the DB via JSON object from server, upon connection:
   useEffect(() => {
@@ -45,12 +48,14 @@ function App() {
       });  
     }, []);
 
+
   //BELOW: DATA FLOW TESTS:
 
   //0. Test basic data flow:
   useEffect(() => {
     socket.emit('hi',{name: "Will"});
     }, []);
+
 
   //1. countRows:
   const getRowCount = function () {
@@ -62,10 +67,16 @@ function App() {
     setNumRows(rowCount);
   });
 
-  //2. countRows:
-  const getCurrentScore = function () {
 
+  //2. countRows:
+  const getAvatar = function () {
+    const userID = document.querySelector('#getAvatar').value;
+    socket.emit('avatar', userID)
   };
+
+  socket.on('avatarReturn', avatar => {
+    setAvatar(avatar);
+  });
 
 
   return (
@@ -94,14 +105,21 @@ function App() {
         {/* 1. countRows */}
         <p>1. Get the number of rows from one of the tables in the DB:</p>
         <input id="getRowCount" type="text" placeholder="Insert table name" />
-        <Button onClick={getRowCount}>Send</Button>
+        <Button onClick={getRowCount}>Get row count</Button>
         <p>{numRows}</p>
         <br></br>
 
-        {/* 2. getScore */}
+        {/* 2. getAvatar */}
         <p>2. Get the avatar image for a player:</p>
-        <input id="getCurrentScore" type="text" placeholder="Insert player ID" />
-        <Button onClick={getCurrentScore}>Send</Button>
+        <input id="getAvatar" type="text" placeholder="Insert player ID" />
+        <Button onClick={getAvatar}>Get avatar image</Button>
+        <img className="testImage"
+          src={avatar}
+          alt="Avatar"
+        />
+        <br></br>
+
+
       </header>
     </div>
   );
