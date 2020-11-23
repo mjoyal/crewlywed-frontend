@@ -1,21 +1,16 @@
 import React, {useState} from 'react';
 import classNames from 'classnames';
-import '../styles/TextArea.scss';
+import '../styles/TextInput.scss';
 
-export default function TextArea (props) {
+export default function TextInput (props) {
   const [charCount, setCharCount] = useState(0);
   const [isFull, setIsFull] = useState(false);
 
-  const textAreaClass = classNames("bigtext", {
-    "bigtext--full" : isFull
-  })
+  const textInputClass = classNames("littletext", {
+    "littletext--full" : isFull
+  });
 
-  function preventEnter(event) {
-    //prevents the user from pressing enter 
-    if (event.key === "Enter") {
-      event.preventDefault();
-    }
-
+  function checkIsFull(event) {
     //will temporarily add error state styling to component
     if (event.target.value.length >= props.maxCount && !isFull) {
       setIsFull(true);
@@ -24,12 +19,11 @@ export default function TextArea (props) {
       }, 2000);
     }
   }
-
-  function updateCharCount(event) {
-    
+  
+  function updateCharCount(event) {    
     setCharCount(event.target.value.length);
     
-    //if we need to pass up the text area's content
+    //if we need to pass up the TextInput's content
     //it will occur here. can easily be removed if not needed
     if (props.onChange) {
       props.onChange(event.target.value)
@@ -37,8 +31,8 @@ export default function TextArea (props) {
   }
 
   return (
-    <div className={textAreaClass}>
-      <div className="bigtext__labels">
+    <div className={textInputClass}>
+      <div className="littletext__labels">
         <label
           htmlFor={props.label}>
           {props.label}
@@ -47,16 +41,15 @@ export default function TextArea (props) {
           {charCount}/{props.maxCount}
         </p>
       </div>
-      <textarea
-        className="bigtext__textarea"
+      <input
+        className="littletext__input"
+        type="text"
         placeholder={props.placeholder}
-        name={props.label}
+        onInput={updateCharCount}
+        onKeyPress={checkIsFull}
         maxLength={props.maxCount}
-        onKeyPress={event => preventEnter(event)}
-        onInput={event => updateCharCount(event)}
-      >
-
-      </textarea>
+        />
+      
     </div>
   )
 }
