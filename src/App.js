@@ -16,6 +16,8 @@ import NameCard from './components/NameCard';
 import Question from './components/Question';
 import NewGamePage from './components/NewGamePage';
 
+import GameLoop from './components/GameLoop/index.js';
+
 const ENDPOINT = "http://localhost:8080";
 const socket = io(ENDPOINT);
 
@@ -155,10 +157,10 @@ function App() {
           
         </div>
       </Route>
-      <Route path="/new">
+      <Route exact path="/new">
         <NewGamePage></NewGamePage>
       </Route>
-      <Route path="/playground">
+      <Route exact path="/playground">
         <Button confirm onClick={() => console.log("hello")}>Click me!</Button>
         <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
         <TextInput label="your name" placeholder="name" maxCount={8}/>
@@ -179,6 +181,10 @@ function App() {
 
         <p>Question Prompt</p>
         <Question avatar="https://tcrn.ch/35VAVzn" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
+
+      </Route>
+      <Route path="/:id">
+        <GameLoop />
 
       </Route>
     </Router>
