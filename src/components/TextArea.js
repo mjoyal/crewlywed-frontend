@@ -8,14 +8,17 @@ export default function TextArea (props) {
 
   const textAreaClass = classNames("bigtext", {
     "bigtext--full" : isFull
-  })  
+  })
 
-  function updateCharCount(event) {
+  function preventEnter(event) {
     //prevents the user from pressing enter 
     if (event.key === "Enter") {
       event.preventDefault();
     }
+  }
 
+  function updateCharCount(event) {
+    
     if (event.target.value.length >= props.maxCount && !isFull) {
       setIsFull(true);
       setTimeout( () => {
@@ -47,7 +50,8 @@ export default function TextArea (props) {
         placeholder={props.placeholder}
         name={props.label}
         maxLength={props.maxCount}
-        onKeyPress={event => updateCharCount(event)}
+        onKeyPress={event => preventEnter(event)}
+        onInput={event => updateCharCount(event)}
       >
 
       </textarea>
