@@ -11,6 +11,7 @@ import {
 
 import Button from './components/Button';
 import TextArea from './components/TextArea';
+import NameCard from './components/NameCard';
 import TextInput from './components/TextInput';
 
 
@@ -143,7 +144,6 @@ function App() {
             />
             <br></br>
             
-
              {/* 3. getScore */}
             <p>3. Get the current score for a player:</p>
             <input id="getScore" type="text" placeholder="Insert player ID" />
@@ -158,6 +158,23 @@ function App() {
         <Button confirm onClick={() => console.log("hello")}>Click me!</Button>
         <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
         <TextInput label="your name" placeholder="name" maxCount={8}/>
+        
+        <p> Host Name Card </p>
+        <NameCard
+          imageSource='https://techcrunch.com/wp-content/uploads/2014/08/cat-facts-3.jpg?w=1390&crop=1'
+          playerName="will"
+          host={true}
+        />
+
+        <p> Non-host Name Card (spacing is weird because of image sizes, will fix when have real images)</p>
+        <NameCard
+          imageSource='https://techcrunch.com/wp-content/uploads/2014/08/cat-facts-3.jpg?w=1390&crop=1'
+          playerName="will"
+          host={false}
+        />
+      {/* <Button confirm onClick={testButton}>Click me!</Button> */}
+      <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
+
       </Route>
     </Router>
    

@@ -1,0 +1,24 @@
+@import 'partials/_variables'; 
+@import 'partials/_helpers'; 
+
+
+.nameCard {
+  @include flex(row); 
+  border: $border-size solid $main-blue;
+  font-family: $normal-font; 
+  color: $main-blue;
+  font-size: 200%;
+  padding: 0 1rem; 
+
+  div {
+    @include flex(row, flex-start); 
+  }
+
+  img {
+    max-width: 20%; 
+  }
+
+  p {
+    margin: 1rem; 
+  }
+}
