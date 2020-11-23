@@ -17,13 +17,13 @@ function App() {
   const [loading, setLoading] = useState(true);
 
  
-  useEffect(() => {
-    const socket = socketIOClient(ENDPOINT);
-    setLoading(false);  
-    socket.on('avatar', function(playerInfo) {
-      console.log(playerInfo);
-    });
-    }, []);
+  // useEffect(() => {
+  //   const socket = socketIOClient(ENDPOINT);
+  //   setLoading(false);  
+  //   socket.on('avatar', function(playerInfo) {
+  //     console.log(playerInfo);
+  //   });
+  //   }, []);
 
     const testButton = function() {
       console.log('the button is working when clicked!')
@@ -37,9 +37,9 @@ function App() {
   //   })
   // }, []);
 
-  if (loading) {
-    return null;
-  };
+  // if (loading) {
+  //   return null;
+  // };
 
 
   return (
@@ -47,7 +47,7 @@ function App() {
       <header className="App-header">
       <Button confirm onClick={testButton}>Click me!</Button>
       </header> 
-      <TextArea label="your response" />
+      <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
     </div>
   );
 }

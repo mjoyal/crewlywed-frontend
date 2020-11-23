@@ -1,0 +1,39 @@
+@import './partials/_variables';
+
+.bigtext {
+  width: $mobile-col-8 * 1%;
+  height: $mobile-col-6 * 1vh;
+
+  color: $main-blue;
+  font-family: $normal-font;
+  &__textarea{
+    height:$mobile-col-6 * 1%;
+    width:$mobile-col-8 * 1%;
+
+    padding: $mobile-col-1 / 4 * 1%;
+
+    font-size: 1.625rem;
+    color: $main-blue;
+    font-family: $normal-font;
+
+    background-color: $white-main-blue;
+    border: $border-size solid $main-blue;
+    border-radius: 0px;
+    box-shadow: $border-size $border-size 0 $main-blue inset;
+
+    resize: none;
+    &::placeholder{
+      color:$grey-main-blue;
+    }
+  }
+
+  &__labels {
+    display:flex;
+    justify-content: space-between;
+
+    & * {
+      margin-top: $mobile-gutter-margin/2 * 1%;
+      margin-bottom: $mobile-gutter-margin/2 * 1%;
+    }
+  }
+}
