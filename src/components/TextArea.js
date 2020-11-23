@@ -15,16 +15,18 @@ export default function TextArea (props) {
     if (event.key === "Enter") {
       event.preventDefault();
     }
-  }
 
-  function updateCharCount(event) {
-    
+    //will temporarily add error state styling to component
     if (event.target.value.length >= props.maxCount && !isFull) {
       setIsFull(true);
       setTimeout( () => {
         setIsFull(false);
       }, 2000);
     }
+  }
+
+  function updateCharCount(event) {
+    
     setCharCount(event.target.value.length);
     
     //if we need to pass up the text area's content
