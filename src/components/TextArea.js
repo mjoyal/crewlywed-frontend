@@ -1,16 +1,27 @@
-import React, {useState} from 'react'
-import '../styles/TextArea.scss'
+import React, {useState} from 'react';
+import classNames from 'classnames';
+import '../styles/TextArea.scss';
 
 export default function TextArea (props) {
   const [charCount, setCharCount] = useState(0);
-  const [text, setText] = useState("");
+  const [isFull, setIsFull] = useState(false);
+
+  const textAreaClass = classNames("bigtext", {
+    "bigtext--full" : isFull
+  })  
 
   function updateCharCount(event) {
     //prevents the user from pressing enter 
     if (event.key === "Enter") {
       event.preventDefault();
     }
-    
+
+    if (event.target.value.length >= props.maxCount && !isFull) {
+      setIsFull(true);
+      setTimeout( () => {
+        setIsFull(false);
+      }, 2000);
+    }
     setCharCount(event.target.value.length);
     
     //if we need to pass up the text area's content
@@ -21,7 +32,7 @@ export default function TextArea (props) {
   }
 
   return (
-    <div className="bigtext">
+    <div className={textAreaClass}>
       <div className="bigtext__labels">
         <label
           htmlFor={props.label}>
