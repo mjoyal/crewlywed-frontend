@@ -11,9 +11,9 @@ import {
 
 import Button from './components/Button';
 import TextArea from './components/TextArea';
-import NameCard from './components/NameCard';
 import TextInput from './components/TextInput';
-
+import NameCard from './components/NameCard';
+import Question from './components/Question';
 
 const ENDPOINT = "http://localhost:8080";
 const socket = io(ENDPOINT);
@@ -161,19 +161,20 @@ function App() {
         
         <p> Host Name Card </p>
         <NameCard
-          imageSource='https://techcrunch.com/wp-content/uploads/2014/08/cat-facts-3.jpg?w=1390&crop=1'
+          avatar='https://tcrn.ch/35VAVzn'
           playerName="will"
           host={true}
         />
 
         <p> Non-host Name Card (spacing is weird because of image sizes, will fix when have real images)</p>
         <NameCard
-          imageSource='https://techcrunch.com/wp-content/uploads/2014/08/cat-facts-3.jpg?w=1390&crop=1'
+          avatar='https://tcrn.ch/35VAVzn'
           playerName="will"
           host={false}
         />
-      {/* <Button confirm onClick={testButton}>Click me!</Button> */}
-      <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
+
+        <p>Question Prompt</p>
+        <Question avatar="https://tcrn.ch/35VAVzn" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
 
       </Route>
     </Router>

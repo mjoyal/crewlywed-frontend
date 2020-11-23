@@ -1,0 +1,53 @@
+@import 'partials/_variables'; 
+@import 'partials/_helpers'; 
+
+
+.question {
+  @include flex(row); 
+  font-family: $normal-font;
+  color: $main-blue;
+  font-size: 2rem;
+  span {
+    font-family: $bold-font;
+    padding: 0 .2rem; 
+  }
+
+  .span-1 {
+    box-shadow: inset 0 -1rem 0 0 $light-pink-1;
+  }
+
+  .span-2 {
+    box-shadow: inset 0 -1rem 0 0 magenta;
+  }
+
+  .span-3 {
+    box-shadow: inset 0 -1rem 0 0 magenta;
+  }
+
+  .span-4 {
+    box-shadow: inset 0 -1rem 0 0 magenta;
+  }
+
+  .span-5 {
+    box-shadow: inset 0 -1rem 0 0 magenta;
+  }
+
+  .span-6 {
+    box-shadow: inset 0 -1rem 0 0 magenta;
+  }
+
+  .span-7 {
+    box-shadow: inset 0 -1rem 0 0 magenta;
+  }
+
+  .span-8 {
+    box-shadow: inset 0 -1rem 0 0 magenta;
+  }
+
+  img {
+    margin: 0 1rem;
+    max-width: 20%; 
+  }
+}
+
+
