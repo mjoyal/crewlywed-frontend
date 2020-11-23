@@ -16,7 +16,7 @@ import NameCard from './components/NameCard';
 import Question from './components/Question';
 import NewGamePage from './components/NewGamePage';
 
-import GameLoop from './components/GameLoop/index.js';
+import Game from './components/Game/index.js';
 
 const ENDPOINT = "http://localhost:8080";
 const socket = io(ENDPOINT);
@@ -184,8 +184,7 @@ function App() {
 
       </Route>
       <Route path="/:id">
-        <GameLoop />
-
+        <Game />
       </Route>
     </Router>
    
