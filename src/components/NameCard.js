@@ -1,3 +1,4 @@
+import React from 'react';
 import "../styles/NameCard.scss";
 import classNames from 'classnames';
 
@@ -7,7 +8,7 @@ export default function NameCard (props) {
   return (
     <div className={nameCardClass}>
       <div>
-        <img src={`${props.imageSource}`} alt="player avatar"/>
+        <img src={`${props.avatar}`} alt="player avatar"/>
         <p>{props.playerName}</p>
       </div>
       {props.host && (
