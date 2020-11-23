@@ -13,6 +13,7 @@ import Button from './components/Button';
 import TextArea from './components/TextArea';
 import NameCard from './components/NameCard';
 import TextInput from './components/TextInput';
+import JoinPage from './components/JoinPage';
 
 
 const ENDPOINT = "http://localhost:8080";
@@ -175,6 +176,12 @@ function App() {
       {/* <Button confirm onClick={testButton}>Click me!</Button> */}
       <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
 
+      </Route>
+
+      {/* join room page */}
+
+      <Route path="/join">
+        <JoinPage></JoinPage>
       </Route>
     </Router>
    

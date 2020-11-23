@@ -1,0 +1,9 @@
+@import './_variables'; 
+body {
+  font-family: $normal-font;
+  color: $main-blue;
+}
+
+h1, h2, h3 {
+  font-family: $bold-font; 
+}
