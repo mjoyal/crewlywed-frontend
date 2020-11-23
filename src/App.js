@@ -14,6 +14,7 @@ import TextArea from './components/TextArea';
 import TextInput from './components/TextInput';
 import NameCard from './components/NameCard';
 import Question from './components/Question';
+import NewGamePage from './components/NewGamePage';
 
 const ENDPOINT = "http://localhost:8080";
 const socket = io(ENDPOINT);
@@ -153,6 +154,9 @@ function App() {
           </header>
           
         </div>
+      </Route>
+      <Route path="/new">
+        <NewGamePage></NewGamePage>
       </Route>
       <Route path="/playground">
         <Button confirm onClick={() => console.log("hello")}>Click me!</Button>
