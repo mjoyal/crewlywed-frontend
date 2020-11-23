@@ -5,6 +5,7 @@ import { io } from 'socket.io-client';
 
 import Button from './components/Button';
 import TextArea from './components/TextArea';
+import NameCard from './components/NameCard';
 
 
 const ENDPOINT = "http://localhost:8080";
@@ -120,10 +121,26 @@ function App() {
           alt="Avatar"
         />
         <br></br>
+        <p> Host Name Card </p>
+        <NameCard
+          imageSource='https://techcrunch.com/wp-content/uploads/2014/08/cat-facts-3.jpg?w=1390&crop=1'
+          playerName="will"
+          host={true}
+        />
 
+      <p> Non-host Name Card (spacing is weird because of image sizes, will fix when have real images)</p>
+        <NameCard
+          imageSource='https://techcrunch.com/wp-content/uploads/2014/08/cat-facts-3.jpg?w=1390&crop=1'
+          playerName="will"
+          host={false}
+        />
       </header>
       {/* <Button confirm onClick={testButton}>Click me!</Button> */}
       <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
+
+     
+
+ 
     </div>
   );
 }
