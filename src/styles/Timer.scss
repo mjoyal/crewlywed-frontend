@@ -1,0 +1,18 @@
+@import './partials/_variables';
+@import './partials/_helpers';
+
+.timer-container {
+  @include flex(row); 
+}
+.timer {
+  height: 1em; 
+  width: 30em;
+  background-color: $light-main-blue;
+  border: $border-size solid $main-blue;
+  margin: 1em; 
+}
+
+.timer-indicator {
+  height: 100%; 
+  background-color: $main-blue;
+}
