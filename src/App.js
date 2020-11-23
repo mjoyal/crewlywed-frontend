@@ -122,7 +122,7 @@ function App() {
         <br></br>
 
       </header>
-      <Button confirm onClick={testButton}>Click me!</Button>
+      {/* <Button confirm onClick={testButton}>Click me!</Button> */}
       <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
     </div>
   );
