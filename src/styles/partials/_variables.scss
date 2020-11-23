@@ -1,6 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Sniglet&display=swap');
+
 // colors
+// white
+$off-white: #f8f8f8;
+
+//default blue
 $main-blue: #0000b7;
 $light-main-blue: #cdcafe;
+$grey-main-blue:#BABAD8;
+$white-main-blue:#f4f4ff;
 
 // sizes
 $border-size: 4px;
+
+//columns
+$mobile-gutter-margin: 2.666;
+$mobile-col-1: 9.6;
+$mobile-col-2: 21.6;
+$mobile-col-3: 33.866;
+$mobile-col-4: 45.866;
+$mobile-col-5: 58.133;
+$mobile-col-6: 70.4;
+$mobile-col-7: 82.4;
+$mobile-col-8: 94.666;
+
+//fonts
+$bold-font: 'Fredoka One', cursive;
+$normal-font: 'Sniglet', cursive;
