@@ -9,7 +9,7 @@ const ENDPOINT = "http://localhost:8080";
 const socket = io(ENDPOINT);
 
 function App() {
-  const [numRounds, setNumRounds] = useState("n/a")
+  const [numRows, setNumRows] = useState("n/a")
 
   // BELOW: Example of getting data from the DB via JSON object from server, upon connection:
   useEffect(() => {
@@ -38,11 +38,12 @@ function App() {
       socket.emit('message', messageData);
     };
 
-    socket.on('message', (messageData) => {
-      console.log('message', messageData.message);
-      console.log('from:', messageData.name);
-    });
-
+    useEffect(() => {
+      socket.on('message', messageData => {
+        console.log('message', messageData.message);
+        console.log('from:', messageData.name);
+      });  
+    }, []);
 
   //BELOW: DATA FLOW TESTS:
 
@@ -58,7 +59,7 @@ function App() {
   };
 
   socket.on('rowCountReturn', rowCount => {
-    setNumRounds(rowCount);
+    setNumRows(rowCount);
   });
 
   //2. countRows:
@@ -94,11 +95,11 @@ function App() {
         <p>1. Get the number of rows from one of the tables in the DB:</p>
         <input id="getRowCount" type="text" placeholder="Insert table name" />
         <Button onClick={getRowCount}>Send</Button>
-        <p>{numRounds}</p>
+        <p>{numRows}</p>
         <br></br>
 
         {/* 2. getScore */}
-        <p>2. Get the current score for a player:</p>
+        <p>2. Get the avatar image for a player:</p>
         <input id="getCurrentScore" type="text" placeholder="Insert player ID" />
         <Button onClick={getCurrentScore}>Send</Button>
       </header>
