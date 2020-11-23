@@ -12,6 +12,7 @@ import {
 import Button from './components/Button';
 import TextArea from './components/TextArea';
 import TextInput from './components/TextInput';
+import JoinPage from './components/JoinPage';
 import NameCard from './components/NameCard';
 import Question from './components/Question';
 import NewGamePage from './components/NewGamePage';
@@ -180,6 +181,12 @@ function App() {
         <p>Question Prompt</p>
         <Question avatar="https://tcrn.ch/35VAVzn" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
 
+      </Route>
+
+      {/* join room page */}
+
+      <Route path="/join">
+        <JoinPage></JoinPage>
       </Route>
     </Router>
    
