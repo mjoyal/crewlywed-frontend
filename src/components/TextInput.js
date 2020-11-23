@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import classNames from 'classnames';
+import '../styles/TextInput.scss';
 
 export default function TextInput (props) {
   const [charCount, setCharCount] = useState(0);
@@ -24,10 +25,10 @@ export default function TextInput (props) {
       props.onChange(event.target.value)
     }
   }
-  
+
   return (
     <div className={textInputClass}>
-      <div>
+      <div className="littletext__labels">
         <label
           htmlFor={props.label}>
           {props.label}
@@ -37,6 +38,7 @@ export default function TextInput (props) {
         </p>
       </div>
       <input
+        className="littletext__input"
         type="text"
         placeholder={props.placeholder}
         onInput={updateCharCount}
