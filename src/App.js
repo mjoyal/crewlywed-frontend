@@ -11,6 +11,7 @@ import {
 
 import Button from './components/Button';
 import TextArea from './components/TextArea';
+import TextInput from './components/TextInput';
 
 
 // const ENDPOINT = "http://localhost:8080";
@@ -137,6 +138,7 @@ function App() {
       <Route path="/playground">
         <Button confirm onClick={() => console.log("hello")}>Click me!</Button>
         <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
+        <TextInput label="your name" placeholder="name" maxCount={8}/>
       </Route>
     </Router>
   );
