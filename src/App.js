@@ -136,7 +136,7 @@ function App() {
         />
 
         <p>Question Prompt</p>
-        <Question avatar="https://tcrn.ch/35VAVzn" name="mac" >how would $name survive the apocalypse?</Question>
+        <Question avatar="https://tcrn.ch/35VAVzn" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
       </header>
       {/* <Button confirm onClick={testButton}>Click me!</Button> */}
       <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>

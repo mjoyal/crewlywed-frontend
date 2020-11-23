@@ -1,23 +1,19 @@
+
+import React from 'react'; 
 import "../styles/Question.scss";
 import classNames from 'classnames';
-import QuestionName from './QuestionName';
-
 
 export default function Question (props) {
-  const questionClass = classNames('question'); 
-
-  // putting string replace here for now, will need to discuss this?
-  const insertName = (question, name) => {
-    return question.replace('$name', name);
-  }
-
-  const formattedQuestion = insertName(props.children, props.name); 
+  const questionClass = classNames('question');
+  const name = React.cloneElement(props.children[1], {className: props.spanClass});
 
   return (
     <div className={questionClass}>
       <img src={`${props.avatar}`} alt="player avatar"/>
       <p>
-      {formattedQuestion}
+      {props.children[0]}
+      {name}
+      {props.children[2]}
       </p>
     </div>
 
