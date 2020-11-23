@@ -1,9 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
 
-import Button from './components/Button';
 import {useEffect, useState} from 'react';
 import { io } from 'socket.io-client';
+
+import Button from './components/Button';
+import TextArea from './components/TextArea';
+
 
 const ENDPOINT = "http://localhost:8080";
 const socket = io(ENDPOINT);
@@ -119,8 +121,9 @@ function App() {
         />
         <br></br>
 
-
       </header>
+      <Button confirm onClick={testButton}>Click me!</Button>
+      <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
     </div>
   );
 }

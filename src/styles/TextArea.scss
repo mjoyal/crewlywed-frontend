@@ -1,0 +1,63 @@
+@import './partials/_variables';
+@import './partials/_animations';
+
+.bigtext {
+  width: $mobile-col-8 * 1%;
+  height: $mobile-col-6 * 1vh;
+
+  color: $main-blue;
+  font-family: $normal-font;
+  transition: 1s ease-in-out;
+
+  &__textarea{
+    height:$mobile-col-6 * 1%;
+    width:$mobile-col-8 * 1%;
+
+    padding: $mobile-col-1 / 4 * 1%;
+
+    font-size: 1.625rem;
+    color: $main-blue;
+    font-family: $normal-font;
+
+    background-color: $white-main-blue;
+    border: $border-size solid $main-blue;
+    border-radius: 0px;
+    box-shadow: $border-size $border-size 0 $main-blue inset;
+
+    resize: none;
+    outline: none;
+
+    transition: .5s ease-in-out;
+    &::placeholder{
+      color:$grey-main-blue;
+    }
+  }
+
+  &__labels {
+    display:flex;
+    justify-content: space-between;
+
+    & * {
+      margin-top: $mobile-gutter-margin/2 * 1%;
+      margin-bottom: $mobile-gutter-margin/2 * 1%;
+    }
+  }
+
+  &--full {
+    color:red;
+    animation: shake 1s ease-in-out both;
+    transition: .5s ease-in-out;
+
+    & p {
+      font-family: $bold-font;
+      // transition: .5s ease-in-out;
+    }
+
+    & textarea {
+      color: red;
+      border: $border-size solid red;
+      box-shadow: $border-size $border-size 0 red inset;
+      transition: .5s ease-in-out;
+    }
+  }
+}
