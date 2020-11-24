@@ -103,6 +103,20 @@ function App() {
     setUsername(scoreData.username);
     setScore(scoreData.total_score);
   });
+  // data for the question result 
+  const chosers1 = [
+    {id: 1, avatar: 'images/avatar1.png'},
+    {id: 2, avatar: 'images/avatar2.png'},
+    {id: 3, avatar: 'images/avatar3.png'},
+    {id: 4, avatar: 'images/avatar4.png'},
+    {id: 5, avatar: 'images/avatar5.png'}
+  ];
+
+  const chosers2 = [
+    {id: 1, avatar: 'images/avatar1.png'},
+    {id: 2, avatar: 'images/avatar2.png'},
+    {id: 3, avatar: 'images/avatar3.png'},
+  ]
 
   return (
     <Router>
@@ -167,26 +181,37 @@ function App() {
         
         <p> Host Name Card </p>
         <NameCard
-          avatar='https://tcrn.ch/35VAVzn'
+          avatar='images/avatar1.png'
           playerName="will"
           host={true}
         />
 
         <p> Non-host Name Card (spacing is weird because of image sizes, will fix when have real images)</p>
         <NameCard
-          avatar='https://tcrn.ch/35VAVzn'
+          avatar='images/avatar2.png'
           playerName="will"
           host={false}
         />
 
         <p>Question Prompt</p>
-        <Question avatar="https://tcrn.ch/35VAVzn" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
+        <Question avatar="images/avatar3.png" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
 
         <p>Question Result (Correct)</p>
         <QuestionResult
           playerName="mac"
           answer="skateboard away"
           correct={true}
+          avatar='images/avatar1.png'
+          chosers={chosers1}
+        />
+
+      <p>Question Result (incorrect selection)</p>
+        <QuestionResult
+          playerName="mac"
+          answer="form a army of babes"
+          correct={false}
+          avatar='images/avatar1.png'
+          chosers={chosers2}
         />
       </Route>
 

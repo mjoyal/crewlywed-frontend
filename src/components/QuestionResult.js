@@ -3,6 +3,12 @@ import classNames from 'classnames';
 
 export default function QuestionResult (props) {
   
+  const chosers = props.chosers.map((choser) => {
+    return (
+      <img className="player-image" src={`${choser.avatar}`} alt="player avatar"/>
+    )
+  });
+
   return (
     <article className="questionResult">
       <header>
@@ -10,24 +16,26 @@ export default function QuestionResult (props) {
           <img src={`${props.avatar}`} alt="player avatar"/>
           <p>{props.playerName}</p>
         </div>
-        <p>{props.answer}</p>
+        <p className="answer">{props.answer}</p>
       </header>
       <footer>
         {props.correct && (
-          <>
-          <p>{`winners: ${props.numWinners}`}</p>
+          <div>
+          <p>{`winners: ${props.chosers.length}`}</p>
           <p>{`${props.oneWinner? "+100 ": "+100 to each"}`}</p>
-          </>
+          </div>
         )}
 
         {!props.correct && (
-          <>
-          <p>{`fooled: ${props.numFooled}`}</p>
-          <p>{`+50 to ${props.playerName}`}</p>
-          </>
+          <div>
+          <p>{`fooled: ${props.chosers.length}`}</p>
+          <p>{`+${50 * props.chosers.length} to ${props.playerName}`}</p>
+          </div>
         )}
-
-      </footer>
+        <div className="players">
+          {chosers}
+        </div>
+     </footer>
     </article>
   ); 
 };

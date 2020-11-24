@@ -4,8 +4,36 @@
 
 .questionResult {
   border: $border-size solid $main-blue; 
+  margin: 1rem; 
+  padding: 0.75rem; 
 
   header {
-    @include flex(row);
+    @include flex(row, space-between, center);
+    border-bottom: 2px solid $main-blue; 
+    div {
+      @include flex(column, flex-start, center);
+    }
   }
+
+  footer {
+    padding: 0.5rem 0; 
+    div {
+      @include flex(row, space-between); 
+    }
+    .players {
+      @include flex(row, flex-start); 
+    }
+  }
+
+  img {
+    max-width: 4em; 
+  }
+
+  .player-image {
+    max-width: 10%;
+  }
+  .answer {
+    font-size: 150%; 
+   }
+ 
 }
