@@ -40,7 +40,7 @@ export default function Playground (props) {
         <AvatarScore
           name="mac"
           score={200}
-          avatar="images/avatar3.png"
+          avatar="images/crownAvatar3.png"
           winner={true}
         />
 
