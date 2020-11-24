@@ -11,6 +11,8 @@ import {
 
 import { useDataFlow } from "./hooks/useDataFlow.js";
 import { useChat } from "./hooks/useChat.js";
+import { useGameLoop } from "./hooks/useGameLoop.js";
+import { useRoundLoop } from "./hooks/useRoundLoop.js";
 
 import JoinPage from './components/JoinPage';
 import NewGamePage from './components/NewGamePage';
@@ -59,7 +61,7 @@ function App() {
         </Route>
 
         <Route exact path="/playground">
-            <Playground/>
+            <Playground></Playground>
         </Route>
 
     {/* real routes  */}
@@ -67,12 +69,12 @@ function App() {
             <h1>welcome to the crewlywed game</h1>
         </Route>
     
-        <Route path="/new">
+        <Route exact path="/new">
           <NewGamePage></NewGamePage>
         </Route>
 
-        <Route path="/join">
-          <JoinPage/>
+        <Route exact path="/join">
+          <JoinPage></JoinPage>
         </Route>
 
         <Route path="/:id">
