@@ -17,7 +17,6 @@ import NameCard from './components/NameCard';
 import Question from './components/Question';
 import NewGamePage from './components/NewGamePage';
 import Timer from './components/Timer';
-
 import Game from './components/Game/index.js';
 
 const ENDPOINT = "http://localhost:8080";
@@ -29,14 +28,6 @@ function App() {
   const [avatar, setAvatar] = useState("https://www.seekpng.com/png/small/115-1150053_avatar-png-transparent-png-royalty-free-default-user.png");
   const [username, setUsername] = useState("______");
   const [score, setScore] = useState("___");
-
-  // BELOW: Example of getting data from the DB via JSON object from server, upon connection:
-  useEffect(() => {
-    socket.on('getSubmissions', submissionsObject => {
-      console.log(submissionsObject);
-    });
-    }, []);
-
 
   //BELOW: CHAT ROOMS TEST:
     const joinRoom = function () {
@@ -110,13 +101,13 @@ function App() {
   return (
     <Router>
       <Switch>
-
         
         <Route exact path="/">
-          <div className="App">
-            
-            {/* CHAT ROOMS TEST: */}
-            <header className="App-header">
+          <h1>Welcome to Crewlywed!</h1>
+        </Route>
+
+        <Route exact path ="/chat">
+        <header className="App-header">
               <h3> Chat rooms test</h3>
               <input id="test" type="text" placeholder="enter room code" />
               <br></br>
@@ -126,23 +117,18 @@ function App() {
               <input id="message-test" type="text" placeholder="enter message" />
               <Button confirm onClick={sendMessage}>Send</Button>
             </header>
-            <br></br>
-            <br></br>
+        </Route>
 
-            <p> -------------------------------------------------- </p>
-            
-            {/* DATA FLOW TESTS: */}
+        <Route exact path = "/dataflow">
+          <div className="App">                        
             <header className="App-header">
               <h3> Data flow tests</h3>
-
-              {/* 1. countRows */}
               <p>1. Get the number of rows from one of the tables in the DB:</p>
               <input id="getRowCount" type="text" placeholder="Insert table name" />
               <Button onClick={getRowCount}>Get row count</Button>
               <p>{numRows}</p>
               <br></br>
 
-              {/* 2. getAvatar */}
               <p>2. Get the avatar image for a player:</p>
               <input id="getAvatar" type="text" placeholder="Insert player ID" />
               <Button onClick={getAvatar}>Get avatar image</Button>
@@ -152,7 +138,6 @@ function App() {
               />
               <br></br>
               
-              {/* 3. getScore */}
               <p>3. Get the current score for a player:</p>
               <input id="getScore" type="text" placeholder="Insert player ID" />
               <Button onClick={getScore}>Get current score</Button>
@@ -162,9 +147,11 @@ function App() {
             
           </div>
         </Route>
+
         <Route exact path="/new">
           <NewGamePage></NewGamePage>
         </Route>
+
         <Route exact path="/playground">
           <Button confirm onClick={() => console.log("hello")}>Click me!</Button>
           <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
@@ -187,6 +174,9 @@ function App() {
           <p>Question Prompt</p>
           <Question avatar="https://tcrn.ch/35VAVzn" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
 
+        <p>Timer</p>
+        <Timer time={60} width={30}></Timer>
+
         </Route>
 
         <Route path="/:id">
@@ -194,10 +184,8 @@ function App() {
             {playerName:"Mac", avatar:'https://tcrn.ch/35VAVzn', host:true },
             {playerName:"Will", avatar:'https://tcrn.ch/35VAVzn', host:false } ]} />
         </Route>
-      </Switch>
 
-        <p>Timer</p>
-        <Timer time={60} width={30}></Timer>
+      </Switch>
 
     
       <Route path="/join">
