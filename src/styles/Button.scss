@@ -1,13 +1,21 @@
 @import 'partials/_variables'; 
 @import 'partials/_helpers'; 
+@import 'partials/_global'; 
+
 
 .button {
-  -webkit-box-shadow: 5px 7px 0px 0px $main-blue; 
-  box-shadow: 5px 7px 0px 0px $main-blue;
-  border: $border-size solid $main-blue; 
+  width:$mobile-col-6 * 1%;
+  padding: 1rem;
+  margin-bottom: .75rem;
+
   color: $main-blue;
-  font-size: 20px;
-  padding: 1rem; 
+  font-size: 1.625rem;
+  font-family: $normal-font;
+  text-transform: lowercase;
+
+  -webkit-box-shadow:  4px 4px 0px 0px $main-blue; 
+  box-shadow: 4px 4px 0px 0px $main-blue;
+  border: $border-size solid $main-blue; 
   &:hover {
     border: scale($border-size, 1.25) solid $main-blue;
   }
