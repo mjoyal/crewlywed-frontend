@@ -5,6 +5,7 @@ import NameCard from './NameCard';
 import Timer from './Timer';
 import QuestionResult from './QuestionResult';
 import Question from './Question';
+import AnswerCard from './AnswerCard';
 
 
 export default function Playground (props) {
@@ -69,6 +70,13 @@ export default function Playground (props) {
           correct={false}
           avatar='images/avatar1.png'
           chosers={chosers2}
+        />
+
+        <p>Question Selection (not selected)</p>
+
+        <AnswerCard
+          answer='form a tribe full of babes'
+          selection={false}
         />
     </>
 
