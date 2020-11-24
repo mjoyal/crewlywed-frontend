@@ -22,8 +22,8 @@ export default function Lobby(props) {
           <p>{props.players ? props.players.length : 0}/8</p>
         </div>
         { props.players &&
-          props.players.map(player => {
-            <NameCard name={player.playerName} avatar={player.avatar} host={player.host}/>
+          props.players.map((player, index) => {
+            return <NameCard key={index} name={player.playerName} avatar={player.avatar} host={player.host}/>
           })
         }
       </div>

@@ -10,7 +10,7 @@ export default function GameLoop (props) {
   return (
     <div>
       <p>This is the game controller! {params.id}</p>
-      <Lobby roomCode={params.id}/>
+      <Lobby roomCode={params.id} players={props.players}/>
 
     </div>
   );
