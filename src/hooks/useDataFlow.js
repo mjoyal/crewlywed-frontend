@@ -19,7 +19,9 @@ const useDataFlow = (socket) => {
   };
   socket.on('scoreReturn', scoreData => {
     setUsername(scoreData.username);
+    console.log(username)
     setScore(scoreData.total_score);
+    console.log(score)
   });
 
   return { avatar, getAvatar, username, score, getScore };

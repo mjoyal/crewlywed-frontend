@@ -1,6 +1,8 @@
-// import {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 
-const useGameLoop = (socket) => {
+const useCreateGame = (socket) => {
+
+  const [gameID, setGameID] = useState();
 
   const generateRoomCode = function() {
     let code = '';
@@ -11,25 +13,34 @@ const useGameLoop = (socket) => {
     return code;
   };
   
-  const createGame = function () {
+  const createNewGame = function () {
     const gameCode = generateRoomCode();
     const numRounds = 3; //hardcoded at 3 for now
-    const createGameData = {
+    const createNewGameData = {
       gameCode,
       numRounds
     }
-    socket.emit('createGame', createGameData)
+    socket.emit('createNewGame', createNewGameData)
   };
+
+  useEffect(() => {
+    socket.on('createNewGameReturn', id => {
+      setGameID(id);
+      console.log(id);
+      console.log(gameID);
+    });
+  }, [socket]);
 
   const createHost = function() {
     let username;
     const createHostData = {     
       username,
-      creator: true 
+      creator: true,
+      session_id: gameID
     }
   };
 
-  return { createGame, createHost };
+  return { createNewGame, createHost };
 };
 
-export { useGameLoop };
+export { useCreateGame };
