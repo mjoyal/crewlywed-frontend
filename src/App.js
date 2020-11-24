@@ -186,7 +186,7 @@ function App() {
       <Route path="/:id">
         <Game players={[
           {playerName:"Mac", avatar:'https://tcrn.ch/35VAVzn', host:true },
-          {playerName:"Mac", avatar:'https://tcrn.ch/35VAVzn', host:false } ]} />
+          {playerName:"Will", avatar:'https://tcrn.ch/35VAVzn', host:false } ]} />
       </Route>
     </Router>
    
