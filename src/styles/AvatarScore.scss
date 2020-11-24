@@ -1,0 +1,35 @@
+@import 'partials/_variables'; 
+@import 'partials/_helpers'; 
+@import 'partials/_global'; 
+
+
+.avatarScore {
+  @include flex(column); 
+
+  header {
+    @include flex(row); 
+    font-family: $bold-font;
+    font-size: 1.5rem; 
+  }
+
+  footer {
+    @include flex(column); 
+    font-size: 2rem; 
+    img {
+      max-width: 8rem;
+    }
+  }
+
+  .decoration {
+    max-width: 3rem;
+  }
+
+  img {
+    max-width: 6rem; // might be good to make avatar size (like basic) a variable
+  }
+
+  .winnerName {
+    padding: 0 .2rem; 
+    box-shadow: inset 0 -0.75rem 0 0 $light-main-blue;
+  }
+}
