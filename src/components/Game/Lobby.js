@@ -3,16 +3,19 @@ import React from 'react';
 import Button from '../Button.js';
 import NameCard from '../NameCard';
 
+import '../../styles/Lobby.scss'
+
 export default function Lobby(props) {
 
   return (
-    <>
-      <div>
+    <article className="lobby">
+      <header>
         <h2>Room Code:</h2>
-        <p>{props.roomCode}</p>
+        <p className="room-code">{props.roomCode}</p>
         <Button>Copy Code</Button>
         <Button>How to Play</Button>
-      </div>
+      </header>
+      <hr/>
       <div>
         <h3>Players:</h3>
         <p>{props.players ? props.players.length : 0}/8</p>
@@ -22,6 +25,6 @@ export default function Lobby(props) {
           })
         }
       </div>
-    </>
+    </article>
   )
 }

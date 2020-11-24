@@ -1,0 +1,25 @@
+@import './partials/variables';
+
+.lobby {
+
+  color:$main-blue;
+  text-transform: lowercase;
+
+  & header {
+    text-align: center;
+  }
+
+  & header h2{
+    margin:0;
+
+    font-size: 1rem;
+    font-family: $normal-font;
+  }
+  
+  & header .room-code{
+    margin: 0;
+
+    font-size: 2.875rem;
+    font-family: $bold-font;
+  }
+}
