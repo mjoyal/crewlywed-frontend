@@ -4,7 +4,7 @@
 
 .littletext {
   width: $mobile-col-8 * 1%;
-  height: $mobile-col-6 * 1vh;
+  // height: $mobile-col-6 * 1vh;
 
   color: $main-blue;
   font-family: $normal-font;
@@ -15,7 +15,7 @@
     width:$mobile-col-8 * 1%;
 
     padding: $mobile-col-1 / 4 * 1%;
-
+    // need some padding left
     font-size: 1.625rem;
     color: $main-blue;
     font-family: $normal-font;
