@@ -12,6 +12,7 @@ import {
 import Button from './components/Button';
 import TextArea from './components/TextArea';
 import TextInput from './components/TextInput';
+import JoinPage from './components/JoinPage';
 import NameCard from './components/NameCard';
 import Question from './components/Question';
 import NewGamePage from './components/NewGamePage';
@@ -167,6 +168,7 @@ function App() {
           <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
           <TextInput label="your name" placeholder="name" maxCount={8}/>
           
+
           <p> Host Name Card </p>
           <NameCard
             avatar='https://tcrn.ch/35VAVzn'
@@ -185,12 +187,19 @@ function App() {
           <Question avatar="https://tcrn.ch/35VAVzn" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
 
         </Route>
+
         <Route path="/:id">
           <Game players={[
             {playerName:"Mac", avatar:'https://tcrn.ch/35VAVzn', host:true },
             {playerName:"Will", avatar:'https://tcrn.ch/35VAVzn', host:false } ]} />
         </Route>
       </Switch>
+
+    
+      <Route path="/join">
+        <JoinPage></JoinPage>
+      </Route>
+
     </Router>
    
   );
