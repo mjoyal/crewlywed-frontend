@@ -9,6 +9,8 @@ import {
   Link
 } from "react-router-dom";
 
+import { useDataFlow } from "./hooks/useDataFlow.js";
+
 import Button from './components/Button';
 import TextArea from './components/TextArea';
 import TextInput from './components/TextInput';
@@ -23,10 +25,8 @@ const ENDPOINT = "http://localhost:8080";
 const socket = io(ENDPOINT);
 
 function App() {
-  
-  const [avatar, setAvatar] = useState("https://www.seekpng.com/png/small/115-1150053_avatar-png-transparent-png-royalty-free-default-user.png");
-  const [username, setUsername] = useState("______");
-  const [score, setScore] = useState("___");
+
+  const { avatar, setAvatar, getAvatar, username, setUsername, score, setScore, getScore } = useDataFlow(socket);
 
   //BELOW: CHAT ROOMS TEST:
     const joinRoom = function () {
@@ -52,32 +52,12 @@ function App() {
       });  
     }, []);
 
-  //BELOW: DATA FLOW:
   //Test connection:
   useEffect(() => {
     socket.on('connectMessage', message => {
       console.log(message);
     });
   }, []);
-
-  //getAvatar:
-  const getAvatar = function () {
-    const userID = document.querySelector('#getAvatar').value;
-    socket.emit('getAvatar', userID)
-  };
-  socket.on('avatarReturn', avatar => {
-    setAvatar(avatar);
-  });
-
-  //getScore:
-  const getScore = function () {
-    const userID = document.querySelector('#getScore').value;
-    socket.emit('getScore', userID)
-  };
-  socket.on('scoreReturn', scoreData => {
-    setUsername(scoreData.username);
-    setScore(scoreData.total_score);
-  });
 
   return (
     <Router>
@@ -112,15 +92,12 @@ function App() {
                 src={avatar}
                 alt="Avatar"
               />
-              <br></br>
-              <br></br>
+
               
               <p>Get the current score for a player:</p>
               <input id="getScore" type="text" placeholder="Insert player ID" />
               <Button onClick={getScore}>Get current score</Button>
               <p>{username}'s current score is {score}.</p>
-              <br></br>
-              <br></br>
             </header>
             
           </div>
