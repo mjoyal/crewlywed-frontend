@@ -10,7 +10,8 @@
   border: $border-size solid $main-blue; 
   color: $main-blue;
   font-size: 20px;
-  padding: 1rem; 
+  padding: 0.5rem 3rem; 
+  font-family: $normal-font;
   &:hover {
     border: scale($border-size, 1.25) solid $main-blue;
   }
