@@ -1,0 +1,60 @@
+@import './partials/variables';
+
+.lobby {
+
+  color:$main-blue;
+  text-transform: lowercase;
+  font-family: $normal-font;
+
+  & header {
+    text-align: center;
+  }
+
+  & header h2{
+    margin:0;
+
+    font-size: 1rem;
+    
+  }
+
+  & header .room-code{
+    margin: 0;
+
+    font-size: 2.875rem;
+    font-family: $bold-font;
+  }
+
+  & hr {
+    width: $mobile-col-6 + ($mobile-gutter-margin * 2) * 1%;
+    height: .2rem;
+
+    background-color: $main-blue;
+
+    border:none;
+    border-radius: 10rem;
+  }
+
+  & .player-list{ 
+    
+    & .button {
+      margin-left: ($mobile-col-1 + ($mobile-gutter-margin  * 2)) * 1%;
+    }
+
+    & .player-counter {
+      display: flex;
+      justify-content: space-between;
+
+      margin-left: ($mobile-col-1 + $mobile-gutter-margin) * 1%;
+      width: $mobile-col-6 + ($mobile-gutter-margin * 2) * 1%;
+      
+      font-size: 1rem;
+    
+    & *{
+      font-weight: normal;
+      margin: 0;
+    }
+
+    
+
+  }}
+}
