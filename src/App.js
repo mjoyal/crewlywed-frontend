@@ -182,7 +182,7 @@ function App() {
         <Question avatar="https://tcrn.ch/35VAVzn" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
 
         <p>Timer</p>
-        <Timer time={90}></Timer>
+        <Timer time={60} width={30}></Timer>
       </Route>
     </Router>
    

@@ -6,13 +6,14 @@
 }
 .timer {
   height: 1em; 
-  width: 30em;
+  width: 30em; // perhaps a variable here (is there a way to pass from props.width?)
   background-color: $light-main-blue;
   border: $border-size solid $main-blue;
-  margin: 1em; 
+  margin: 1em;
 }
 
 .timer-indicator {
   height: 100%; 
   background-color: $main-blue;
+  
 }
