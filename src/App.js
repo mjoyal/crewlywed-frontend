@@ -16,6 +16,7 @@ import JoinPage from './components/JoinPage';
 import NameCard from './components/NameCard';
 import Question from './components/Question';
 import NewGamePage from './components/NewGamePage';
+import Timer from './components/Timer';
 
 import Game from './components/Game/index.js';
 
@@ -168,8 +169,7 @@ function App() {
           <Button confirm onClick={() => console.log("hello")}>Click me!</Button>
           <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
           <TextInput label="your name" placeholder="name" maxCount={8}/>
-          
-
+ 
           <p> Host Name Card </p>
           <NameCard
             avatar='https://tcrn.ch/35VAVzn'
@@ -195,6 +195,9 @@ function App() {
             {playerName:"Will", avatar:'https://tcrn.ch/35VAVzn', host:false } ]} />
         </Route>
       </Switch>
+
+        <p>Timer</p>
+        <Timer time={60} width={30}></Timer>
 
     
       <Route path="/join">
