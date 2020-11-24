@@ -19,6 +19,7 @@ import JoinPage from './components/JoinPage';
 import NameCard from './components/NameCard';
 import Question from './components/Question';
 import NewGamePage from './components/NewGamePage';
+import QuestionResult from './components/QuestionResult';
 import Timer from './components/Timer';
 import Game from './components/Game/index.js';
 
@@ -36,6 +37,21 @@ function App() {
 
   const { avatar, getAvatar, username, score, getScore } = useDataFlow(socket);
   const { joinRoom, sendMessage } = useChat(socket);
+
+  // data for the question result 
+  const chosers1 = [
+    {id: 1, avatar: 'images/avatar1.png'},
+    {id: 2, avatar: 'images/avatar2.png'},
+    {id: 3, avatar: 'images/avatar3.png'},
+    {id: 4, avatar: 'images/avatar4.png'},
+    {id: 5, avatar: 'images/avatar5.png'}
+  ];
+
+  const chosers2 = [
+    {id: 1, avatar: 'images/avatar1.png'},
+    {id: 2, avatar: 'images/avatar2.png'},
+    {id: 3, avatar: 'images/avatar3.png'},
+  ]
 
   return (
     <Router>
@@ -77,7 +93,32 @@ function App() {
               <Button onClick={getScore}>Get current score</Button>
               <p>{username}'s current score is {score}.</p>
             </header>
+          
+        </div>
+      </Route>
+      <Route path="/new">
+        <NewGamePage></NewGamePage>
+      </Route>
+      <Route path="/playground">
+        <Button confirm onClick={() => console.log("hello")}>Click me!</Button>
+        <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
+        <TextInput label="your name" placeholder="name" maxCount={8}/>
+        
+        <p> Host Name Card </p>
+        <NameCard
+          avatar='images/avatar1.png'
+          playerName="will"
+          host={true}
+        />
+
+        <p> Non-host Name Card (spacing is weird because of image sizes, will fix when have real images)</p>
+        <NameCard
+          avatar='images/avatar2.png'
+          playerName="will"
+          host={false}
+        />
             
+
           </div>
         </Route>
 
@@ -112,15 +153,38 @@ function App() {
 
         </Route>
 
+
+        <p>Question Prompt</p>
+        <Question avatar="images/avatar3.png" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
+
+        <p>Question Result (Correct)</p>
+        <QuestionResult
+          playerName="mac"
+          answer="skateboard away"
+          correct={true}
+          avatar='images/avatar1.png'
+          chosers={chosers1}
+        />
+
+      <p>Question Result (incorrect selection)</p>
+        <QuestionResult
+          playerName="mac"
+          answer="form a army of babes"
+          correct={false}
+          avatar='images/avatar1.png'
+          chosers={chosers2}
+        />
+      </Route>
         <Route path="/:id">
           <Game players={[
             {playerName:"Mac", avatar:'https://tcrn.ch/35VAVzn', host:true },
             {playerName:"Will", avatar:'https://tcrn.ch/35VAVzn', host:false } ]} />
         </Route>
 
-      </Switch>
 
-    
+      </Switch>
+      {/* join room page */}
+
       <Route path="/join">
         <JoinPage></JoinPage>
       </Route>
