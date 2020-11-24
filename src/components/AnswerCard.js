@@ -1,7 +1,7 @@
-import "../styles/QuestionSelection.scss";
+import "../styles/AnswerCard.scss";
 import {useState} from 'react';
 
-export default function QuestionSelection (props) {
+export default function AnswerCard (props) {
   const [checked, setChecked] = useState(null)
 
   const styleChecked = function () {
@@ -12,7 +12,7 @@ export default function QuestionSelection (props) {
   };
 
   return (
-    <div className={`questionSelection ${checked}`}>
+    <div className={`answerCard ${checked}`}>
       <label className="container">
         <input type="checkbox" onChange={styleChecked}/>
         <span className="checkmark"></span>

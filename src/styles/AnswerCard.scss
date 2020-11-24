@@ -2,7 +2,7 @@
 @import 'partials/_helpers'; 
 @import 'partials/_global'; 
 
-.questionSelection {
+.answerCard {
   @include flex(row, space-around); 
   border: $border-size solid $main-blue; 
   -webkit-box-shadow:  4px 4px 0px 0px $main-blue; 
