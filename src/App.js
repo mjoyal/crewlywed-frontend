@@ -16,6 +16,7 @@ import JoinPage from './components/JoinPage';
 import NameCard from './components/NameCard';
 import Question from './components/Question';
 import NewGamePage from './components/NewGamePage';
+import QuestionResult from './components/QuestionResult';
 
 const ENDPOINT = "http://localhost:8080";
 const socket = io(ENDPOINT);
@@ -181,6 +182,12 @@ function App() {
         <p>Question Prompt</p>
         <Question avatar="https://tcrn.ch/35VAVzn" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
 
+        <p>Question Result (Correct)</p>
+        <QuestionResult
+          playerName="mac"
+          answer="skateboard away"
+          correct={true}
+        />
       </Route>
 
       {/* join room page */}
