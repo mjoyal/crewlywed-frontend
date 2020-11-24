@@ -11,12 +11,19 @@ const useCreateNewGame = (socket) => {
     return code;
   };
 
+  const generateAvatarID = function() {
+    const options = '12345678';
+    const ID = options.charAt(Math.floor(Math.random() * options.length));
+    return ID;
+  }
+
   const createNewHost = function(gameID) {
     let username;
     const createNewHostData = {     
-      username,
+      username: "will", //placeholder for now
       creator: true,
-      session_id: gameID
+      session_id: gameID,
+      avatar_id: generateAvatarID()
     }
     socket.emit('createNewHost', createNewHostData);
   };
