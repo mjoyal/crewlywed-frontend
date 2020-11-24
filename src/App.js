@@ -66,11 +66,12 @@ function App() {
 
   //BELOW: DATA FLOW TESTS:
 
-  //0. Test basic data flow:
+  //0. Test connection:
   useEffect(() => {
-    socket.emit('hi',{name: "Will"});
-    }, []);
-
+    socket.on('connectMessage', message => {
+      console.log(message);
+    });
+  }, []);
 
   //1. countRows:
   const getRowCount = function () {
