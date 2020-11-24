@@ -1,4 +1,4 @@
-// import {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 
 const useCreateNewGame = (socket) => {
 
@@ -18,9 +18,9 @@ const useCreateNewGame = (socket) => {
   }
 
   const createNewHost = function(gameID) {
-    let username;
+    const username = "Will";
     const createNewHostData = {     
-      username: "will", //placeholder for now
+      username,
       creator: true,
       session_id: gameID,
       avatar_id: generateAvatarID()
@@ -36,10 +36,13 @@ const useCreateNewGame = (socket) => {
       numRounds
     }
     socket.emit('createNewGame', createNewGameData);
+  };
+
+  useEffect(() => {
     socket.on('createNewGameReturn', id => {
       createNewHost(id);
     });
-  };
+  }, [socket]);
 
   return { createNewGame };
 };
