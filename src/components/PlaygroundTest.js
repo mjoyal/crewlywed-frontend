@@ -5,6 +5,7 @@ import NameCard from './NameCard';
 import Timer from './Timer';
 import QuestionResult from './QuestionResult';
 import Question from './Question';
+import AvatarScore from './AvatarScore';
 
 
 export default function Playground (props) {
@@ -26,6 +27,23 @@ export default function Playground (props) {
   
   return (
     <>
+        <p>Avatar Score</p>
+        <AvatarScore
+          name="mac"
+          score={200}
+          avatar="images/avatar3.png"
+          winner={false}
+        />
+
+        <p>Avatar Winner Score</p>
+
+        <AvatarScore
+          name="mac"
+          score={200}
+          avatar="images/avatar3.png"
+          winner={true}
+        />
+
         <Button confirm onClick={() => console.log("hello")}>Click me!</Button>
           <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
           <TextInput label="your name" placeholder="name" maxCount={8}/>
