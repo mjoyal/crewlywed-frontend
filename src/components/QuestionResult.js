@@ -1,5 +1,4 @@
 import "../styles/QuestionResult.scss";
-import classNames from 'classnames';
 
 export default function QuestionResult (props) {
   
