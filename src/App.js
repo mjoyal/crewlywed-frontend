@@ -79,7 +79,7 @@ function App() {
   //2. getAvatar:
   const getAvatar = function () {
     const userID = document.querySelector('#getAvatar').value;
-    socket.emit('avatar', userID)
+    socket.emit('getAvatar', userID)
   };
 
   socket.on('avatarReturn', avatar => {
@@ -90,7 +90,7 @@ function App() {
   //3. getScore:
   const getScore = function () {
     const userID = document.querySelector('#getScore').value;
-    socket.emit('score', userID)
+    socket.emit('getScore', userID)
   };
 
   socket.on('scoreReturn', scoreData => {
