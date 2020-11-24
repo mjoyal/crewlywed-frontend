@@ -16,9 +16,11 @@ export default function Lobby(props) {
         <Button>How to Play</Button>
       </header>
       <hr/>
-      <div>
-        <h3>Players:</h3>
-        <p>{props.players ? props.players.length : 0}/8</p>
+      <div className="player-list">
+        <div>
+          <h3>Players:</h3>
+          <p>{props.players ? props.players.length : 0}/8</p>
+        </div>
         { props.players &&
           props.players.map(player => {
             <NameCard name={player.playerName} avatar={player.avatar} host={player.host}/>

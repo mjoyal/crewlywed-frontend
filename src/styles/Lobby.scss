@@ -4,6 +4,7 @@
 
   color:$main-blue;
   text-transform: lowercase;
+  font-family: $normal-font;
 
   & header {
     text-align: center;
@@ -13,13 +14,38 @@
     margin:0;
 
     font-size: 1rem;
-    font-family: $normal-font;
+    
   }
-  
+
   & header .room-code{
     margin: 0;
 
     font-size: 2.875rem;
     font-family: $bold-font;
+  }
+
+  & hr {
+    width: $mobile-col-6 + ($mobile-gutter-margin * 2) * 1%;
+    height: .2rem;
+
+    background-color: $main-blue;
+
+    border:none;
+    border-radius: 10rem;
+  }
+
+  & .player-list > div {
+    display: flex;
+    justify-content: space-between;
+
+    width: $mobile-col-6 + ($mobile-gutter-margin * 2) * 1%;
+    margin-left: ($mobile-col-1 + $mobile-gutter-margin) * 1%;
+    
+    font-size: 1rem;
+    
+    & *{
+      font-weight: normal;
+      margin: 0;
+    }
   }
 }
