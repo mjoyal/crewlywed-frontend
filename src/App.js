@@ -16,8 +16,8 @@ import JoinPage from './components/JoinPage';
 import NameCard from './components/NameCard';
 import Question from './components/Question';
 import NewGamePage from './components/NewGamePage';
+import QuestionResult from './components/QuestionResult';
 import Timer from './components/Timer';
-
 import Game from './components/Game/index.js';
 
 const ENDPOINT = "http://localhost:8080";
@@ -105,6 +105,20 @@ function App() {
     setUsername(scoreData.username);
     setScore(scoreData.total_score);
   });
+  // data for the question result 
+  const chosers1 = [
+    {id: 1, avatar: 'images/avatar1.png'},
+    {id: 2, avatar: 'images/avatar2.png'},
+    {id: 3, avatar: 'images/avatar3.png'},
+    {id: 4, avatar: 'images/avatar4.png'},
+    {id: 5, avatar: 'images/avatar5.png'}
+  ];
+
+  const chosers2 = [
+    {id: 1, avatar: 'images/avatar1.png'},
+    {id: 2, avatar: 'images/avatar2.png'},
+    {id: 3, avatar: 'images/avatar3.png'},
+  ]
 
   return (
     <Router>
@@ -158,47 +172,63 @@ function App() {
               <p>{username}'s current score is {score}.</p>
               <br></br>
             </header>
+          
+        </div>
+      </Route>
+      <Route path="/new">
+        <NewGamePage></NewGamePage>
+      </Route>
+      <Route path="/playground">
+        <Button confirm onClick={() => console.log("hello")}>Click me!</Button>
+        <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
+        <TextInput label="your name" placeholder="name" maxCount={8}/>
+        
+        <p> Host Name Card </p>
+        <NameCard
+          avatar='images/avatar1.png'
+          playerName="will"
+          host={true}
+        />
+
+        <p> Non-host Name Card (spacing is weird because of image sizes, will fix when have real images)</p>
+        <NameCard
+          avatar='images/avatar2.png'
+          playerName="will"
+          host={false}
+        />
             
-          </div>
-        </Route>
-        <Route exact path="/new">
-          <NewGamePage></NewGamePage>
-        </Route>
-        <Route exact path="/playground">
-          <Button confirm onClick={() => console.log("hello")}>Click me!</Button>
-          <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
-          <TextInput label="your name" placeholder="name" maxCount={8}/>
- 
-          <p> Host Name Card </p>
-          <NameCard
-            avatar='https://tcrn.ch/35VAVzn'
-            playerName="will"
-            host={true}
-          />
+        <p>Timer</p>
+        <Timer time={60} width={30}></Timer>
 
-          <p> Non-host Name Card (spacing is weird because of image sizes, will fix when have real images)</p>
-          <NameCard
-            avatar='https://tcrn.ch/35VAVzn'
-            playerName="will"
-            host={false}
-          />
+        <p>Question Prompt</p>
+        <Question avatar="images/avatar3.png" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
 
-          <p>Question Prompt</p>
-          <Question avatar="https://tcrn.ch/35VAVzn" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
+        <p>Question Result (Correct)</p>
+        <QuestionResult
+          playerName="mac"
+          answer="skateboard away"
+          correct={true}
+          avatar='images/avatar1.png'
+          chosers={chosers1}
+        />
 
-        </Route>
-
+      <p>Question Result (incorrect selection)</p>
+        <QuestionResult
+          playerName="mac"
+          answer="form a army of babes"
+          correct={false}
+          avatar='images/avatar1.png'
+          chosers={chosers2}
+        />
+      </Route>
         <Route path="/:id">
           <Game players={[
             {playerName:"Mac", avatar:'https://tcrn.ch/35VAVzn', host:true },
             {playerName:"Will", avatar:'https://tcrn.ch/35VAVzn', host:false } ]} />
         </Route>
       </Switch>
+      {/* join room page */}
 
-        <p>Timer</p>
-        <Timer time={60} width={30}></Timer>
-
-    
       <Route path="/join">
         <JoinPage></JoinPage>
       </Route>

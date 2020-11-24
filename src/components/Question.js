@@ -1,4 +1,3 @@
-
 import React from 'react'; 
 import "../styles/Question.scss";
 import classNames from 'classnames';

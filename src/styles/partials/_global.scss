@@ -1,4 +1,10 @@
 @import './_variables'; 
+
+* {
+  margin: 0; 
+  padding: 0; 
+}
+
 body {
   font-family: $normal-font;
   color: $main-blue;
