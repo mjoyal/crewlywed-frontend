@@ -2,6 +2,8 @@ import {useEffect} from 'react';
 
 const useCreateNewGame = (socket) => {
 
+  let hostName = "";
+
   const generateRoomCode = function() {
     let code = '';
     const options = 'abcdefghijklmnopqrstuvwxyz';
@@ -15,10 +17,10 @@ const useCreateNewGame = (socket) => {
     const options = '12345678';
     const ID = options.charAt(Math.floor(Math.random() * options.length));
     return ID;
-  }
+  };
 
   const createNewHost = function(gameID) {
-    const username = "Will";
+    const username = hostName;
     const createNewHostData = {     
       username,
       creator: true,
@@ -28,7 +30,9 @@ const useCreateNewGame = (socket) => {
     socket.emit('createNewHost', createNewHostData);
   };
   
-  const createNewGame = function () {
+  const createNewGame = function (name) {
+    console.log(name);
+    hostName = name;
     const gameCode = generateRoomCode();
     const numRounds = 3; //hardcoded at 3 for now
     const createNewGameData = {
