@@ -22,7 +22,7 @@ const useDataFlow = (socket) => {
     setScore(scoreData.total_score);
   });
 
-  return { avatar, setAvatar, getAvatar, username, setUsername, score, setScore, getScore }
+  return { avatar, getAvatar, username, score, getScore }
 
 };
 

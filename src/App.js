@@ -1,6 +1,6 @@
 import './App.css';
 
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import { io } from 'socket.io-client';
 import {
   BrowserRouter as Router,
@@ -26,7 +26,7 @@ const socket = io(ENDPOINT);
 
 function App() {
 
-  const { avatar, setAvatar, getAvatar, username, setUsername, score, setScore, getScore } = useDataFlow(socket);
+  const { avatar, getAvatar, username, score, getScore } = useDataFlow(socket);
 
   //BELOW: CHAT ROOMS TEST:
     const joinRoom = function () {
