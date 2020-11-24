@@ -22,8 +22,8 @@ const useDataFlow = (socket) => {
     setScore(scoreData.total_score);
   });
 
-  return { avatar, getAvatar, username, score, getScore }
+  return { avatar, getAvatar, username, score, getScore };
 
 };
 
-export {useDataFlow};
+export { useDataFlow };

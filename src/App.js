@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 
 import { useDataFlow } from "./hooks/useDataFlow.js";
+import { useChat } from "./hooks/useChat.js";
 
 import Button from './components/Button';
 import TextArea from './components/TextArea';
@@ -26,38 +27,15 @@ const socket = io(ENDPOINT);
 
 function App() {
 
-  const { avatar, getAvatar, username, score, getScore } = useDataFlow(socket);
-
-  //BELOW: CHAT ROOMS TEST:
-    const joinRoom = function () {
-      const roomCode = document.querySelector('#test').value;
-      console.log('join room!')
-      socket.emit('join room', roomCode); 
-    };
-    const sendMessage = function () {
-      const message = document.querySelector('#message-test').value;
-      const name = document.querySelector('#name-test').value;
-      const room = document.querySelector('#test').value;
-      const messageData = {
-        message, 
-        name, 
-        room
-      }
-      socket.emit('message', messageData);
-    };
-    useEffect(() => {
-      socket.on('message', messageData => {
-        console.log('message', messageData.message);
-        console.log('from:', messageData.name);
-      });  
-    }, []);
-
-  //Test connection:
+  //Test connection to socket:
   useEffect(() => {
     socket.on('connectMessage', message => {
       console.log(message);
     });
   }, []);
+
+  const { avatar, getAvatar, username, score, getScore } = useDataFlow(socket);
+  const { joinRoom, sendMessage } = useChat(socket);
 
   return (
     <Router>
