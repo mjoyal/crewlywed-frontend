@@ -24,7 +24,6 @@ const socket = io(ENDPOINT);
 
 function App() {
   
-  const [numRows, setNumRows] = useState("n/a");
   const [avatar, setAvatar] = useState("https://www.seekpng.com/png/small/115-1150053_avatar-png-transparent-png-royalty-free-default-user.png");
   const [username, setUsername] = useState("______");
   const [score, setScore] = useState("___");
@@ -35,7 +34,6 @@ function App() {
       console.log('join room!')
       socket.emit('join room', roomCode); 
     };
-
     const sendMessage = function () {
       const message = document.querySelector('#message-test').value;
       const name = document.querySelector('#name-test').value;
@@ -47,7 +45,6 @@ function App() {
       }
       socket.emit('message', messageData);
     };
-
     useEffect(() => {
       socket.on('message', messageData => {
         console.log('message', messageData.message);
@@ -55,44 +52,28 @@ function App() {
       });  
     }, []);
 
-
-  //BELOW: DATA FLOW TESTS:
-
-  //0. Test connection:
+  //BELOW: DATA FLOW:
+  //Test connection:
   useEffect(() => {
     socket.on('connectMessage', message => {
       console.log(message);
     });
   }, []);
 
-  //1. countRows:
-  const getRowCount = function () {
-    const table = document.querySelector('#getRowCount').value;
-    socket.emit('rowCount', table)
-  };
-
-  socket.on('rowCountReturn', rowCount => {
-    setNumRows(rowCount);
-  });
-
-
-  //2. getAvatar:
+  //getAvatar:
   const getAvatar = function () {
     const userID = document.querySelector('#getAvatar').value;
     socket.emit('getAvatar', userID)
   };
-
   socket.on('avatarReturn', avatar => {
     setAvatar(avatar);
   });
 
-
-  //3. getScore:
+  //getScore:
   const getScore = function () {
     const userID = document.querySelector('#getScore').value;
     socket.emit('getScore', userID)
   };
-
   socket.on('scoreReturn', scoreData => {
     setUsername(scoreData.username);
     setScore(scoreData.total_score);
@@ -122,14 +103,9 @@ function App() {
         <Route exact path = "/dataflow">
           <div className="App">                        
             <header className="App-header">
-              <h3> Data flow tests</h3>
-              <p>1. Get the number of rows from one of the tables in the DB:</p>
-              <input id="getRowCount" type="text" placeholder="Insert table name" />
-              <Button onClick={getRowCount}>Get row count</Button>
-              <p>{numRows}</p>
-              <br></br>
+              <h3> Data flow</h3>
 
-              <p>2. Get the avatar image for a player:</p>
+              <p>Get the avatar image for a player:</p>
               <input id="getAvatar" type="text" placeholder="Insert player ID" />
               <Button onClick={getAvatar}>Get avatar image</Button>
               <img className="testImage"
@@ -137,11 +113,13 @@ function App() {
                 alt="Avatar"
               />
               <br></br>
+              <br></br>
               
-              <p>3. Get the current score for a player:</p>
+              <p>Get the current score for a player:</p>
               <input id="getScore" type="text" placeholder="Insert player ID" />
               <Button onClick={getScore}>Get current score</Button>
               <p>{username}'s current score is {score}.</p>
+              <br></br>
               <br></br>
             </header>
             
