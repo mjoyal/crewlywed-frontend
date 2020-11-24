@@ -17,6 +17,8 @@ import NameCard from './components/NameCard';
 import Question from './components/Question';
 import NewGamePage from './components/NewGamePage';
 import QuestionResult from './components/QuestionResult';
+import Timer from './components/Timer';
+import Game from './components/Game/index.js';
 
 const ENDPOINT = "http://localhost:8080";
 const socket = io(ENDPOINT);
@@ -120,54 +122,56 @@ function App() {
 
   return (
     <Router>
+      <Switch>
 
-      <Route exact path="/">
-        <div className="App">
-          
-          {/* CHAT ROOMS TEST: */}
-          <header className="App-header">
-            <h3> Chat rooms test</h3>
-            <input id="test" type="text" placeholder="enter room code" />
-            <br></br>
-            <Button confirm onClick={joinRoom}>Join</Button>
-            <br></br>
-            <input id="name-test" type="text" placeholder="enter your name" />
-            <input id="message-test" type="text" placeholder="enter message" />
-            <Button confirm onClick={sendMessage}>Send</Button>
-          </header>
-          <br></br>
-          <br></br>
-
-          <p> -------------------------------------------------- </p>
-          
-          {/* DATA FLOW TESTS: */}
-          <header className="App-header">
-            <h3> Data flow tests</h3>
-
-            {/* 1. countRows */}
-            <p>1. Get the number of rows from one of the tables in the DB:</p>
-            <input id="getRowCount" type="text" placeholder="Insert table name" />
-            <Button onClick={getRowCount}>Get row count</Button>
-            <p>{numRows}</p>
-            <br></br>
-
-            {/* 2. getAvatar */}
-            <p>2. Get the avatar image for a player:</p>
-            <input id="getAvatar" type="text" placeholder="Insert player ID" />
-            <Button onClick={getAvatar}>Get avatar image</Button>
-            <img className="testImage"
-              src={avatar}
-              alt="Avatar"
-            />
-            <br></br>
+        
+        <Route exact path="/">
+          <div className="App">
             
-             {/* 3. getScore */}
-            <p>3. Get the current score for a player:</p>
-            <input id="getScore" type="text" placeholder="Insert player ID" />
-            <Button onClick={getScore}>Get current score</Button>
-            <p>{username}'s current score is {score}.</p>
+            {/* CHAT ROOMS TEST: */}
+            <header className="App-header">
+              <h3> Chat rooms test</h3>
+              <input id="test" type="text" placeholder="enter room code" />
+              <br></br>
+              <Button confirm onClick={joinRoom}>Join</Button>
+              <br></br>
+              <input id="name-test" type="text" placeholder="enter your name" />
+              <input id="message-test" type="text" placeholder="enter message" />
+              <Button confirm onClick={sendMessage}>Send</Button>
+            </header>
             <br></br>
-          </header>
+            <br></br>
+
+            <p> -------------------------------------------------- </p>
+            
+            {/* DATA FLOW TESTS: */}
+            <header className="App-header">
+              <h3> Data flow tests</h3>
+
+              {/* 1. countRows */}
+              <p>1. Get the number of rows from one of the tables in the DB:</p>
+              <input id="getRowCount" type="text" placeholder="Insert table name" />
+              <Button onClick={getRowCount}>Get row count</Button>
+              <p>{numRows}</p>
+              <br></br>
+
+              {/* 2. getAvatar */}
+              <p>2. Get the avatar image for a player:</p>
+              <input id="getAvatar" type="text" placeholder="Insert player ID" />
+              <Button onClick={getAvatar}>Get avatar image</Button>
+              <img className="testImage"
+                src={avatar}
+                alt="Avatar"
+              />
+              <br></br>
+              
+              {/* 3. getScore */}
+              <p>3. Get the current score for a player:</p>
+              <input id="getScore" type="text" placeholder="Insert player ID" />
+              <Button onClick={getScore}>Get current score</Button>
+              <p>{username}'s current score is {score}.</p>
+              <br></br>
+            </header>
           
         </div>
       </Route>
@@ -192,6 +196,9 @@ function App() {
           playerName="will"
           host={false}
         />
+            
+        <p>Timer</p>
+        <Timer time={60} width={30}></Timer>
 
         <p>Question Prompt</p>
         <Question avatar="images/avatar3.png" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
@@ -214,12 +221,18 @@ function App() {
           chosers={chosers2}
         />
       </Route>
-
+        <Route path="/:id">
+          <Game players={[
+            {playerName:"Mac", avatar:'https://tcrn.ch/35VAVzn', host:true },
+            {playerName:"Will", avatar:'https://tcrn.ch/35VAVzn', host:false } ]} />
+        </Route>
+      </Switch>
       {/* join room page */}
 
       <Route path="/join">
         <JoinPage></JoinPage>
       </Route>
+
     </Router>
    
   );
