@@ -11,6 +11,8 @@ import {
 
 import { useDataFlow } from "./hooks/useDataFlow.js";
 import { useChat } from "./hooks/useChat.js";
+import { useCreateNewGame } from "./hooks/useCreateNewGame.js";
+import { useRoundLoop } from "./hooks/useRoundLoop.js";
 
 import JoinPage from './components/JoinPage';
 import NewGamePage from './components/NewGamePage';
@@ -33,6 +35,7 @@ function App() {
 
   const { avatar, getAvatar, username, score, getScore } = useDataFlow(socket);
   const { joinRoom, sendMessage } = useChat(socket);
+  const { createNewGame } = useCreateNewGame(socket);
 
 
   return (
@@ -59,7 +62,7 @@ function App() {
         </Route>
 
         <Route exact path="/playground">
-            <Playground/>
+            <Playground></Playground>
         </Route>
 
     {/* real routes  */}
@@ -67,11 +70,13 @@ function App() {
             <h1>welcome to the crewlywed game</h1>
         </Route>
     
-        <Route path="/new">
-          <NewGamePage></NewGamePage>
+        <Route exact path="/new">
+          <NewGamePage
+            createNewGame={createNewGame}
+          />
         </Route>
 
-        <Route path="/join">
+        <Route exact path="/join">
           <JoinPage/>
         </Route>
 
