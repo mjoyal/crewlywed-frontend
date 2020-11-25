@@ -20,9 +20,9 @@ export default function InputAnswerPage (props) {
 
   return (
     <main>
-      <h2>crewlywed</h2>
-      <Question avatar="images/avatar1.png" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
-      <Timer time={60} width={18}/>
+      
+      {/* <Question avatar="images/avatar1.png" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
+      <Timer time={60} width={18}/> */}
       <TextArea label="your response" placeholder="enter your response here..." maxCount={50} onChange={enableButton}/>
       <Button 
         confirm 

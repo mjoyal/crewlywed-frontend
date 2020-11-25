@@ -17,10 +17,11 @@ export default function GameLoop (props) {
   console.log(params);
   return (
     <div>
-      {/* {gameState !== ROUNDSCORE && <>
+      <h2>crewlywed</h2>
+      {gameState !== ROUNDSCORE && <>
         <Question avatar="images/avatar3.png" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
         <Timer time={60} width={30}></Timer>
-      </>} */}
+      </>}
       {gameState === ANSWER && <>
         <InputAnswerPage/>
       </>}
