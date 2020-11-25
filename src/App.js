@@ -14,6 +14,7 @@ import { useChat } from "./hooks/useChat.js";
 import { useCreateNewGame } from "./hooks/useCreateNewGame.js";
 import { useRoundLoop } from "./hooks/useRoundLoop.js";
 
+import HomePage from './components/HomePage';
 import JoinPage from './components/JoinPage';
 import NewGamePage from './components/NewGamePage';
 import Game from './components/Game/index.js';
@@ -67,7 +68,7 @@ function App() {
 
     {/* real routes  */}
         <Route exact path="/">
-            <h1>welcome to the crewlywed game</h1>
+            <HomePage></HomePage>
         </Route>
     
         <Route exact path="/new">
