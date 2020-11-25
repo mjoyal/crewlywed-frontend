@@ -26,6 +26,7 @@ export default function GameLoop (props) {
       </>}
       {gameState === ROUNDSCORE && <>
         <RoundScore/>
+      </>}
       {gameState === ANSWER && <>
         <InputAnswerPage/>
       </>}
