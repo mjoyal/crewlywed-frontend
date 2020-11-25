@@ -18,9 +18,12 @@ export default function ChooseAnswerPage (props) {
           answer={option.answer}      
           />)
       }
-      <Button disabled={answerID === null}>
-        choose answer
-      </Button>
+      <div style={{width:'100%', position:'fixed', bottom:'10px'}}>
+        <Button disabled={answerID === null}>
+          choose answer
+        </Button>
+
+      </div>
     </form>
   );
 }
