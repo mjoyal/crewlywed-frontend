@@ -18,7 +18,7 @@ export default function Game (props) {
       {gameState === LOBBY && 
         <Lobby roomCode={params.id} players={props.players} host={true}/>
       }
-      { GAMELOOP && <GameLoop />}
+      { GAMELOOP && <GameLoop name="mac"/>}
     </div>
   );
 }

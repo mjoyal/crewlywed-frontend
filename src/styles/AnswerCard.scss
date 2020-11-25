@@ -3,19 +3,27 @@
 @import 'partials/_global'; 
 
 .answerCard {
-  @include flex(row, space-around); 
+  @include flex(row, left, center); 
+
   border: $border-size solid $main-blue; 
   -webkit-box-shadow:  4px 4px 0px 0px $main-blue; 
   box-shadow: 4px 4px 0px 0px $main-blue;
-  font-size: 150%; 
+  font-size: 1.65rem;
+
   margin: 1rem;
-  padding: 0.5rem; 
-  
+  margin-left: $mobile-col-1 * 1%;
+  padding: 0.5rem;
+
+  width: ($mobile-col-6 + ($mobile-gutter-margin * 2)) * 1%;
+  cursor: pointer;
+
+  min-height: 90px;
   .container {
     display: block;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 10%;
+    // margin-bottom: 10%;
+    min-height: 30px;
     cursor: pointer;
     font-size: 22px;
     -webkit-user-select: none;
@@ -28,7 +36,6 @@
   .container input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
     height: 0;
     width: 0;
   }

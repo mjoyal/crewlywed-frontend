@@ -36,13 +36,13 @@ export default function GameLoop (props) {
     <div>
       <h2>crewlywed</h2>
       {gameState !== ROUNDSCORE && <>
-        <Question avatar="images/avatar3.png" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
+        <Question avatar="images/avatar3.png" spanClass="span-1">how would <span>{props.name}</span> survive the apocalypse?</Question>
         <Timer time={60} width={18}></Timer>
       </>}
       {gameState === ANSWER && <>
         <InputAnswerPage/>
       </>}
-      {gameState === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions}/>}
+      {gameState === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions} name={props.name}/>}
     </div>
   );
 }

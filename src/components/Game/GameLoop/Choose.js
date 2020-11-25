@@ -9,21 +9,24 @@ export default function ChooseAnswerPage (props) {
   const [answerID, setAnswerID] = useState(null);
 
   return (
-    <form
-      onSubmit={(event) => event.preventDefault()}>
-      {
-        props.answerOptions.map( option => <AnswerCard
-          checked={option.id === answerID}
-          onChange={setAnswerID} 
-          id={option.id}
-          answer={option.answer}      
-          />)
-      }
-      <ButtonContainer>
-        <Button disabled={answerID === null}>
-          choose answer
-        </Button>
-      </ButtonContainer>
-    </form>
+    <>
+      <h2 style={{fontWeight:'normal', textAlign:"center"}}> choose {props.name}'s answer! </h2>
+      <form
+        onSubmit={(event) => event.preventDefault()}>
+        {
+          props.answerOptions.map( option => <AnswerCard
+            checked={option.id === answerID}
+            onChange={setAnswerID} 
+            id={option.id}
+            answer={option.answer}      
+            />)
+        }
+        <ButtonContainer>
+          <Button disabled={answerID === null}>
+            choose answer
+          </Button>
+        </ButtonContainer>
+      </form>
+    </>
   );
 }
