@@ -23,7 +23,6 @@ const useJoinGame = (socket) => {
 
   const generateUniqueAvatar = (avatarsNotInUse) => {
     let avatarsOptions = "";
-    console.log("GEN FUNCTION:", avatarsNotInUse)
     for (const avatar of avatarsNotInUse) {
       avatarsOptions += avatar.id;
     }
@@ -40,7 +39,6 @@ const useJoinGame = (socket) => {
     }
     console.log("New Player Data:", createNewPlayerData)
     socket.emit('createNewPlayer', createNewPlayerData);
-    // make sure player name isn't already used for same game
   };
 
   useEffect(() => {
@@ -54,10 +52,15 @@ const useJoinGame = (socket) => {
     socket.on('joinGameErrorInvalid', message => {
       setErrorMessage(message);
     });
+    socket.on('createNewPlayerError', message => {
+      setErrorMessage(message);
+    });
+    socket.on('createNewPlayerReturn', message => {
+      setErrorMessage(message);
+    });
     socket.on('getAvatarsNotInUseReturn', avatarsResponseData => {
-      console.log("AVs not in use", avatarsResponseData);
       createNewPlayer(avatarsResponseData);
-    })
+    });
   }, [socket]);
 
   return { joinGame, errorMessage };
