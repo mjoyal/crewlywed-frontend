@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import Question from '../../Question';
 import Timer from '../../Timer';
+import InputAnswerPage from './Answer.js';
 
 const ANSWER = "ANSWER";
 const AWAIT = "AWAIT";
@@ -16,9 +17,13 @@ export default function GameLoop (props) {
   console.log(params);
   return (
     <div>
+      <h2>crewlywed</h2>
       {gameState !== ROUNDSCORE && <>
         <Question avatar="images/avatar3.png" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
         <Timer time={60} width={30}></Timer>
+      </>}
+      {gameState === ANSWER && <>
+        <InputAnswerPage/>
       </>}
     </div>
   );
