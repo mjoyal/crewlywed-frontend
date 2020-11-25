@@ -14,7 +14,7 @@ export default function Game (props) {
   console.log(params);
   return (
     <div>
-      <p>This is the game controller! {params.id}</p>
+      {/* <p>This is the game controller! {params.id}</p> */}
       {gameState === LOBBY && 
         <Lobby roomCode={params.id} players={props.players} host={true}/>
       }

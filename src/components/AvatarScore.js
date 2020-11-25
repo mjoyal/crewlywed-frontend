@@ -1,7 +1,8 @@
 import "../styles/AvatarScore.scss";
+import classNames from 'classnames';
 
 export default function AvatarScore (props) {
-  
+
   return (
     <div className="avatarScore">
       {props.winner && 
