@@ -14,7 +14,7 @@ export default function AvatarScore (props) {
         </header>
         <footer>
           <img src={`${props.avatar}`} alt="player avatar"/>
-          <p>{props.score}</p>
+          <p className="score">{props.score}</p>
         </footer>
         </>
       }
