@@ -7,12 +7,29 @@ const useJoinGame = (socket) => {
   let playerName = "";
   let gameCode = "";
 
-  const generateUniqueAvatar = () => {
-    //select random from pool of currently unused avatars
+  const getAvatarsNotInUse = (gameID) => {
+    socket.emit('getAvatarsNotInUse', gameID)
   };
 
-  const createNewPlayer = () => {
+  const generateUniqueAvatar = (avatarsNotInUse) => {
+    let avatarsOptions = "";
+    for (const avatar of avatarsNotInUse) {
+      avatarsOptions += avatar.id;
+    }
+    const avatarID = avatarsOptions.charAt(Math.floor(Math.random() * avatarsOptions.length));
+    return avatarID;
+  };
 
+  const createNewPlayer = (gameID) => {
+    getAvatarsNotInUse(gameID);
+    // const createNewPlayerData = {
+    //   username: playerName,
+    //   creator: false,
+    //   session_id: gameID,
+    //   avatar_id = generateUniqueAvatar(avatarsInUse)
+    // }
+    // socket.emit('createNewPlayer', createNewPlayerData);
+    // make sure player name isn't already used for same game
   };
 
   const joinGame = function (name, code) {
@@ -26,18 +43,19 @@ const useJoinGame = (socket) => {
   };
 
   useEffect(() => {
-    socket.on('joinGameReturn', id => {
+    socket.on('joinGameReturn', gameID => {
       setErrorMessage("");
-      console.log(id);
-      createNewPlayer(id);
+      createNewPlayer(gameID);
     });
     socket.on('joinGameErrorFull', message => {
       setErrorMessage(message);
     });
     socket.on('joinGameErrorInvalid', message => {
-      console.log(message);
       setErrorMessage(message);
-    });  
+    });
+    socket.on('getAvatarsNotInUseReturn', avatars => {
+      generateUniqueAvatar(avatars);
+    })
   }, [socket]);
 
   return { joinGame, errorMessage };
