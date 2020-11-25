@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import TextInput from './TextInput';
 import Button from './Button';
 import "../styles/JoinPage.scss";
@@ -9,10 +9,6 @@ export default function JoinPage (props) {
 
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
-
-  const joinRoom = () => {
-    console.log('joined room'); 
-  }
 
   return (
     <main>
