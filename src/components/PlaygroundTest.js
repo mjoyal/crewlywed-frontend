@@ -45,6 +45,9 @@ export default function Playground (props) {
           winner={true}
         />
 
+
+        <Button disabled onClick={() => console.log("this should not console log if disabled")}>disabled</Button>
+
         <Button confirm onClick={() => console.log("hello")}>Click me!</Button>
           <TextArea label="your response" placeholder="enter your response here..." maxCount={50}/>
           <TextInput label="your name" placeholder="name" maxCount={8}/>

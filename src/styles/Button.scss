@@ -6,17 +6,18 @@
 
 .button {
   width:$mobile-col-6 * 1%;
-  padding: 1rem;
   margin-bottom: .75rem;
-
+  background-color: $light-main-blue; 
   color: $main-blue;
-  padding: 0.5rem 3rem; 
+  padding: 0.5rem 2rem; 
   font-size: 1.625rem;
   font-family: $normal-font;
   text-transform: lowercase;
   -webkit-box-shadow:  4px 4px 0px 0px $main-blue; 
   box-shadow: 4px 4px 0px 0px $main-blue;
   border: $border-size solid $main-blue; 
+  // link styles
+  text-decoration: none;
   &:hover {
     border: scale($border-size, 1.25) solid $main-blue;
   }
@@ -24,4 +25,23 @@
 
 .button-confirm {
   background-color: $light-main-blue; 
+}
+
+.button-disabled {
+  color: $disabled-blue;
+  background-color: $white-main-blue;
+  -webkit-box-shadow:  4px 4px 0px 0px $disabled-blue; 
+  box-shadow: 4px 4px 0px 0px $disabled-blue;
+  border: $border-size solid $disabled-blue; 
+  &:hover {
+    border: $border-size solid $disabled-blue; 
+  }
+}
+.button-link {
+  width:$mobile-col-4 * 1%;
+  text-align: center; 
+}
+
+.link {
+  color: $main-blue;
 }

@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 const useDataFlow = (socket) => {
   const [avatar, setAvatar] = useState("https://www.seekpng.com/png/small/115-1150053_avatar-png-transparent-png-royalty-free-default-user.png");
@@ -9,18 +9,23 @@ const useDataFlow = (socket) => {
     const userID = document.querySelector('#getAvatar').value;
     socket.emit('getAvatar', userID)
   };
-  socket.on('avatarReturn', avatar => {
-    setAvatar(avatar);
-  });
 
   const getScore = function () {
     const userID = document.querySelector('#getScore').value;
     socket.emit('getScore', userID)
   };
-  socket.on('scoreReturn', scoreData => {
-    setUsername(scoreData.username);
-    setScore(scoreData.total_score);
-  });
+
+  useEffect(() => {
+    socket.on('avatarReturn', avatar => {
+      setAvatar(avatar);
+    });
+
+    socket.on('scoreReturn', scoreData => {
+      setUsername(scoreData.username);
+      setScore(scoreData.total_score);
+    });
+  }, [socket]);
+
 
   return { avatar, getAvatar, username, score, getScore };
 

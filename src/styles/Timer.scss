@@ -3,10 +3,11 @@
 
 .timer-container {
   @include flex(row); 
+  font-family: $bold-font; 
 }
 .timer {
-  height: 1em; 
-  width: 30em; // perhaps a variable here (is there a way to pass from props.width?)
+  height: 0.75rem; 
+  width: 18rem; // perhaps a variable here (is there a way to pass from props.width?)
   background-color: $light-main-blue;
   border: $border-size solid $main-blue;
   margin: 1em;
@@ -15,5 +16,4 @@
 .timer-indicator {
   height: 100%; 
   background-color: $main-blue;
-  
 }
