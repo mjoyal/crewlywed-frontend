@@ -27,8 +27,9 @@ export default function JoinPage (props) {
       maxCount={5}
       onChange={(code) => setCode(code)}
     />
-    <p>choose a name your crew will recognize!</p>
+    <p className="joinInstructions" >choose a name your crew will recognize!</p>
     <Button confirm onClick={event => props.joinGame(name, code)}>join game</Button>
+    <Link className="link" to="/">back home</Link>
     <p>{props.errorMessage}</p>
     </main>
   ); 
