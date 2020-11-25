@@ -4,12 +4,20 @@ import { useParams } from 'react-router-dom';
 import Question from '../../Question';
 import Timer from '../../Timer';
 import InputAnswerPage from './Answer.js';
+import ChooseAnswerPage from './Choose';
 
 const ANSWER = "ANSWER";
 const AWAIT = "AWAIT";
 const CHOOSE = "CHOOSE";
 const REVEAL = "REVEAL";
 const ROUNDSCORE = "ROUNDSCORE";
+
+//test data
+const answerOptions = [
+  {
+
+  }
+]
 
 export default function GameLoop (props) {
   const params = useParams();
@@ -25,6 +33,7 @@ export default function GameLoop (props) {
       {gameState === ANSWER && <>
         <InputAnswerPage/>
       </>}
+      {gameState === CHOOSE && <ChooseAnswerPage />}
     </div>
   );
 }
