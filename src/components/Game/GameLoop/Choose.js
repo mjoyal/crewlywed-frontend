@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 import AnswerCard from '../../AnswerCard';
 import Button from '../../Button';
+import ButtonContainer from '../../ButtonContainer';
 
 
 export default function ChooseAnswerPage (props) {
@@ -18,12 +19,11 @@ export default function ChooseAnswerPage (props) {
           answer={option.answer}      
           />)
       }
-      <div style={{width:'100%', position:'fixed', bottom:'10px'}}>
+      <ButtonContainer>
         <Button disabled={answerID === null}>
           choose answer
         </Button>
-
-      </div>
+      </ButtonContainer>
     </form>
   );
 }
