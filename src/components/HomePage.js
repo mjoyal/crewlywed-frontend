@@ -10,7 +10,7 @@ export default function HomePage () {
     <img src="images/logo-detailed.png" alt="logo"/>
     <p>Test your knowledge and fool your friends.<br></br> A simple, catchy two-liner.</p>
     <Link className="button button-link" to="/join">join game</Link>
-    <Link className="button button-link" to="/join">host game</Link>
+    <Link className="button button-link" to="/new">host game</Link>
     </main>
   );
 };
