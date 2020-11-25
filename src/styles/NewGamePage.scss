@@ -9,5 +9,10 @@ main {
   }
   p {
     margin: 1em; 
+    text-align: center;
+  }
+
+  .instructions {
+    padding-bottom: $mobile-col-3 * 0.75vh;
   }
 }
