@@ -42,8 +42,8 @@ const useCreateNewGame = (socket) => {
   };
 
   useEffect(() => {
-    socket.on('createNewGameReturn', id => {
-      createNewHost(id);
+    socket.on('createNewGameReturn', gameID => {
+      createNewHost(gameID);
     });
   }, [socket]);
 
