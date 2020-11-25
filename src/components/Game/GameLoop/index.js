@@ -15,13 +15,22 @@ const ROUNDSCORE = "ROUNDSCORE";
 //test data
 const answerOptions = [
   {
-
+    answer:"skateboard away",
+    id:1
+  },
+  {
+    answer:"sass the zombies away",
+    id:2
+  },
+  {
+    answer:"form a tribe full of babes",
+    id:3
   }
 ]
 
 export default function GameLoop (props) {
   const params = useParams();
-  const [gameState, setGameState] = useState(ANSWER);
+  const [gameState, setGameState] = useState(CHOOSE);
   console.log(params);
   return (
     <div>
@@ -33,7 +42,7 @@ export default function GameLoop (props) {
       {gameState === ANSWER && <>
         <InputAnswerPage/>
       </>}
-      {gameState === CHOOSE && <ChooseAnswerPage />}
+      {gameState === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions}/>}
     </div>
   );
 }

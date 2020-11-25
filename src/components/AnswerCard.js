@@ -12,9 +12,11 @@ export default function AnswerCard (props) {
   // };
 
   return (
-    <div className={`answerCard ${props.checked}`}>
+    <div className={`answerCard${props.checked ? ' checked' : ''}`}>
       <label className="container">
-        <input type="checkbox" checked={props.checked}/>
+        <input type="checkbox" 
+          checked={props.checked}
+          onChange={() => props.onChange(props.id)}/>
         <span className="checkmark"></span>
       </label>
       <p>{props.answer}</p>
