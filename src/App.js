@@ -13,6 +13,7 @@ import { useDataFlow } from "./hooks/useDataFlow.js";
 import { useChat } from "./hooks/useChat.js";
 import { useCreateNewGame } from "./hooks/useCreateNewGame.js";
 import { useRoundLoop } from "./hooks/useRoundLoop.js";
+import { useJoinGame } from "./hooks/useJoinGame.js";
 
 import JoinPage from './components/JoinPage';
 import NewGamePage from './components/NewGamePage';
@@ -36,6 +37,7 @@ function App() {
   const { avatar, getAvatar, username, score, getScore } = useDataFlow(socket);
   const { joinRoom, sendMessage } = useChat(socket);
   const { createNewGame } = useCreateNewGame(socket);
+  const { joinGame } = useJoinGame(socket);
 
 
   return (

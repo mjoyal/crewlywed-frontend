@@ -31,7 +31,6 @@ const useCreateNewGame = (socket) => {
   };
   
   const createNewGame = function (name) {
-    console.log(name);
     hostName = name;
     const gameCode = generateRoomCode();
     const numRounds = 3; //hardcoded at 3 for now
