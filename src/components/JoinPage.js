@@ -16,7 +16,7 @@ export default function JoinPage (props) {
     <h2>join a game</h2>
     <TextInput label="your name" placeholder="name" maxCount={8}/>
     <TextInput label="room code" placeholder="room code" maxCount={5}/>
-    <p>choose a name your friends will recognize!</p>
+    <p className="joinInstructions">choose a name your friends will recognize!</p>
     <Button confirm onClick={joinRoom}>join game</Button>
     <Link className="link" to="/">back home</Link>
     </main>

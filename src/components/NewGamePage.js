@@ -19,7 +19,7 @@ export default function NewGamePage (props) {
       maxCount={8}
       onChange={(name) => setName(name)}
     />
-    <p>as the host, you can start the game when all of your crew has joined.</p>
+    <p className="instructions">as the host, you can start the game when all of your crew has joined.</p>
     <Button confirm onClick={event => props.createNewGame(name)}>create game</Button>
     <Link className="link" to="/">back home</Link>
     </main>
