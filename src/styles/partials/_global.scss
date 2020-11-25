@@ -1,4 +1,5 @@
 @import './_variables'; 
+@import './_helpers'; 
 
 * {
   margin: 0; 
@@ -12,4 +13,9 @@ body {
 
 h1, h2, h3 {
   font-family: $bold-font; 
+}
+
+.gameLoop, 
+.game {
+  @include flex(column); 
 }
