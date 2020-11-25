@@ -1,6 +1,7 @@
 import AvatarScore from '../AvatarScore';
 import "../../styles/RoundScore.scss";
 
+
 const dummyData = [
   {id: 1, name: 'mac', score: 500, avatar: 'images/avatar1.png'},
   {id: 2, name: 'will', score: 250, avatar: 'images/avatar2.png'},
