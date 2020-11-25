@@ -1,4 +1,8 @@
+import {useState} from 'react'
+
 const useJoinGame = (socket) => {
+
+  const [errorMessage, setErrorMessage] = useState("");
 
   let playerName = "";
   let gameCode = "";
@@ -17,7 +21,16 @@ const useJoinGame = (socket) => {
     socket.emit('joinGame', joinGameData)
   };
 
-  return { joinGame };
+  // socket.on('joinGameReturn')
+
+  socket.on('joinGameErrorFull', message => {
+    setErrorMessage(message);
+  });
+  socket.on('joinGameErrorInvalid', message => {
+    setErrorMessage(message);
+  });
+
+  return { joinGame, errorMessage };
 
 };
 

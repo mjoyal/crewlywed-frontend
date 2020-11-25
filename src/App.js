@@ -37,7 +37,7 @@ function App() {
   const { avatar, getAvatar, username, score, getScore } = useDataFlow(socket);
   const { joinRoom, sendMessage } = useChat(socket);
   const { createNewGame } = useCreateNewGame(socket);
-  const { joinGame } = useJoinGame(socket);
+  const { joinGame, errorMessage } = useJoinGame(socket);
 
   return (
     <Router>
@@ -80,6 +80,7 @@ function App() {
         <Route exact path="/join">
           <JoinPage
             joinGame={joinGame}
+            errorMessage={errorMessage}
           />
         </Route>
 

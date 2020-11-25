@@ -28,6 +28,7 @@ export default function JoinPage (props) {
     />
     <p>choose a name your crew will recognize!</p>
     <Button confirm onClick={event => props.joinGame(name, code)}>join game</Button>
+    <p>{props.errorMessage}</p>
     </main>
   ); 
 }
