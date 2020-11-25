@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import TextInput from './TextInput';
 import Button from './Button';
 import {useState} from 'react';
+import "../styles/NewGamePage.scss";
+import {Link} from "react-router-dom";
 
 export default function NewGamePage (props) {
 
@@ -17,8 +19,9 @@ export default function NewGamePage (props) {
       maxCount={8}
       onChange={(name) => setName(name)}
     />
-    <p>as the host, you can start the game when all of your friends have joined.</p>
+    <p>as the host, you can start the game when all of your crew has joined.</p>
     <Button confirm onClick={event => props.createNewGame(name)}>create game</Button>
+    <Link className="link" to="/">back home</Link>
     </main>
   ); 
 }
