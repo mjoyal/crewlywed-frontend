@@ -25,3 +25,14 @@
 .button-confirm {
   background-color: $light-main-blue; 
 }
+
+.button-disabled {
+  color: $disabled-blue;
+  background-color: $white-main-blue;
+  -webkit-box-shadow:  4px 4px 0px 0px $disabled-blue; 
+  box-shadow: 4px 4px 0px 0px $disabled-blue;
+  border: $border-size solid $disabled-blue; 
+  &:hover {
+    border: $border-size solid $disabled-blue; 
+  }
+}
