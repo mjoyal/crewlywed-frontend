@@ -4,7 +4,7 @@ const useCreateNewGame = (socket) => {
 
   let hostName = "";
 
-  const generateRoomCode = function() {
+  const generateGameCode = function() {
     let code = '';
     const options = 'abcdefghijklmnopqrstuvwxyz';
     for (let i = 0; i < 5; i++) { //hardcoded at 5 for now
@@ -32,7 +32,7 @@ const useCreateNewGame = (socket) => {
   
   const createNewGame = function (name) {
     hostName = name;
-    const gameCode = generateRoomCode();
+    const gameCode = generateGameCode();
     const numRounds = 3; //hardcoded at 3 for now
     const createNewGameData = {
       gameCode,

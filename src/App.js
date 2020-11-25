@@ -39,7 +39,6 @@ function App() {
   const { createNewGame } = useCreateNewGame(socket);
   const { joinGame } = useJoinGame(socket);
 
-
   return (
     <Router>
 
@@ -79,7 +78,9 @@ function App() {
         </Route>
 
         <Route exact path="/join">
-          <JoinPage/>
+          <JoinPage
+            joinGame={joinGame}
+          />
         </Route>
 
         <Route path="/:id">
