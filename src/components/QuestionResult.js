@@ -18,9 +18,15 @@ export default function QuestionResult (props) {
     )
   });
 
+  const icon = props.correct ? `/images/correctIcon.png` : `/images/incorrectIcon.png`;
+
   return (
     <article className="questionResult">
+        <div style={{position:"relative"}}>
+          <img className="icon" src={icon} />
+        </div>
       <header>
+
         <div>
           <img src={`${getAvatarPath()}`} alt="player avatar"/>
           <p>{props.playerName}</p>
