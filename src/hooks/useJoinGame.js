@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react'
 
+// This hook tells the server to create a new player and add them to the game when a player submits their name and a game code on "/join".
+
 const useJoinGame = (socket) => {
 
   // This is used for setting the error a user will see if the game code is invalid or if a game is full:
@@ -43,7 +45,6 @@ const useJoinGame = (socket) => {
       session_id: avatarsResponseData.gameID,
       avatar_id: generateUniqueAvatar(avatarsResponseData.avatars)
     }
-    console.log("New Player Data:", createNewPlayerData) //delete this later - for now helpful to debug
     socket.emit('createNewPlayer', createNewPlayerData);
   };
 
@@ -57,10 +58,8 @@ const useJoinGame = (socket) => {
     socket.on('getAvatarsNotInUseReturn', avatarsResponseData => {
       createNewPlayer(avatarsResponseData);
     });
-    // Listen for server to send confirmation that a new player was created:
-    socket.on('createNewPlayerReturn', message => {
-      setErrorMessage(message);
-    });
+
+    //ERRORS:
     // Listen for server to send error - game is full:
     socket.on('joinGameErrorFull', message => {
       setErrorMessage(message);

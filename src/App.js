@@ -15,6 +15,9 @@ import { useCreateNewGame } from "./hooks/useCreateNewGame.js";
 import { useRoundLoop } from "./hooks/useRoundLoop.js";
 import { useJoinGame } from "./hooks/useJoinGame.js";
 
+import { useCreateLobby } from "./hooks/useCreateLobby.js";
+
+
 import HomePage from './components/HomePage';
 import JoinPage from './components/JoinPage';
 import NewGamePage from './components/NewGamePage';
@@ -39,6 +42,7 @@ function App() {
   const { joinRoom, sendMessage } = useChat(socket);
   const { createNewGame } = useCreateNewGame(socket);
   const { joinGame, errorMessage } = useJoinGame(socket);
+  const lobbyInfo = useCreateLobby(socket); 
 
   return (
     <Router>
@@ -75,6 +79,7 @@ function App() {
         <Route exact path="/new">
           <NewGamePage
             createNewGame={createNewGame}
+            lobbyInfo={lobbyInfo}
           />
         </Route>
 
@@ -82,13 +87,15 @@ function App() {
           <JoinPage
             joinGame={joinGame}
             errorMessage={errorMessage}
+            lobbyInfo={lobbyInfo}
           />
         </Route>
 
         <Route path="/:id">
           <Game players={[
             {playerName:"Mac", avatar:'https://tcrn.ch/35VAVzn', host:true },
-            {playerName:"Will", avatar:'https://tcrn.ch/35VAVzn', host:false } ]} />
+            {playerName:"Will", avatar:'https://tcrn.ch/35VAVzn', host:false } ]}
+            lobbyInfo={lobbyInfo} />
         </Route>
 
       </Switch>
