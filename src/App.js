@@ -15,7 +15,7 @@ import { useCreateNewGame } from "./hooks/useCreateNewGame.js";
 import { useRoundLoop } from "./hooks/useRoundLoop.js";
 import { useJoinGame } from "./hooks/useJoinGame.js";
 
-import { useLobby } from "./hooks/useLobby.js";
+import { useCreateLobby } from "./hooks/useCreateLobby.js";
 
 
 import HomePage from './components/HomePage';
@@ -42,7 +42,7 @@ function App() {
   const { joinRoom, sendMessage } = useChat(socket);
   const { createNewGame } = useCreateNewGame(socket);
   const { joinGame, errorMessage } = useJoinGame(socket);
-  const {lobbyInfo} = useLobby(socket); 
+  const { lobbyInfo } = useCreateLobby(socket); 
 
   return (
     <Router>

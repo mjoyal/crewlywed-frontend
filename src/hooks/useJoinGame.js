@@ -59,10 +59,8 @@ const useJoinGame = (socket) => {
     socket.on('getAvatarsNotInUseReturn', avatarsResponseData => {
       createNewPlayer(avatarsResponseData);
     });
-    // Listen for server to send confirmation that a new player was created:
-    socket.on('createNewPlayerReturn', message => {
-      setErrorMessage(message);
-    });
+    
+    //ERRORS:
     // Listen for server to send error - game is full:
     socket.on('joinGameErrorFull', message => {
       setErrorMessage(message);

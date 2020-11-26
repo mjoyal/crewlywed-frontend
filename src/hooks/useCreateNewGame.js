@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 
-// This hook tells the server to create a new game and then to create a new host when a user submits their name on "/new".
+// This hook tells the server to create a new game and *then* to create a new host when a user submits their name on "/new".
 
 const useCreateNewGame = (socket) => {
 
@@ -53,10 +53,6 @@ const useCreateNewGame = (socket) => {
   socket.on('createNewGameReturn', gameID => {
       createNewHost(gameID);
     });
-  //Listen for server to send confirmation that a new player (host) was created:
-  // socket.on('',
-  //  socket.emit('createHostLobby', gameID);
-  // )
   });
 
   return { createNewGame };
