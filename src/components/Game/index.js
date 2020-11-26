@@ -14,7 +14,7 @@ const FINALSCORE = 'FINALSCORE';
 
 export default function Game (props) {
   const params = useParams();
-  const [gameState, setGameState] = useState(FINALSCORE);
+  const [gameState, setGameState] = useState(GAMELOOP);
   console.log(params);
   return (
     <div className="game">
@@ -23,7 +23,7 @@ export default function Game (props) {
       {gameState === LOBBY && 
         <Lobby roomCode={params.id} players={props.players} host={true}/>
       }
-      { GAMELOOP && <GameLoop name="mac"/>}
+      { gameState === GAMELOOP && <GameLoop name="mac"/>}
       {gameState === FINALSCORE && <FinalScore />}
     </div>
   );
