@@ -31,13 +31,47 @@ const answerOptions = [
   }
 ]
 
+const answerResults = [
+  {
+    playerName:"mac",
+    avatarID:1,
+    correct:true,
+    answer:"form a tribe full of babes",
+    choosers:[
+      { 
+        name: "will",
+        avatarID: 2
+      },
+      { 
+        name: "chantal",
+        avatarID: 3
+      }
+    ]
+  },
+  {
+    playerName:"will",
+    avatarID:2,
+    correct:false,
+    answer:"skateboard away",
+    choosers:[
+      { 
+        name: "will",
+        avatarID: 2
+      },
+      { 
+        name: "chantal",
+        avatarID: 3
+      }
+    ]
+  }
+]
+
 export default function GameLoop (props) {
   const params = useParams();
   const [gameState, setGameState] = useState(REVEAL);
   console.log(params);
   return (
     <div className="gameLoop">
-      <h2>crewlywed</h2>
       {gameState !== ROUNDSCORE && <>
         <Question avatar="images/avatar3.png" spanClass="span-1">how would <span>{props.name}</span> survive the apocalypse?</Question>
         <Timer time={60} width={18}></Timer>
@@ -49,7 +83,7 @@ export default function GameLoop (props) {
         <InputAnswerPage/>
       </>}
       {gameState === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions} name={props.name}/>}
-      {gameState === REVEAL && <RevealAnswerPage answerResults={[]}/>}
+      {gameState === REVEAL && <RevealAnswerPage answerResults={answerResults}/>}
     </div>
   );
 }

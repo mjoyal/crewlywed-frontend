@@ -8,7 +8,8 @@ export default function RevealAnswerPage (props) {
     <>
       <h2> round complete </h2>
       {
-        props.answerResults.map(answer => <QuestionResult />)
+        props.answerResults.map(answer => <QuestionResult 
+          {...answer} />)
       }
     </>
   )

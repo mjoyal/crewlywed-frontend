@@ -1,10 +1,20 @@
 import "../styles/QuestionResult.scss";
 
+
+
 export default function QuestionResult (props) {
-  
-  const chosers = props.chosers.map((choser) => {
+  const getAvatarPath = function () {
+    if(props.path) {
+      return props.path
+    } else {
+      return `/images/avatar${props.avatarID}.png`
+    }
+  }
+  const choosers = props.choosers.map((chooser) => {
+    const avatar = chooser.avatar ? chooser.avatar : `/images/avatar${chooser.avatarID}.png`;
+    console.log(avatar);
     return (
-      <img className="player-image" src={`${choser.avatar}`} alt="player avatar"/>
+      <img className="player-image" src={avatar} alt="player avatar"/>
     )
   });
 
@@ -12,7 +22,7 @@ export default function QuestionResult (props) {
     <article className="questionResult">
       <header>
         <div>
-          <img src={`${props.avatar}`} alt="player avatar"/>
+          <img src={`${getAvatarPath()}`} alt="player avatar"/>
           <p>{props.playerName}</p>
         </div>
         <p className="answer">{props.answer}</p>
@@ -20,19 +30,19 @@ export default function QuestionResult (props) {
       <footer>
         {props.correct && (
           <div>
-          <p>{`winners: ${props.chosers.length}`}</p>
+          <p>{`winners: ${props.choosers.length}`}</p>
           <p>{`${props.oneWinner? "+100 ": "+100 to each"}`}</p>
           </div>
         )}
 
         {!props.correct && (
           <div>
-          <p>{`fooled: ${props.chosers.length}`}</p>
-          <p>{`+${50 * props.chosers.length} to ${props.playerName}`}</p>
+          <p>{`fooled: ${props.choosers.length}`}</p>
+          <p>{`+${50 * props.choosers.length} to ${props.playerName}`}</p>
           </div>
         )}
         <div className="players">
-          {chosers}
+          {choosers}
         </div>
      </footer>
     </article>
