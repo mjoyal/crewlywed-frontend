@@ -44,6 +44,9 @@ const useCreateNewGame = (socket) => {
   useEffect(() => {
     socket.on('createNewGameReturn', gameID => {
       createNewHost(gameID);
+      // ask server for lobby info here 
+
+      socket.emit('createHostLobby', gameID);
     });
   }, [socket]);
 
