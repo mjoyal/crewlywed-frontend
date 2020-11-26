@@ -4,17 +4,24 @@ import {useState, useEffect} from 'react'
 
 const useCreateLobby = (socket) => {
 
-  const [lobbyInfo, setLobbyInfo] = useState("Array should go here");
+  const [lobbyInfo, setLobbyInfo] = useState(null);
 
   useEffect(() => {
-    socket.on('createNewHostReturn', createNewHostData => {
-      console.log('data sent back from server:', createNewHostData.id);
-      setLobbyInfo(createNewHostData.id);
-      console.log('lobbyInfo:', lobbyInfo);
+    //was listening for createNewHostReturn
+    socket.on('gameCodeReturn', createNewHostData => {
+      // console.log('data sent back from server:', createNewHostData.id);
+      setLobbyInfo(createNewHostData);
+      // window.location.href = createNewHostData.id;
+      // console.log('lobbyInfo:', lobbyInfo);
     });
     // socket.on('createNewPlayerReturn', createNewPlayerData => {
     // });
   }, [socket]);
+
+  useEffect(() => {
+    console.log(lobbyInfo);
+  }, [lobbyInfo]);
+
 
   return lobbyInfo ;
 

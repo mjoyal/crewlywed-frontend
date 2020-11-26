@@ -24,6 +24,7 @@ const useDataFlow = (socket) => {
       setUsername(scoreData.username);
       setScore(scoreData.total_score);
     });
+    
   }, [socket]);
 
 

@@ -3,11 +3,15 @@ import TextInput from './TextInput';
 import Button from './Button';
 import {useState} from 'react';
 import "../styles/NewGamePage.scss";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 
 export default function NewGamePage (props) {
 
   const [name, setName] = useState("");
+
+  if(props.lobbyInfo) {
+    return <Redirect to={`/${props.lobbyInfo}`} />
+  }
 
   return (
     <main>

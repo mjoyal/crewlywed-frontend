@@ -79,6 +79,7 @@ function App() {
         <Route exact path="/new">
           <NewGamePage
             createNewGame={createNewGame}
+            lobbyInfo={lobbyInfo}
           />
         </Route>
 
