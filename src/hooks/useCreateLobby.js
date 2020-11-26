@@ -17,10 +17,13 @@ const useCreateLobby = (socket) => {
     
   }, [socket]);
 
-  socket.on('createNewHostReturn', createNewHostData => {
-    console.log(createNewHostData);
-  });
-  socket.on('createNewPlayerReturn', data => {
+  useEffect(() => {
+    socket.on('createNewHostReturn', createNewHostData => {
+      console.log(createNewHostData);
+    });
+    socket.on('createNewPlayerReturn', createNewPlayerData => {
+      console.log(createNewPlayerData);
+    });
   });
 
   return { lobbyInfo };

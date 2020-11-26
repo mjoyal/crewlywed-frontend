@@ -45,7 +45,6 @@ const useJoinGame = (socket) => {
       session_id: avatarsResponseData.gameID,
       avatar_id: generateUniqueAvatar(avatarsResponseData.avatars)
     }
-    console.log("New Player Data:", createNewPlayerData) //delete this later - for now helpful to debug
     socket.emit('createNewPlayer', createNewPlayerData);
   };
 
@@ -59,7 +58,7 @@ const useJoinGame = (socket) => {
     socket.on('getAvatarsNotInUseReturn', avatarsResponseData => {
       createNewPlayer(avatarsResponseData);
     });
-    
+
     //ERRORS:
     // Listen for server to send error - game is full:
     socket.on('joinGameErrorFull', message => {
