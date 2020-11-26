@@ -11,8 +11,8 @@ const useJoinGame = (socket) => {
 
   // Send name and game code to server:
   const joinGame = function (name, code) {
-    playerName = name;
-    gameCode = code;
+    playerName = name.toLowerCase();
+    gameCode = code.toLowerCase();
     const joinGameData = {
       playerName,
       gameCode
