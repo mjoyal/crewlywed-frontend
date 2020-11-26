@@ -42,7 +42,7 @@ function App() {
   const { joinRoom, sendMessage } = useChat(socket);
   const { createNewGame } = useCreateNewGame(socket);
   const { joinGame, errorMessage } = useJoinGame(socket);
-  const { lobbyInfo } = useCreateLobby(socket); 
+  const lobbyInfo = useCreateLobby(socket); 
 
   return (
     <Router>

@@ -21,7 +21,12 @@ export default function Game (props) {
       <h2>crewlywed</h2>
       {/* <p>This is the game controller! {params.id}</p> */}
       {gameState === LOBBY && 
-        <Lobby roomCode={params.id} players={props.players} host={true}/>
+        <Lobby
+          roomCode={params.id}
+          players={props.players}
+          host={true}
+          lobbyInfo={props.lobbyInfo}
+        />
       }
       { gameState === GAMELOOP && <GameLoop name="mac"/>}
       {gameState === FINALSCORE && <FinalScore />}
