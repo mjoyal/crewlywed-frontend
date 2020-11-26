@@ -35,7 +35,7 @@ const useCreateLobby = (socket) => {
   }, [players])
 
 
-  return lobbyInfo ;
+  return {lobbyInfo, players} ;
 
 };
 

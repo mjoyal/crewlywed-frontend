@@ -42,7 +42,7 @@ function App() {
   const { joinRoom, sendMessage } = useChat(socket);
   const { createNewGame } = useCreateNewGame(socket);
   const { joinGame, errorMessage } = useJoinGame(socket);
-  const lobbyInfo = useCreateLobby(socket); 
+  const {lobbyInfo, players} = useCreateLobby(socket); 
 
   return (
     <Router>
@@ -95,7 +95,9 @@ function App() {
           <Game players={[
             {playerName:"Mac", avatar:'https://tcrn.ch/35VAVzn', host:true },
             {playerName:"Will", avatar:'https://tcrn.ch/35VAVzn', host:false } ]}
-            lobbyInfo={lobbyInfo} />
+            lobbyInfo={lobbyInfo}
+            players={players}
+          />
         </Route>
 
       </Switch>
