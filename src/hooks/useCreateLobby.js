@@ -7,19 +7,18 @@ const useCreateLobby = (socket) => {
   const [lobbyInfo, setLobbyInfo] = useState(null);
 
   useEffect(() => {
-    //was listening for createNewHostReturn
-    socket.on('gameCodeReturn', createNewHostData => {
-      // console.log('data sent back from server:', createNewHostData.id);
-      setLobbyInfo(createNewHostData);
-      // window.location.href = createNewHostData.id;
-      // console.log('lobbyInfo:', lobbyInfo);
+    socket.on('createNewHostReturn', hostData => {
+      console.log('hostData:', hostData)
+      setLobbyInfo(hostData.code);
     });
-    // socket.on('createNewPlayerReturn', createNewPlayerData => {
-    // });
+    socket.on('createNewPlayerReturn', playerData => {
+      console.log('playerData:', playerData)
+      setLobbyInfo(playerData.code);
+    });
   }, [socket]);
 
   useEffect(() => {
-    console.log(lobbyInfo);
+    console.log('lobbyInfo:', lobbyInfo);
   }, [lobbyInfo]);
 
 
