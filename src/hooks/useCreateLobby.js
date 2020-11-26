@@ -4,27 +4,17 @@ import {useState, useEffect} from 'react'
 
 const useCreateLobby = (socket) => {
 
-  const [lobbyInfo, setLobbyInfo] = useState();
-
-  useEffect(() => {
-    socket.on('hostLobbyReturn', lobbyInfo => {
-     socket.emit('gameCode', lobbyInfo); 
-      console.log('after socket on', lobbyInfo)
-    });
-    socket.on('gameCodeReturn', gameCode => {
-      console.log(gameCode);
-    });
-    
-  }, [socket]);
+  const [lobbyInfo, setLobbyInfo] = useState([]);
 
   useEffect(() => {
     socket.on('createNewHostReturn', createNewHostData => {
-      console.log(createNewHostData);
+      console.log('data from server:', createNewHostData);
+      setLobbyInfo(createNewHostData);
+      console.log('lobbyInfo:', lobbyInfo);
     });
     socket.on('createNewPlayerReturn', createNewPlayerData => {
-      console.log(createNewPlayerData);
     });
-  });
+  }, [socket]);
 
   return { lobbyInfo };
 

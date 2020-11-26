@@ -10,6 +10,7 @@ export default function Lobby(props) {
   return (
     <article className="lobby">
       <header>
+        <p>{props.lobbyInfo}</p>
         <h2>Room Code:</h2>
         <p className="room-code">{props.roomCode}</p>
         <Button onClick={() => console.log("code copied!")}>Copy Code</Button>

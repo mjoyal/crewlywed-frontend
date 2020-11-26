@@ -53,7 +53,7 @@ const useCreateNewGame = (socket) => {
   socket.on('createNewGameReturn', gameID => {
       createNewHost(gameID);
     });
-  });
+  }, [socket]);
 
   return { createNewGame };
 };

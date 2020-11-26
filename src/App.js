@@ -92,7 +92,8 @@ function App() {
         <Route path="/:id">
           <Game players={[
             {playerName:"Mac", avatar:'https://tcrn.ch/35VAVzn', host:true },
-            {playerName:"Will", avatar:'https://tcrn.ch/35VAVzn', host:false } ]} />
+            {playerName:"Will", avatar:'https://tcrn.ch/35VAVzn', host:false } ]}
+            lobbyInfo={lobbyInfo} />
         </Route>
 
       </Switch>
