@@ -2,14 +2,17 @@ import {useState, useEffect} from 'react'
 
 const useJoinGame = (socket) => {
 
+  // This is used for setting the error a user will see if the game code is invalid or if a game is full:
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Name and game code are passed to this hook from the JoinPage.js component:
   let playerName = "";
   let gameCode = "";
 
+  // Send name and game code to server:
   const joinGame = function (name, code) {
-    playerName = name;
-    gameCode = code;
+    playerName = name.toLowerCase();
+    gameCode = code.toLowerCase();
     const joinGameData = {
       playerName,
       gameCode
@@ -17,10 +20,12 @@ const useJoinGame = (socket) => {
     socket.emit('joinGame', joinGameData)
   };
 
+  // Get a list of avatars not in use, so the new player can get one of them:
   const getAvatarsNotInUse = (gameID) => {
     socket.emit('getAvatarsNotInUse', gameID)
   };
 
+  // Pick a random avatar from the list of avatars not in use:
   const generateUniqueAvatar = (avatarsNotInUse) => {
     let avatarsOptions = "";
     for (const avatar of avatarsNotInUse) {
@@ -30,6 +35,7 @@ const useJoinGame = (socket) => {
     return avatarID;
   };
 
+  // Create a new player:
   const createNewPlayer = (avatarsResponseData) => {
     const createNewPlayerData = {
       username: playerName,
@@ -37,29 +43,31 @@ const useJoinGame = (socket) => {
       session_id: avatarsResponseData.gameID,
       avatar_id: generateUniqueAvatar(avatarsResponseData.avatars)
     }
-    console.log("New Player Data:", createNewPlayerData)
+    console.log("New Player Data:", createNewPlayerData) //delete this later - for now helpful to debug
     socket.emit('createNewPlayer', createNewPlayerData);
   };
 
   useEffect(() => {
+    // Listen for server to send confirmation that a game is valid to join:
     socket.on('joinGameReturn', gameID => {
       setErrorMessage("");
       getAvatarsNotInUse(gameID);
     });
-    socket.on('joinGameErrorFull', message => {
-      setErrorMessage(message);
+    // Listen for server to send a list of avatar options for the new player:
+    socket.on('getAvatarsNotInUseReturn', avatarsResponseData => {
+      createNewPlayer(avatarsResponseData);
     });
-    socket.on('joinGameErrorInvalid', message => {
-      setErrorMessage(message);
-    });
-    socket.on('createNewPlayerError', message => {
-      setErrorMessage(message);
-    });
+    // Listen for server to send confirmation that a new player was created:
     socket.on('createNewPlayerReturn', message => {
       setErrorMessage(message);
     });
-    socket.on('getAvatarsNotInUseReturn', avatarsResponseData => {
-      createNewPlayer(avatarsResponseData);
+    // Listen for server to send error - game is full:
+    socket.on('joinGameErrorFull', message => {
+      setErrorMessage(message);
+    });
+    // Listen for server to send error - game code is invalid:
+    socket.on('joinGameErrorInvalid', message => {
+      setErrorMessage(message);
     });
   }, [socket]);
 
