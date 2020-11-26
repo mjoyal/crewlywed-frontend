@@ -14,14 +14,19 @@
 
   footer {
     @include flex(column); 
-    font-size: 2rem; 
+    font-size: 1.675rem; 
+  
     img {
-      max-width: 8rem;
+      max-width: 6rem;
+    
+    }
+    .score {
+      margin: 0; 
     }
   }
 
   .decoration {
-    max-width: 3rem;
+    max-width: 2.5rem;
   }
 
   img {

@@ -1,7 +1,8 @@
 import "../styles/AvatarScore.scss";
+import classNames from 'classnames';
 
 export default function AvatarScore (props) {
-  
+
   return (
     <div className="avatarScore">
       {props.winner && 
@@ -13,7 +14,7 @@ export default function AvatarScore (props) {
         </header>
         <footer>
           <img src={`${props.avatar}`} alt="player avatar"/>
-          <p>{props.score}</p>
+          <p className="score">{props.score}</p>
         </footer>
         </>
       }
