@@ -5,24 +5,37 @@ import {useState, useEffect} from 'react'
 const useCreateLobby = (socket) => {
 
   const [lobbyInfo, setLobbyInfo] = useState(null);
+  const [players, setPlayers] = useState([]);
 
   useEffect(() => {
+    // Listen for new host created:
     socket.on('createNewHostReturn', hostData => {
-      console.log('hostData:', hostData)
-      setLobbyInfo(hostData.code);
+      const roomCode = hostData.code;
+      setLobbyInfo(roomCode);
+      socket.emit('joinRoom', hostData);
     });
+
+    // Listen for new non-host player created:
     socket.on('createNewPlayerReturn', playerData => {
-      console.log('playerData:', playerData)
-      setLobbyInfo(playerData.code);
+      const roomCode = playerData.code;
+      setLobbyInfo(roomCode);
+      socket.emit('joinRoom', playerData);
     });
+
+    // Listen for list of players in the room:
+    socket.on('playersData', playersData => {
+      console.log('Data from server:', playersData);
+      setPlayers(playersData);
+    });
+
   }, [socket]);
 
   useEffect(() => {
-    console.log('lobbyInfo:', lobbyInfo);
-  }, [lobbyInfo]);
+    console.log('Current state:', players);
+  }, [players])
 
 
-  return lobbyInfo ;
+  return {lobbyInfo, players} ;
 
 };
 

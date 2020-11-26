@@ -9,8 +9,8 @@ export default function NameCard (props) {
   return (
     <div className={nameCardClass}>
       <div>
-        <img src={`${props.avatar}`} alt="player avatar"/>
-        <p>{props.playerName}</p>
+        <img src={`/images/avatar${props.avatarID}.png`} alt="player avatar"/>
+        <p>{props.username}</p>
       </div>
       {props.host && (
         <img src="https://bit.ly/36ZTJgj" alt="host icon"/>
