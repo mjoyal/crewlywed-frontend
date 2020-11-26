@@ -23,7 +23,7 @@ export default function Game (props) {
       {gameState === LOBBY && 
         <Lobby roomCode={params.id} players={props.players} host={true}/>
       }
-      {gameState === GAMELOOP && <GameLoop />}
+      { GAMELOOP && <GameLoop name="mac"/>}
       {gameState === FINALSCORE && <FinalScore />}
     </div>
   );

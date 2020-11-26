@@ -2,19 +2,22 @@ import "../styles/AnswerCard.scss";
 import {useState} from 'react';
 
 export default function AnswerCard (props) {
-  const [checked, setChecked] = useState(null)
+  // const [checked, setChecked] = useState(null)
 
-  const styleChecked = function () {
-    if(checked) {
-      return setChecked(null)
-    }
-    return setChecked('checked')
-  };
+  // const styleChecked = function () {
+  //   if(checked) {
+  //     return setChecked(null)
+  //   }
+  //   return setChecked('checked')
+  // };
 
   return (
-    <div className={`answerCard ${checked}`}>
+    <div className={`answerCard${props.checked ? ' checked' : ''}`}
+    onClick={() => props.onChange(props.id)}>
       <label className="container">
-        <input type="checkbox" onChange={styleChecked}/>
+        <input type="checkbox" 
+          checked={props.checked}
+          />
         <span className="checkmark"></span>
       </label>
       <p>{props.answer}</p>
