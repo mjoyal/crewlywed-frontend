@@ -7,6 +7,7 @@ import RoundScore from './RoundScore';
 import "../../../styles/partials/_global.scss";
 import InputAnswerPage from './Answer.js';
 import ChooseAnswerPage from './Choose';
+import RevealAnswerPage from './Reveal'
 
 const ANSWER = "ANSWER";
 const AWAIT = "AWAIT";
@@ -32,7 +33,7 @@ const answerOptions = [
 
 export default function GameLoop (props) {
   const params = useParams();
-  const [gameState, setGameState] = useState(CHOOSE);
+  const [gameState, setGameState] = useState(REVEAL);
   console.log(params);
   return (
     <div className="gameLoop">
@@ -48,6 +49,7 @@ export default function GameLoop (props) {
         <InputAnswerPage/>
       </>}
       {gameState === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions} name={props.name}/>}
+      {gameState === REVEAL && <RevealAnswerPage answerResults={[]}/>}
     </div>
   );
 }
