@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react'
 
+// This hook tells the server to create a new player and add them to the game when a player submits their name and a game code on "/join".
+
 const useJoinGame = (socket) => {
 
   // This is used for setting the error a user will see if the game code is invalid or if a game is full:

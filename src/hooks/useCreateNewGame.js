@@ -1,5 +1,7 @@
 import {useEffect} from 'react';
 
+// This hook tells the server to create a new game and then to create a new host when a user submits their name on "/new".
+
 const useCreateNewGame = (socket) => {
 
   // The hostName is passed to this hook from the NewGamePage.js component:
@@ -13,6 +15,18 @@ const useCreateNewGame = (socket) => {
       code += options.charAt(Math.floor(Math.random() * options.length));
     }
     return code;
+  };
+
+  // This tells the server to create a new row for the new game in the sessions table of the DB:
+  const createNewGame = function (name) {
+    hostName = name.toLowerCase();
+    const gameCode = generateGameCode();
+    const numRounds = 3; //hardcoded at 3 for now
+    const createNewGameData = {
+      gameCode,
+      numRounds
+    }
+    socket.emit('createNewGame', createNewGameData);
   };
 
   // This generates a random avatar for the host:
@@ -33,27 +47,16 @@ const useCreateNewGame = (socket) => {
     }
     socket.emit('createNewHost', createNewHostData);
   };
-  
-  // This tells the server to create a new row for the new game in the sessions table of the DB:
-  const createNewGame = function (name) {
-    hostName = name.toLowerCase();
-    const gameCode = generateGameCode();
-    const numRounds = 3; //hardcoded at 3 for now
-    const createNewGameData = {
-      gameCode,
-      numRounds
-    }
-    socket.emit('createNewGame', createNewGameData);
-  };
 
   useEffect(() => {
-  //This listens for the server to confirm that it has created a new game:
+  //Listen for server to send confirmation that a new game was created:
   socket.on('createNewGameReturn', gameID => {
       createNewHost(gameID);
-      // ask server for lobby info here 
-
-      socket.emit('createHostLobby', gameID);
     });
+  //Listen for server to send confirmation that a new player (host) was created:
+  // socket.on('',
+  //  socket.emit('createHostLobby', gameID);
+  // )
   });
 
   return { createNewGame };
