@@ -69,7 +69,7 @@ const useJoinGame = (socket) => {
     socket.on('joinGameErrorInvalid', message => {
       setErrorMessage(message);
     });
-  }, [socket]);
+  });
 
   return { joinGame, errorMessage };
 
