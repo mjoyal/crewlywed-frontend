@@ -2,7 +2,7 @@
 import TextInput from './TextInput';
 import Button from './Button';
 import "../styles/JoinPage.scss";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {useState} from 'react';
 
 
@@ -10,6 +10,10 @@ export default function JoinPage (props) {
 
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
+
+  if(props.lobbyInfo) {
+    return <Redirect to={`/${props.lobbyInfo}`} />
+  }
 
   return (
     <main>

@@ -87,6 +87,7 @@ function App() {
           <JoinPage
             joinGame={joinGame}
             errorMessage={errorMessage}
+            lobbyInfo={lobbyInfo}
           />
         </Route>
 
