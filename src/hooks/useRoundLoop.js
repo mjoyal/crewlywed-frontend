@@ -26,6 +26,10 @@ const useRoundLoop = (socket, userProfile) => {
       setRoundState('REVEAL');
     })
 
+    socket.on('roundScore', () => {
+      setRoundState('ROUNDSCORE'); 
+    });
+
     socket.on('roundOver', () => {
       setRoundState('ANSWER'); 
     });
