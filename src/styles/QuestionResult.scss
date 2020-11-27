@@ -28,7 +28,12 @@
   img {
     max-width: 4em; 
   }
-
+  .icon {
+    position: absolute;
+    right: -1.5rem;
+    top: -1.5rem;
+    width: 1.5rem;
+  }
   .player-image {
     max-width: 10%;
   }
