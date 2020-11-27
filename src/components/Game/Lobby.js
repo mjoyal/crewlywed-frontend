@@ -28,12 +28,13 @@ export default function Lobby(props) {
               username={player.username}
               avatarID={player.avatar_id}
               host={player.creator}
+              active={true}
             />
           })
         }
         {
           props.host &&
-          <Button onClick={props.startGame}>Start Game</Button>
+          <Button onClick={props.startGame} disabled={props.players.length < 3}>Start Game</Button>
         }
       </div>
     </article>
