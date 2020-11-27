@@ -19,7 +19,7 @@ export default function Game (props) {
     <div className="game">
       <h2>crewlywed</h2>
       {/* <p>This is the game controller! {params.id}</p> */}
-      {gameState === LOBBY && 
+      {props.gameState === LOBBY && 
         <Lobby
           roomCode={params.id}
           players={props.players}
@@ -28,8 +28,8 @@ export default function Game (props) {
           startGame={props.startGame}
         />
       }
-      { gameState === GAMELOOP && <GameLoop name="mac"/>}
-      {gameState === FINALSCORE && <FinalScore />}
+      { props.gameState === GAMELOOP && <GameLoop name="mac"/>}
+      {props.gameState === FINALSCORE && <FinalScore />}
     </div>
   );
 }

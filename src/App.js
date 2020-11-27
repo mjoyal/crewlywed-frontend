@@ -42,7 +42,7 @@ function App() {
   const { joinRoom, sendMessage } = useChat(socket);
   const { createNewGame } = useCreateNewGame(socket);
   const { joinGame, errorMessage } = useJoinGame(socket);
-  const {lobbyInfo, players, userProfile, startGame} = useCreateLobby(socket); 
+  const {lobbyInfo, players, userProfile, startGame, gameState} = useCreateLobby(socket); 
   // const { userProfile } = useUserProfile(socket);
 
   /*
@@ -108,6 +108,7 @@ function App() {
             players={players}
             userProfile={userProfile}
             startGame={startGame}
+            gameState={gameState}
           />
         </Route>
 

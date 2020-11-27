@@ -8,6 +8,7 @@ const useCreateLobby = (socket) => {
   const [lobbyInfo, setLobbyInfo] = useState(null);
   const [players, setPlayers] = useState([]);
   const [userProfile, setUserProfile] = useState({});
+  const [gameState, setGameState] = useState('LOBBY'); 
 
   useEffect(() => {
     // Listen for new host created:
@@ -43,21 +44,24 @@ const useCreateLobby = (socket) => {
     });
 
     socket.on('startGame', () => {
-      console.log("Start game!!!");
+      // set state for the gameloop! we playin now bishes
+      setGameState('GAMELOOP'); 
+    });
+
+    socket.on('finalScore', () => {
+      // set state for the gameloop! we playin now bishes
+      setGameState('FINALSCORE'); 
     });
 
   }, [socket]);
 
-  useEffect(() => {
-    console.log('Current state:', players);
-  }, [players])
-
   const startGame = function () {
+    // tell the server that the host has started the game
     socket.emit('startGame', userProfile.code);
 
   }
 
-  return {lobbyInfo, players, userProfile, startGame} ;
+  return {lobbyInfo, players, userProfile, startGame, gameState} ;
 
 };
 
