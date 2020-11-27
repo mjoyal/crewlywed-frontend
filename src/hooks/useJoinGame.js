@@ -4,8 +4,8 @@ import {useState, useEffect} from 'react'
 
 const useJoinGame = (socket) => {
 
-  // This is used for setting the error a user will see if the game code is invalid or if a game is full:
-  const [errorMessage, setErrorMessage] = useState("");
+  // This is used for setting the error a user will see if the game code is invalid, if a game is full, or if their name is blank:
+  const [joinErrorMessage, setJoinErrorMessage] = useState("");
 
   // Name and game code are passed to this hook from the JoinPage.js component:
   let playerName = "";
@@ -51,7 +51,7 @@ const useJoinGame = (socket) => {
   useEffect(() => {
     // Listen for server to send confirmation that a game is valid to join:
     socket.on('joinGameReturn', gameID => {
-      setErrorMessage("");
+      setJoinErrorMessage("");
       getAvatarsNotInUse(gameID);
     });
     // Listen for server to send a list of avatar options for the new player:
@@ -62,19 +62,19 @@ const useJoinGame = (socket) => {
     //ERRORS:
     // Listen for server to send error - game is full:
     socket.on('joinGameErrorFull', message => {
-      setErrorMessage(message);
+      setJoinErrorMessage(message);
     });
     // Listen for server to send error - game code is invalid:
     socket.on('joinGameErrorInvalid', message => {
-      setErrorMessage(message);
+      setJoinErrorMessage(message);
     });
     // Listen for server to send error - blank name:
     socket.on('joinGameErrorBlankName', message => {
-      setErrorMessage(message);
+      setJoinErrorMessage(message);
     });
   }, [socket]);
 
-  return { joinGame, errorMessage };
+  return { joinGame, joinErrorMessage };
 
 };
 
