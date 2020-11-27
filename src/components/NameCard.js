@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 export default function NameCard (props) {
   const nameCardClass = classNames('nameCard', {
-    "inactive":props.answered
+    "nameCard--inactive":!props.active
   }); 
   return (
     <div className={nameCardClass}>

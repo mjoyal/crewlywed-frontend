@@ -6,12 +6,13 @@ export default function AwaitResponsePage (props) {
 
   return (
     <div>
-      <h2>waiting for responses...</h2>
-      {props.players.map(player => <NameCard 
+      <h2 style={{textAlign:"center", fontWeight:"normal", margin:'1rem 0'}}>waiting for responses...</h2>
+      {props.players.map((player, index) => <NameCard 
         avatarID={player.avatarID}
         username={player.username}
-        active={true} //update later
+        active={player.answered} //update later
         host={player.creator}
+        key={index}
       />)}
 
     </div>
