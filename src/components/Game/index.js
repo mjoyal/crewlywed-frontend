@@ -5,7 +5,7 @@ import "../../styles/partials/_global.scss";
 
 
 import Lobby from './Lobby';
-import GameLoop from './GameLoop/index.js'
+import GameLoop from './GameLoop/roundIndex.js'
 import FinalScore from './FinalScore';
 
 const LOBBY = 'LOBBY';
