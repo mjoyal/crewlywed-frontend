@@ -75,10 +75,10 @@ const responseTest = [
   {id: 5, avatarID: 5, username:'mac', creator:false, answered:false}
 ];
 
-export default function GameLoop (props) {
+export default function RoundLoop (props) {
   const params = useParams();
   return (
-    <div className="gameLoop">
+    <div className="roundLoop">
       {props.roundState !== ROUNDSCORE && <>
         <Question avatar="images/avatar3.png" spanClass="span-1">how would <span>{props.name}</span> survive the apocalypse?</Question>
         <Timer time={60} width={18}></Timer>

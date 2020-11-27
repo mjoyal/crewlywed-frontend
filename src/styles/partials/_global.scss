@@ -15,7 +15,7 @@ h1, h2, h3 {
   font-family: $bold-font; 
 }
 
-.gameLoop, 
+.roundLoop, 
 .game {
   @include flex(column); 
 }

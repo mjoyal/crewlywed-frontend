@@ -5,11 +5,11 @@ import "../../styles/partials/_global.scss";
 
 
 import Lobby from './Lobby';
-import GameLoop from './GameLoop/roundIndex.js'
+import RoundLoop from './RoundLoop/roundIndex.js'
 import FinalScore from './FinalScore';
 
 const LOBBY = 'LOBBY';
-const GAMELOOP = 'GAMELOOP';
+const ROUNDLOOP = 'ROUNDLOOP';
 const FINALSCORE = 'FINALSCORE';
 
 export default function Game (props) {
@@ -29,8 +29,8 @@ export default function Game (props) {
           startGame={props.startGame}
         />
       }
-      { props.gameState === GAMELOOP && 
-        <GameLoop 
+      { props.gameState === ROUNDLOOP && 
+        <RoundLoop 
           name="mac"
           roundState={props.roundState}
           submitUserAnswer={props.submitUserAnswer}
