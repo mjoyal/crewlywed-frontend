@@ -79,19 +79,18 @@ export default function GameLoop (props) {
   const params = useParams();
   return (
     <div className="gameLoop">
-      {props.gameState !== ROUNDSCORE && <>
+      {props.roundState !== ROUNDSCORE && <>
         <Question avatar="images/avatar3.png" spanClass="span-1">how would <span>{props.name}</span> survive the apocalypse?</Question>
         <Timer time={60} width={18}></Timer>
       </>}
-      {props.gameState === ROUNDSCORE && <>
+      {props.roundState === ROUNDSCORE && <>
         <RoundScore/>
       </>}
-      {props.gameState === ANSWER && <>
-        <InputAnswerPage/>
-      </>}
-      {props.gameState === AWAIT && <AwaitResponsePage players={responseTest}/>}
-      {props.gameState === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions} name={props.name}/>}
-      {props.gameState === REVEAL && <RevealAnswerPage answerResults={answerResults}/>}
+
+      {props.roundState === ANSWER && <InputAnswerPage submitUserAnswer={props.submitUserAnswer}/>}
+      {props.roundState  === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions} name={props.name} sendChoice={props.sendChoice}/>}
+      {props.roundState  === REVEAL && <RevealAnswerPage answerResults={answerResults}/>}
+      {props.roundState === AWAIT && <AwaitResponsePage players={responseTest}/>}
 
     </div>
   );
