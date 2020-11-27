@@ -12,8 +12,8 @@ const startGame = function () {
   useEffect(() => {
 
     socket.on('startGameReturn', () => {
-      // set state for the gameloop! we playin now bishes
-      setGameState('GAMELOOP'); 
+      // set state for the roundloop! we playin now bishes
+      setGameState('ROUNDLOOP'); 
     });
 
     socket.on('finalScore', () => {

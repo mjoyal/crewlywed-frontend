@@ -75,23 +75,22 @@ const responseTest = [
   {id: 5, avatarID: 5, username:'mac', creator:false, answered:false}
 ];
 
-export default function GameLoop (props) {
+export default function RoundLoop (props) {
   const params = useParams();
   return (
-    <div className="gameLoop">
-      {gameState !== ROUNDSCORE && <>
+    <div className="roundLoop">
+      {props.roundState !== ROUNDSCORE && <>
         <Question avatar="images/avatar3.png" spanClass="span-1">how would <span>{props.name}</span> survive the apocalypse?</Question>
         <Timer time={60} width={18}></Timer>
       </>}
-      {gameState === ROUNDSCORE && <>
+      {props.roundState === ROUNDSCORE && <>
         <RoundScore/>
       </>}
-      {gameState === ANSWER && <>
-        <InputAnswerPage/>
-      </>}
-      {gameState === AWAIT && <AwaitResponsePage players={responseTest}/>}
-      {gameState === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions} name={props.name}/>}
-      {gameState === REVEAL && <RevealAnswerPage answerResults={answerResults}/>}
+
+      {props.roundState === ANSWER && <InputAnswerPage submitUserAnswer={props.submitUserAnswer}/>}
+      {props.roundState  === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions} name={props.name} sendChoice={props.sendChoice}/>}
+      {props.roundState  === REVEAL && <RevealAnswerPage answerResults={answerResults}/>}
+      {props.roundState === AWAIT && <AwaitResponsePage players={responseTest}/>}
 
     </div>
   );

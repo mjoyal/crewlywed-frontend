@@ -22,7 +22,7 @@ export default function ChooseAnswerPage (props) {
             />)
         }
         <ButtonContainer>
-          <Button disabled={answerID === null}>
+          <Button disabled={answerID === null} onClick={props.sendChoice}>
             choose answer
           </Button>
         </ButtonContainer>

@@ -7,7 +7,7 @@
 // import Question from './Question';
 // import AnswerCard from './AnswerCard';
 // import AvatarScore from './AvatarScore';
-import GameLoop from './Game/GameLoop/index';
+import RoundLoop from './Game/RoundLoop/roundIndex';
 
 export default function Playground (props) {
 
@@ -28,7 +28,7 @@ export default function Playground (props) {
   
   return (
     <>
-      <GameLoop playerResponses={chosers1}/>
+      <RoundLoop playerResponses={chosers1}/>
     </>
 
   )
