@@ -19,7 +19,7 @@ const [gameState, setGameState] = useState('LOBBY');
 
   const startGame = function () {
     // tell the server that the host has started the game
-    socket.emit('startGame', userProfile.code);
+    socket.emit('startGame', userProfile);
 
   }
  
