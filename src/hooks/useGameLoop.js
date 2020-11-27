@@ -4,9 +4,14 @@ import {useState, useEffect} from 'react'
 const useGameLoop = (socket, userProfile) => {
 const [gameState, setGameState] = useState('LOBBY'); 
 
+const startGame = function () {
+  // tell the server that the host has started the game
+  socket.emit('startGame', userProfile);
+
+}
   useEffect(() => {
 
-    socket.on('startGame', () => {
+    socket.on('startGameReturn', () => {
       // set state for the gameloop! we playin now bishes
       setGameState('GAMELOOP'); 
     });
@@ -17,11 +22,6 @@ const [gameState, setGameState] = useState('LOBBY');
 
   }, [socket]);
 
-  const startGame = function () {
-    // tell the server that the host has started the game
-    socket.emit('startGame', userProfile.code);
-
-  }
  
   return {startGame, gameState} ;
 

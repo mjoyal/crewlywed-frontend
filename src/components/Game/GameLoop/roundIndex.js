@@ -10,13 +10,13 @@ import ChooseAnswerPage from './Choose';
 import RevealAnswerPage from './Reveal';
 import AwaitResponsePage from './Await';
 
+
 const ANSWER = "ANSWER";
 const AWAIT = "AWAIT";
 const CHOOSE = "CHOOSE";
 const REVEAL = "REVEAL";
 const ROUNDSCORE = "ROUNDSCORE";
 
-//test data
 const answerOptions = [
   {
     answer:"skateboard away",
@@ -77,8 +77,6 @@ const responseTest = [
 
 export default function GameLoop (props) {
   const params = useParams();
-  const [gameState, setGameState] = useState(ANSWER);
-  console.log(params);
   return (
     <div className="gameLoop">
       {gameState !== ROUNDSCORE && <>
@@ -94,6 +92,7 @@ export default function GameLoop (props) {
       {gameState === AWAIT && <AwaitResponsePage players={responseTest}/>}
       {gameState === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions} name={props.name}/>}
       {gameState === REVEAL && <RevealAnswerPage answerResults={answerResults}/>}
+
     </div>
   );
 }

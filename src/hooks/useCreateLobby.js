@@ -39,7 +39,6 @@ const useCreateLobby = (socket) => {
 
     // Listen for list of players in the room:
     socket.on('playersData', playersData => {
-      console.log('Data from server:', playersData);
       setPlayers(playersData);
     });
 
