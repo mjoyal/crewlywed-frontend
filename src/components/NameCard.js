@@ -5,7 +5,9 @@ import classNames from 'classnames';
 //we actually do need classNames for a grey-out state for the await page
 
 export default function NameCard (props) {
-  const nameCardClass = classNames('nameCard'); 
+  const nameCardClass = classNames('nameCard', {
+    "nameCard--inactive":!props.active
+  }); 
   return (
     <div className={nameCardClass}>
       <div>
