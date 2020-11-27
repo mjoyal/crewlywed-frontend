@@ -7,7 +7,7 @@
 // import Question from './Question';
 // import AnswerCard from './AnswerCard';
 // import AvatarScore from './AvatarScore';
-import GameLoop from './Game/GameLoop/index';
+// import GameLoop from './Game/GameLoop/index';
 
 export default function Playground (props) {
 

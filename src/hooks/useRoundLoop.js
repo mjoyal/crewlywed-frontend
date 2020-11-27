@@ -8,6 +8,8 @@ const useRoundLoop = (socket, userProfile) => {
     socket.emit('thisUserSubmitted', userProfile.id);
     setRoundState('AWAIT'); 
   }
+
+  
   const sendChoice = function () {
     // send the choice on chooseAnswer button click
   }
