@@ -46,8 +46,8 @@ function App() {
   const { joinGame, errorMessage } = useJoinGame(socket);
   const {lobbyInfo, players, userProfile} = useCreateLobby(socket); 
   const { startGame, gameState} = useGameLoop(socket, userProfile); 
-  
-
+  const {roundState, submitUserAnswer} = useRoundLoop(socket, userProfile); 
+  // console.log('from app:', roundState)
   /*
   userProfile :{
     name: null
@@ -104,14 +104,14 @@ function App() {
         </Route>
 
         <Route path="/:id">
-          <Game players={[
-            {playerName:"Mac", avatar:'https://tcrn.ch/35VAVzn', host:true },
-            {playerName:"Will", avatar:'https://tcrn.ch/35VAVzn', host:false } ]}
+          <Game 
             lobbyInfo={lobbyInfo}
             players={players}
             userProfile={userProfile}
             startGame={startGame}
             gameState={gameState}
+            roundState={roundState}
+            submitUserAnswer={submitUserAnswer}
           />
         </Route>
 

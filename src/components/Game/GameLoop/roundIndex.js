@@ -15,7 +15,7 @@ const CHOOSE = "CHOOSE";
 const REVEAL = "REVEAL";
 const ROUNDSCORE = "ROUNDSCORE";
 
-//test data
+// test data
 const answerOptions = [
   {
     answer:"skateboard away",
@@ -67,23 +67,21 @@ const answerResults = [
 ]
 
 export default function GameLoop (props) {
-  const params = useParams();
-  const [gameState, setGameState] = useState(REVEAL);
-  console.log(params);
+  // const params = useParams();
+ 
   return (
     <div className="gameLoop">
-      {gameState !== ROUNDSCORE && <>
+      <p>{props.roundState}</p>
+      {/* {props.RoundState !== ROUNDSCORE && <>
         <Question avatar="images/avatar3.png" spanClass="span-1">how would <span>{props.name}</span> survive the apocalypse?</Question>
         <Timer time={60} width={18}></Timer>
-      </>}
-      {gameState === ROUNDSCORE && <>
+      </>} */}
+      {props.roundState === ROUNDSCORE && <>
         <RoundScore/>
       </>}
-      {gameState === ANSWER && <>
-        <InputAnswerPage/>
-      </>}
-      {gameState === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions} name={props.name}/>}
-      {gameState === REVEAL && <RevealAnswerPage answerResults={answerResults}/>}
+      {props.roundState === ANSWER && <InputAnswerPage submitUserAnswer={props.submitUserAnswer}/>}
+      {props.roundState  === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions} name={props.name}/>}
+      {props.roundState  === REVEAL && <RevealAnswerPage answerResults={answerResults}/>}
     </div>
   );
 }

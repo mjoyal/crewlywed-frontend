@@ -7,9 +7,6 @@ import React, {useState} from 'react';
 
 export default function InputAnswerPage (props) {
   const [disabledState, setDisabledState] = useState(true);
-  const submitAnswer = () => {
-    console.log('submit answer!')
-  };
 
   const enableButton = (value) => {
     if(!value) {
@@ -26,7 +23,7 @@ export default function InputAnswerPage (props) {
       <TextArea label="your response" placeholder="enter your response here..." maxCount={50} onChange={enableButton}/>
       <Button 
         confirm 
-        onClick={submitAnswer}
+        onClick={props.submitUserAnswer}
         disabled={disabledState}
       >submit answer!</Button>
  
