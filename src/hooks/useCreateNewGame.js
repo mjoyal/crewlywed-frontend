@@ -1,8 +1,11 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 // This hook tells the server to create a new game and *then* to create a new host when a user submits their name on "/new".
 
 const useCreateNewGame = (socket) => {
+
+  // This is used for setting the error a user will see if their name is blank:
+  const [createErrorMessage, setCreateErrorMessage] = useState("");
 
   // The hostName is passed to this hook from the NewGamePage.js component:
   let hostName = "";
@@ -24,7 +27,8 @@ const useCreateNewGame = (socket) => {
     const numRounds = 3; //hardcoded at 3 for now
     const createNewGameData = {
       gameCode,
-      numRounds
+      numRounds,
+      hostName
     }
     socket.emit('createNewGame', createNewGameData);
   };
@@ -49,13 +53,17 @@ const useCreateNewGame = (socket) => {
   };
 
   useEffect(() => {
-  //Listen for server to send confirmation that a new game was created:
+  // Listen for server to send confirmation that a new game was created:
   socket.on('createNewGameReturn', gameID => {
       createNewHost(gameID);
     });
+  // Listen for server to send error - blank name:
+  socket.on('createGameErrorBlankName', message => {
+    setCreateErrorMessage(message)
+  });
   }, [socket]);
 
-  return { createNewGame };
+  return { createNewGame, createErrorMessage };
 };
 
 export { useCreateNewGame };
