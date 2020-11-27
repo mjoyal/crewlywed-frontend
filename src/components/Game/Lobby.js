@@ -33,7 +33,7 @@ export default function Lobby(props) {
         }
         {
           props.host &&
-          <Button onClick={() => console.log("begin the game!")}>Start Game</Button>
+          <Button onClick={props.startGame}>Start Game</Button>
         }
       </div>
     </article>

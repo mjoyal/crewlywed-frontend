@@ -23,8 +23,9 @@ export default function Game (props) {
         <Lobby
           roomCode={params.id}
           players={props.players}
-          host={true}
+          host={props.userProfile.creator}
           lobbyInfo={props.lobbyInfo}
+          startGame={props.startGame}
         />
       }
       { gameState === GAMELOOP && <GameLoop name="mac"/>}

@@ -42,8 +42,17 @@ function App() {
   const { joinRoom, sendMessage } = useChat(socket);
   const { createNewGame } = useCreateNewGame(socket);
   const { joinGame, errorMessage } = useJoinGame(socket);
-  const {lobbyInfo, players} = useCreateLobby(socket); 
+  const {lobbyInfo, players, userProfile, startGame} = useCreateLobby(socket); 
+  // const { userProfile } = useUserProfile(socket);
 
+  /*
+  userProfile :{
+    name: null
+    id: null
+    avatarID: null
+    creator: false
+  }
+  */
   return (
     <Router>
 
@@ -97,6 +106,8 @@ function App() {
             {playerName:"Will", avatar:'https://tcrn.ch/35VAVzn', host:false } ]}
             lobbyInfo={lobbyInfo}
             players={players}
+            userProfile={userProfile}
+            startGame={startGame}
           />
         </Route>
 
