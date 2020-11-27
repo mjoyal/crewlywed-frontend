@@ -80,7 +80,7 @@ export default function GameLoop (props) {
         <RoundScore/>
       </>}
       {props.roundState === ANSWER && <InputAnswerPage submitUserAnswer={props.submitUserAnswer}/>}
-      {props.roundState  === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions} name={props.name}/>}
+      {props.roundState  === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions} name={props.name} sendChoice={props.sendChoice}/>}
       {props.roundState  === REVEAL && <RevealAnswerPage answerResults={answerResults}/>}
     </div>
   );

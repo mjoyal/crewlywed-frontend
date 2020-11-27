@@ -8,8 +8,11 @@ const useRoundLoop = (socket, userProfile) => {
     socket.emit('thisUserSubmitted', userProfile.id);
     setRoundState('AWAIT'); 
   }
+
   const sendChoice = function () {
     // send the choice on chooseAnswer button click
+    socket.emit('userChoice');
+    setRoundState('AWAIT'); 
   }
 
   useEffect(() => {
@@ -21,9 +24,13 @@ const useRoundLoop = (socket, userProfile) => {
     socket.on('revealPage', () => {
       setRoundState('REVEAL');
     })
+
+    socket.on('roundOver', () => {
+      setRoundState('ANSWER'); 
+    });
   }, [socket]);
 
-  return {roundState, submitUserAnswer} ;
+  return {roundState, submitUserAnswer, sendChoice} ;
 };
 
 export { useRoundLoop };

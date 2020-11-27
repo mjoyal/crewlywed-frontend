@@ -12,7 +12,6 @@ export default function QuestionResult (props) {
   }
   const choosers = props.choosers.map((chooser) => {
     const avatar = chooser.avatar ? chooser.avatar : `/images/avatar${chooser.avatarID}.png`;
-    console.log(avatar);
     return (
       <img className="player-image" src={avatar} alt="player avatar"/>
     )
