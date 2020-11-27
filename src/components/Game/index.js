@@ -5,7 +5,7 @@ import "../../styles/partials/_global.scss";
 
 
 import Lobby from './Lobby';
-import GameLoop from './GameLoop/index.js'
+import GameLoop from './GameLoop/roundIndex.js'
 import FinalScore from './FinalScore';
 
 const LOBBY = 'LOBBY';
@@ -14,7 +14,8 @@ const FINALSCORE = 'FINALSCORE';
 
 export default function Game (props) {
   const params = useParams();
-  const [gameState, setGameState] = useState(LOBBY);
+
+  
   return (
     <div className="game">
       <h2>crewlywed</h2>
@@ -28,7 +29,12 @@ export default function Game (props) {
           startGame={props.startGame}
         />
       }
-      { props.gameState === GAMELOOP && <GameLoop name="mac"/>}
+      { props.gameState === GAMELOOP && 
+        <GameLoop 
+          name="mac"
+          roundState={props.roundState}
+          submitUserAnswer={props.submitUserAnswer}
+        />}
       {props.gameState === FINALSCORE && <FinalScore />}
     </div>
   );
