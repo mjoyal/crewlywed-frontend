@@ -67,9 +67,17 @@ const answerResults = [
   }
 ]
 
+const responseTest = [
+  {id: 1, avatarID: 1, username:'mac', creator:true, answered:true},
+  {id: 2, avatarID: 2, username:'mac', creator:false, answered:false},
+  {id: 3, avatarID: 3, username:'mac', creator:false, answered:false},
+  {id: 4, avatarID: 4, username:'mac', creator:false, answered:false},
+  {id: 5, avatarID: 5, username:'mac', creator:false, answered:false}
+];
+
 export default function GameLoop (props) {
   const params = useParams();
-  const [gameState, setGameState] = useState(AWAIT);
+  const [gameState, setGameState] = useState(ANSWER);
   console.log(params);
   return (
     <div className="gameLoop">
@@ -83,7 +91,7 @@ export default function GameLoop (props) {
       {gameState === ANSWER && <>
         <InputAnswerPage/>
       </>}
-      {gameState === AWAIT && <AwaitResponsePage players={props.playerResponses}/>}
+      {gameState === AWAIT && <AwaitResponsePage players={responseTest}/>}
       {gameState === CHOOSE && <ChooseAnswerPage answerOptions={answerOptions} name={props.name}/>}
       {gameState === REVEAL && <RevealAnswerPage answerResults={answerResults}/>}
     </div>

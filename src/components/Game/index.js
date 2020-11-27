@@ -14,7 +14,7 @@ const FINALSCORE = 'FINALSCORE';
 
 export default function Game (props) {
   const params = useParams();
-  const [gameState, setGameState] = useState(GAMELOOP);
+  const [gameState, setGameState] = useState(LOBBY);
   return (
     <div className="game">
       <h2>crewlywed</h2>
