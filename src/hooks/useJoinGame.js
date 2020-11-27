@@ -68,6 +68,10 @@ const useJoinGame = (socket) => {
     socket.on('joinGameErrorInvalid', message => {
       setErrorMessage(message);
     });
+    // Listen for server to send error - blank name:
+    socket.on('joinGameErrorBlankName', message => {
+      setErrorMessage(message);
+    });
   }, [socket]);
 
   return { joinGame, errorMessage };
