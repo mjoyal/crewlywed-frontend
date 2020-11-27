@@ -4,8 +4,10 @@ import { Socket } from 'socket.io-client';
 const useRoundLoop = (socket, userProfile) => {
   const [roundState, setRoundState] = useState('ANSWER'); 
   
-  const submitUserAnswer = function () {
-    socket.emit('thisUserSubmitted', userProfile.id);
+  const submitUserAnswer = function (answer) {
+    userProfile.answer = answer; 
+    console.log(userProfile); 
+    socket.emit('thisUserSubmitted', userProfile);
     setRoundState('AWAIT'); 
   }
 
