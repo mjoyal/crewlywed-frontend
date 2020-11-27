@@ -28,5 +28,15 @@
 
   p {
     margin: 1rem; 
+    font-size: 1.625rem;
+  }
+
+  &--inactive{
+    color:$disabled-blue;
+    border: $border-size solid $disabled-blue;
+    background-color: $white-main-blue;
+    & img {
+      opacity: .5;
+    }
   }
 }

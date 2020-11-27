@@ -42,8 +42,8 @@ function App() {
 
   const { avatar, getAvatar, username, score, getScore } = useDataFlow(socket);
   const { joinRoom, sendMessage } = useChat(socket);
-  const { createNewGame } = useCreateNewGame(socket);
-  const { joinGame, errorMessage } = useJoinGame(socket);
+  const { createNewGame, createErrorMessage } = useCreateNewGame(socket);
+  const { joinGame, joinErrorMessage } = useJoinGame(socket);
   const {lobbyInfo, players, userProfile} = useCreateLobby(socket); 
   const { startGame, gameState} = useGameLoop(socket, userProfile); 
   const {roundState, submitUserAnswer, sendChoice} = useRoundLoop(socket, userProfile); 
@@ -92,13 +92,14 @@ function App() {
           <NewGamePage
             createNewGame={createNewGame}
             lobbyInfo={lobbyInfo}
+            createErrorMessage={createErrorMessage}
           />
         </Route>
 
         <Route exact path="/join">
           <JoinPage
             joinGame={joinGame}
-            errorMessage={errorMessage}
+            joinErrorMessage={joinErrorMessage}
             lobbyInfo={lobbyInfo}
           />
         </Route>
