@@ -6,7 +6,7 @@ const [gameState, setGameState] = useState('LOBBY');
 
   useEffect(() => {
 
-    socket.on('startGame', () => {
+    socket.on('startGameReturn', () => {
       // set state for the gameloop! we playin now bishes
       setGameState('GAMELOOP'); 
     });
