@@ -46,7 +46,7 @@ function App() {
   const { joinGame, joinErrorMessage } = useJoinGame(socket);
   const {lobbyInfo, players, userProfile} = useCreateLobby(socket); 
   const { startGame, gameState} = useGameLoop(socket, userProfile); 
-  const {roundState, submitUserAnswer, sendChoice} = useRoundLoop(socket, userProfile); 
+  const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState} = useRoundLoop(socket, userProfile); 
   // console.log('from app:', roundState)
   /*
   userProfile :{
@@ -114,6 +114,8 @@ function App() {
             roundState={roundState}
             submitUserAnswer={submitUserAnswer}
             sendChoice={sendChoice}
+            awaitState={awaitState}
+            currentSubmissions={currentSubmissions}
           />
         </Route>
 

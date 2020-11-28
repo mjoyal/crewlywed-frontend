@@ -24,12 +24,19 @@ const useRoundLoop = (socket, userProfile) => {
   const [currentVictimID, setCurrentVictimID] = useState(null);
   const [currentQuestionID, setCurrentQuestionID] = useState(null);
 
+  // The below is an array of players & their status (for use on the AWAIT page):
+  const [awaitState, setAwait] = useState([]);
+
+  // The below is submissions for the current round:
+  const [currentSubmissions, setCurrentSubmissions] = useState([]); 
+
   // FUNCTIONALITY
+
   const submitUserAnswer = function (answer) {
     const round = currentRoundID; 
     const userAnswerInfo = {
-      answer, 
-      round, 
+      answer,
+      round,
       userProfile
     };
     socket.emit('thisUserSubmitted', userAnswerInfo);
@@ -44,7 +51,7 @@ const useRoundLoop = (socket, userProfile) => {
       userProfile
     }; 
     // send the choice on chooseAnswer button click
-    socket.emit('userChoice');
+    socket.emit('userChoice', userChoiceInfo);
     setRoundState('AWAIT'); 
   };
 
@@ -52,13 +59,21 @@ const useRoundLoop = (socket, userProfile) => {
     // TRANSITIONS:
     // Listen for when to show CHOOSE (sent when timer expires for ANSWER):
     socket.on('choosePage', (choices) => {
+      setCurrentSubmissions(choices); 
+      console.log(choices) 
+
+      // the server says the timer is up, display the choose page
       setRoundState('CHOOSE');
+      //reset await state
+      setAwait([]);
     });
 
     // Listen for when to show REVEAL (sent when timer expires for CHOOSE):
     socket.on('revealPage', () => {
       setRoundState('REVEAL');
-    });
+      //reset await state
+      setAwait([]);
+    })
 
     // Listen for when to show ROUNDSCORE (sent when timer expires for REVEAL):
     socket.on('roundScore', () => {
@@ -80,6 +95,11 @@ const useRoundLoop = (socket, userProfile) => {
       setCurrentVictimID(data[0].victim_id);
       setCurrentQuestionID(data[0].question_id);
     });
+
+    socket.on('awaitData', (awaitData) => {
+      setAwait(awaitData);
+      console.log(awaitData);
+    })
   }, [socket]);
 
   // Update current roundID, victimID, and questionID when currentRoundNum changes:
@@ -102,7 +122,7 @@ const useRoundLoop = (socket, userProfile) => {
     console.log("currentQuestionID:", currentQuestionID);
   }, [roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID]);
 
-  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID, submitUserAnswer, sendChoice} ;
+  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID, currentSubmissions, awaitState, submitUserAnswer, sendChoice} ;
 };
 
 export { useRoundLoop };
