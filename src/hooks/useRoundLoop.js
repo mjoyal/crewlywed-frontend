@@ -73,8 +73,9 @@ const useRoundLoop = (socket, userProfile) => {
     });
 
     // Listen for when to show REVEAL (sent when timer expires for CHOOSE):
-    socket.on('revealPage', () => {
+    socket.on('revealPage', (revealData) => {
       setRoundState('REVEAL');
+      console.log(revealData);
       //reset await state
       setAwait([]);
     })
