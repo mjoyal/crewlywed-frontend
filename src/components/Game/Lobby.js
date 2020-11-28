@@ -22,14 +22,15 @@ export default function Lobby(props) {
   return (
     <article className="lobby">
       <header>
+        {/* can make this prettier later  */}
         {
           codeCopied && 
-          <p>copied to clipboard!</p>
+          <p className="copied-message">copied to clipboard!</p>
         }
-        <h2>Room Code:</h2>
+        <h2>room code:</h2>
         <input ref={gameCodeText} spellcheck="false" readOnly className="room-code" type="text" value={props.roomCode}/>
-        <Button onClick={copyCode}>Copy Code</Button>
-        <Button onClick={() => console.log("how to play opened")}>How to Play</Button>
+        <Button onClick={copyCode}>copy code!</Button>
+        <Button onClick={() => console.log("how to play opened")}>how to play</Button>
       </header>
       <hr/>
       <div className="player-list">

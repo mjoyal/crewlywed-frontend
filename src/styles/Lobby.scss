@@ -30,6 +30,10 @@
     }
   }
 
+  & header .copied-message {
+    color: $main-pink; 
+  }
+
   & hr {
     width: $mobile-col-6 + ($mobile-gutter-margin * 2) * 1%;
     height: .2rem;
