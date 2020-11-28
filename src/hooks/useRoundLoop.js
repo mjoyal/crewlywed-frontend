@@ -3,7 +3,7 @@ import { Socket } from 'socket.io-client';
 
 const useRoundLoop = (socket, userProfile) => {
   const [roundState, setRoundState] = useState('ANSWER'); 
-  
+  const [awaitState, setAwait] = useState([]);
   const submitUserAnswer = function (answer) {
     const round = 1; 
     const userAnswerInfo = {
@@ -47,6 +47,11 @@ const useRoundLoop = (socket, userProfile) => {
     socket.on('roundOver', () => {
       setRoundState('ANSWER'); 
     });
+
+    socket.on('awaitAnswer', (awaitData) => {
+      setAwait(awaitData);
+      console.log(awaitData);
+    })
   }, [socket]);
 
   return {roundState, submitUserAnswer, sendChoice} ;
