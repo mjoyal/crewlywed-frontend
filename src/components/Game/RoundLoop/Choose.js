@@ -8,10 +8,11 @@ import ButtonContainer from '../../ButtonContainer';
 export default function ChooseAnswerPage (props) {
   const [answerID, setAnswerID] = useState(null);
 
-  useEffect(() => {
-    console.log(answerID); 
-  }, [answerID])
-
+  const handleSubmit = () => {
+    // send user submission / choice up to the hook 
+    props.sendChoice(answerID); 
+  }
+  
   return (
     <>
       <h2 style={{fontWeight:'normal', textAlign:"center"}}> choose {props.name}'s answer! </h2>
@@ -23,11 +24,11 @@ export default function ChooseAnswerPage (props) {
             checked={option.id === answerID}
             onChange={setAnswerID} 
             id={option.id}
-            answer={option.answer}     
+            answer={option.text}     
             />)
         }
         <ButtonContainer>
-          <Button disabled={answerID === null} onClick={props.sendChoice}>
+          <Button disabled={answerID === null} onClick={handleSubmit}>
             choose answer
           </Button>
         </ButtonContainer>
