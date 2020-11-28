@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react';
-import { Socket } from 'socket.io-client';
 
 const useRoundLoop = (socket, userProfile) => {
 
@@ -11,7 +10,7 @@ const useRoundLoop = (socket, userProfile) => {
   const [uniqueRoundID, setUniqueRoundID] = useState();
   
   // This is the round number shown in the game play, e.g. 1:
-  const [currentRound, setCurrentRound] = useState();
+  const [currentRound, setCurrentRound] = useState(1);
 
   // This is the total number of rounds that will be played during the game play, e.g. 24 (8 players * 3 rounds per player):
   const [totalRounds, setTotalRounds] = useState();
@@ -60,6 +59,7 @@ const useRoundLoop = (socket, userProfile) => {
 
     // Listen for when to show ANSWER for next round (sent when timer expires for REVEAL):
     socket.on('roundOver', () => {
+      setCurrentRound(prev => prev + 1);
       setRoundState('ANSWER');
     });
 
@@ -72,6 +72,7 @@ const useRoundLoop = (socket, userProfile) => {
   // console.log's for testing - will delete later:
   useEffect(() => {
     console.log("totalRounds:", totalRounds);
+    console.log("currentRound:", currentRound);
   }, [totalRounds])
 
   return {roundState, uniqueRoundID, currentRound, totalRounds, submitUserAnswer, sendChoice} ;
