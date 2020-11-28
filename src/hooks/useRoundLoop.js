@@ -17,12 +17,25 @@ const useRoundLoop = (socket, userProfile) => {
   const [totalRounds, setTotalRounds] = useState();
 
   // FUNCTIONALITY
-  const submitUserAnswer = function () {
-    socket.emit('thisUserSubmitted', userProfile.id);
+  const submitUserAnswer = function (answer) {
+    const round = 1; 
+    const userAnswerInfo = {
+      answer, 
+      round, 
+      userProfile
+    };
+    socket.emit('thisUserSubmitted', (userAnswerInfo));
     setRoundState('AWAIT'); 
   };
 
-  const sendChoice = function () {
+  const sendChoice = function (choice) {
+    const round = 1; 
+    const userChoiceInfo = {
+      choice, 
+      round, 
+      userProfile
+    }; 
+
     // send the choice on chooseAnswer button click
     socket.emit('userChoice');
     setRoundState('AWAIT'); 
@@ -30,7 +43,8 @@ const useRoundLoop = (socket, userProfile) => {
 
   useEffect(() => {
     // Listen for when to show CHOOSE (sent when timer expires for ANSWER):
-    socket.on('choosePage', () => {
+    socket.on('choosePage', (choices) => {
+      console.log(choices) 
       setRoundState('CHOOSE');
     });
 
@@ -39,8 +53,10 @@ const useRoundLoop = (socket, userProfile) => {
       setRoundState('REVEAL');
     });
 
-    // Listen for when to show REVEAL (sent when timer expires for CHOOSE):
-    socket.on('')
+    // Listen for when to show ROUNDSCORE (sent when timer expires for REVEAL):
+    socket.on('roundScore', () => {
+      setRoundState('ROUNDSCORE'); 
+    });
 
     // Listen for when to show ANSWER for next round (sent when timer expires for REVEAL):
     socket.on('roundOver', () => {
