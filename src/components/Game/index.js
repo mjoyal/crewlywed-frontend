@@ -31,13 +31,15 @@ export default function Game (props) {
       }
       { props.gameState === ROUNDLOOP && 
         <RoundLoop 
-          name="mac"
           roundState={props.roundState}
           submitUserAnswer={props.submitUserAnswer}
           sendChoice={props.sendChoice}
           currentSubmissions={props.currentSubmissions}
           awaitState={props.awaitState}
           revealState={props.revealState}
+          isVictim={props.isVictim}
+          victimName={props.victimName}
+          question={props.question}
         />}
       {props.gameState === FINALSCORE && <FinalScore />}
     </div>

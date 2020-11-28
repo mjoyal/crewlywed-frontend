@@ -46,8 +46,9 @@ function App() {
   const { joinGame, joinErrorMessage } = useJoinGame(socket);
   const {lobbyInfo, players, userProfile} = useCreateLobby(socket); 
   const { startGame, gameState} = useGameLoop(socket, userProfile); 
-  const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState, revealState} = useRoundLoop(socket, userProfile); 
-  // console.log('from app:', roundState)
+  const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState, revealState, currentVictimID} = useRoundLoop(socket, userProfile); 
+  
+
   /*
   userProfile :{
     name: null
@@ -56,6 +57,12 @@ function App() {
     creator: false
   }
   */
+
+// fixing question prompt component 
+ const testQuestion = 'how would $name survive the apocalypse?';
+ const testVictimName = 'will'; 
+ 
+
   return (
     <Router>
 
@@ -117,6 +124,9 @@ function App() {
             awaitState={awaitState}
             currentSubmissions={currentSubmissions}
             revealState={revealState}
+            isVictim={userProfile.id === currentVictimID}
+            victimName={testVictimName}
+            question={testQuestion}
           />
         </Route>
 
