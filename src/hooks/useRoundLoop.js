@@ -3,6 +3,7 @@ import { Socket } from 'socket.io-client';
 
 const useRoundLoop = (socket, userProfile) => {
   const [roundState, setRoundState] = useState('ANSWER'); 
+  const [awaitState, setAwait] = useState([]);
   const [currentSubmissions, setCurrentSubmissions] = useState([]); 
 
   const submitUserAnswer = function (answer) {
@@ -32,12 +33,18 @@ const useRoundLoop = (socket, userProfile) => {
     socket.on('choosePage', (choices) => {
       setCurrentSubmissions(choices); 
       console.log(choices) 
+
       // the server says the timer is up, display the choose page
       setRoundState('CHOOSE');
+      //reset await state
+      setAwait([]);
     });
 
     socket.on('revealPage', () => {
       setRoundState('REVEAL');
+
+      //reset await state
+      setAwait([]);
     })
 
     socket.on('roundScore', () => {
@@ -47,9 +54,14 @@ const useRoundLoop = (socket, userProfile) => {
     socket.on('roundOver', () => {
       setRoundState('ANSWER'); 
     });
+
+    socket.on('awaitData', (awaitData) => {
+      setAwait(awaitData);
+      console.log(awaitData);
+    })
   }, [socket]);
 
-  return {roundState, submitUserAnswer, sendChoice, currentSubmissions} ;
+  return {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState} ;
 };
 
 export { useRoundLoop };

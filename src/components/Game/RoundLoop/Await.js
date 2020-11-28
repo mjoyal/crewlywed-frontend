@@ -10,7 +10,7 @@ export default function AwaitResponsePage (props) {
         answers submitted:
       </h2>
       {props.players.map((player, index) => <NameCard 
-        avatarID={player.avatarID}
+        avatarID={player.avatar_id}
         username={player.username}
         active={player.answered} //update later
         host={player.creator}
