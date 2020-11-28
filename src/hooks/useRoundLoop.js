@@ -5,21 +5,33 @@ const useRoundLoop = (socket, userProfile) => {
   const [roundState, setRoundState] = useState('ANSWER'); 
   
   const submitUserAnswer = function (answer) {
-    userProfile.answer = answer; 
-    console.log(userProfile); 
-    socket.emit('thisUserSubmitted', userProfile);
+    const round = 1; 
+    const userAnswerInfo = {
+      answer, 
+      round, 
+      userProfile
+    };
+    socket.emit('thisUserSubmitted', (userAnswerInfo));
     setRoundState('AWAIT'); 
   }
 
 
-  const sendChoice = function () {
+  const sendChoice = function (choice) {
+    const round = 1; 
+    const userChoiceInfo = {
+      choice, 
+      round, 
+      userProfile
+    }; 
+
     // send the choice on chooseAnswer button click
     socket.emit('userChoice');
     setRoundState('AWAIT'); 
   }
 
   useEffect(() => {
-    socket.on('choosePage', () => {
+    socket.on('choosePage', (choices) => {
+      console.log(choices) 
       // the server says the timer is up, display the choose page
       setRoundState('CHOOSE');
     });
