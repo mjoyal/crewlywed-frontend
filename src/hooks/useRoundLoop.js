@@ -29,19 +29,34 @@ const useRoundLoop = (socket, userProfile) => {
   };
 
   useEffect(() => {
+    // Listen for when to show CHOOSE (sent when timer expires for ANSWER):
     socket.on('choosePage', () => {
-      // the server says the timer is up, display the choose page
       setRoundState('CHOOSE');
     });
 
+    // Listen for when to show REVEAL (sent when timer expires for CHOOSE):
     socket.on('revealPage', () => {
       setRoundState('REVEAL');
-    })
-
-    socket.on('roundOver', () => {
-      setRoundState('ANSWER'); 
     });
+
+    // Listen for when to show REVEAL (sent when timer expires for CHOOSE):
+    socket.on('')
+
+    // Listen for when to show ANSWER for next round (sent when timer expires for REVEAL):
+    socket.on('roundOver', () => {
+      setRoundState('ANSWER');
+    });
+
+    // Listen for total number of rounds in game (sent when the host hits "start game"):
+    socket.on('initialNumRounds', numQuestions => {
+      setTotalRounds(numQuestions);
+    })
   }, [socket]);
+
+  // console.log's for testing - will delete later:
+  useEffect(() => {
+    console.log("totalRounds:", totalRounds);
+  }, [totalRounds])
 
   return {roundState, uniqueRoundID, currentRound, totalRounds, submitUserAnswer, sendChoice} ;
 };
