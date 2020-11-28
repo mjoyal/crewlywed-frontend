@@ -15,7 +15,7 @@ export default function ChooseAnswerPage (props) {
   
   return (
     <>
-      <Message name={props.name} victim={props.isVictim}/>
+      <Message name={props.name} victim={props.isVictim} victimName="will"/>
       <form
         onSubmit={(event) => event.preventDefault()}>
         {
