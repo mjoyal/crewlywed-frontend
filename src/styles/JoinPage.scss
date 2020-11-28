@@ -4,13 +4,9 @@
 
 main {
   @include flex(column, center);
-  img {
-    width: 50%; 
-  }
   p {
     margin: 1em; 
   }
-
   .joinInstructions {
     padding-bottom: $mobile-col-2 * 0.75vh;
   }

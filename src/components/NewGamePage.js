@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import TextInput from './TextInput';
 import Button from './Button';
+import LogoHeader from './LogoHeader';
 import {useState} from 'react';
 import "../styles/NewGamePage.scss";
 import {Link, Redirect} from "react-router-dom";
@@ -15,7 +16,7 @@ export default function NewGamePage (props) {
 
   return (
     <main>
-    <img src="images/logo.png" alt="logo"/>
+    <LogoHeader small/>
     <h2>host a game</h2>
     <TextInput
       label="your name"

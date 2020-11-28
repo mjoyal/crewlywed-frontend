@@ -19,3 +19,16 @@ h1, h2, h3 {
 .game {
   @include flex(column); 
 }
+
+.logo-text {
+  margin: 0.5rem; 
+  max-width: 40%;  
+}
+
+.logo-big {
+  max-width: 90%; 
+}
+
+.logo-small {
+  max-width: 60%; 
+}
