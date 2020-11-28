@@ -30,6 +30,8 @@ const useRoundLoop = (socket, userProfile) => {
   // The below is submissions for the current round:
   const [currentSubmissions, setCurrentSubmissions] = useState([]); 
 
+  // state to save and display reveal data
+  const [revealState, setRevealState] = useState([]);
   // FUNCTIONALITY
 
   const submitUserAnswer = function (answer) {
@@ -76,6 +78,7 @@ const useRoundLoop = (socket, userProfile) => {
     socket.on('revealPage', (revealData) => {
       setRoundState('REVEAL');
       console.log(revealData);
+      setRevealState(revealData);
       //reset await state
       setAwait([]);
     })
@@ -136,7 +139,7 @@ const useRoundLoop = (socket, userProfile) => {
     console.log("currentQuestionID:", currentQuestionID);
   }, [roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID]);
 
-  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID, currentSubmissions, awaitState, submitUserAnswer, sendChoice} ;
+  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState} ;
 };
 
 export { useRoundLoop };
