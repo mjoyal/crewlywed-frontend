@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import AnswerCard from '../../AnswerCard';
 import Button from '../../Button';
 import ButtonContainer from '../../ButtonContainer';
-
+import Message from '../../Message';
 
 export default function ChooseAnswerPage (props) {
   const [answerID, setAnswerID] = useState(null);
@@ -15,7 +15,7 @@ export default function ChooseAnswerPage (props) {
   
   return (
     <>
-      <h2 style={{fontWeight:'normal', textAlign:"center"}}> choose {props.name}'s answer! </h2>
+      <Message name={props.name} victim={props.victim}/>
       <form
         onSubmit={(event) => event.preventDefault()}>
         {
@@ -24,14 +24,18 @@ export default function ChooseAnswerPage (props) {
             checked={option.id === answerID}
             onChange={setAnswerID} 
             id={option.id}
-            answer={option.text}     
+            answer={option.text}
+            victim={props.victim}
             />)
         }
-        <ButtonContainer>
+        {/* dont show the button to victim */}
+        { !props.victim && 
+          <ButtonContainer>
           <Button disabled={answerID === null} onClick={handleSubmit}>
             choose answer
           </Button>
-        </ButtonContainer>
+          </ButtonContainer>
+        }
       </form>
     </>
   );

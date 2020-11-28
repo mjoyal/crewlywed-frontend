@@ -12,15 +12,25 @@ export default function AnswerCard (props) {
   // };
 
   return (
-    <div className={`answerCard${props.checked ? ' checked' : ''}`}
-    onClick={() => props.onChange(props.id)}>
-      <label className="container">
-        <input type="checkbox" 
-          checked={props.checked}
-          />
-        <span className="checkmark"></span>
-      </label>
-      <p>{props.answer}</p>
-    </div>
+    <>
+    { !props.victim && 
+
+      <div className={`answerCard${props.checked ? ' checked' : ''}`}
+      onClick={() => props.onChange(props.id)}>
+        <label className="container">
+          <input type="checkbox" checked={props.checked}/>
+          <span className="checkmark"></span>
+        </label>
+        <p>{props.answer}</p>
+      </div>
+    }
+
+    {
+      props.victim && 
+      <div className="answerCard">
+        <p>{props.answer}</p>
+      </div>
+    }
+  </>
   ); 
 };

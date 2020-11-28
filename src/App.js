@@ -46,7 +46,7 @@ function App() {
   const { joinGame, joinErrorMessage } = useJoinGame(socket);
   const {lobbyInfo, players, userProfile} = useCreateLobby(socket); 
   const { startGame, gameState} = useGameLoop(socket, userProfile); 
-  const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState, revealState} = useRoundLoop(socket, userProfile); 
+  const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState, revealState, currentVictimID} = useRoundLoop(socket, userProfile); 
   // console.log('from app:', roundState)
   /*
   userProfile :{
@@ -117,6 +117,7 @@ function App() {
             awaitState={awaitState}
             currentSubmissions={currentSubmissions}
             revealState={revealState}
+            victim={userProfile.id === currentVictimID}
           />
         </Route>
 
