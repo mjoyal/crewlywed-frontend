@@ -22,6 +22,12 @@
 
     font-size: 2.875rem;
     font-family: $bold-font;
+    color:$main-blue;
+    text-align: center;
+    border: none; 
+    &:focus {
+      outline: none; 
+    }
   }
 
   & hr {

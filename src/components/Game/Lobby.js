@@ -1,4 +1,4 @@
-import React from 'react';
+import {useRef, useState} from 'react';
 
 import Button from '../Button.js';
 import NameCard from '../NameCard';
@@ -6,13 +6,29 @@ import NameCard from '../NameCard';
 import '../../styles/Lobby.scss'
 
 export default function Lobby(props) {
+  const gameCodeText = useRef(null);
+  const [codeCopied, setCodeCopied] = useState(false); 
+
+  const copyCode = function (e) {
+    gameCodeText.current.select();
+    document.execCommand('copy'); 
+    setCodeCopied(true); 
+
+    setTimeout(() => {
+      setCodeCopied(false); 
+    }, 2000);
+  };
 
   return (
     <article className="lobby">
       <header>
+        {
+          codeCopied && 
+          <p>copied to clipboard!</p>
+        }
         <h2>Room Code:</h2>
-        <p className="room-code">{props.roomCode}</p>
-        <Button onClick={() => console.log("code copied!")}>Copy Code</Button>
+        <input ref={gameCodeText} spellcheck="false" readOnly className="room-code" type="text" value={props.roomCode}/>
+        <Button onClick={copyCode}>Copy Code</Button>
         <Button onClick={() => console.log("how to play opened")}>How to Play</Button>
       </header>
       <hr/>
@@ -37,6 +53,7 @@ export default function Lobby(props) {
           // <Button onClick={props.startGame} disabled={props.players.length < 3}>Start Game</Button>
           <Button onClick={props.startGame} disabled={false}>Start Game</Button>
         }
+
       </div>
     </article>
   )
