@@ -55,6 +55,10 @@ const useRoundLoop = (socket, userProfile) => {
     setRoundState('AWAIT'); 
   };
 
+  const updateRound = function (newRoundID) {
+    socket.emit('currentRound', newRoundID);
+  }
+
   useEffect(() => {
     // TRANSITIONS:
     // Listen for when to show CHOOSE (sent when timer expires for ANSWER):
@@ -82,7 +86,7 @@ const useRoundLoop = (socket, userProfile) => {
 
     // Listen for when to show ANSWER for next round (sent when timer expires for REVEAL):
     socket.on('roundOver', () => {
-      setCurrentRoundNum(prev => prev + 1);
+      setCurrentRoundNum(prev => prev+1);
       setRoundState('ANSWER');
     });
 
@@ -99,17 +103,26 @@ const useRoundLoop = (socket, userProfile) => {
     socket.on('awaitData', (awaitData) => {
       setAwait(awaitData);
       console.log(awaitData);
-    })
+    });
+    
   }, [socket]);
 
   // Update current roundID, victimID, and questionID when currentRoundNum changes:
   useEffect(() => {
-    if (allRoundsData.length > 0) {
+    if (currentRoundNum > totalRounds) {
+      console.log("No more rounds", currentRoundNum, totalRounds);
+      socket.emit('noMoreRounds')
+    }
+    else if (allRoundsData.length > 0) {
       setCurrentRoundID(allRoundsData[currentRoundNum-1].id);
       setCurrentVictimID(allRoundsData[currentRoundNum-1].victim_id);
       setCurrentQuestionID(allRoundsData[currentRoundNum-1].question_id);
     }
   }, [currentRoundNum]);
+
+  useEffect(()=> {
+    socket.emit('newRound', currentRoundID);
+  }, [currentRoundID])
 
   // console.log's for testing - will delete later:
   useEffect(() => {
