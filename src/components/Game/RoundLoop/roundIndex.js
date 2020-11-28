@@ -89,7 +89,7 @@ export default function RoundLoop (props) {
 
       {props.roundState === ANSWER && <InputAnswerPage submitUserAnswer={props.submitUserAnswer}/>}
       {props.roundState  === CHOOSE && <ChooseAnswerPage answerOptions={props.currentSubmissions} name={props.name} sendChoice={props.sendChoice}/>}
-      {props.roundState  === REVEAL && <RevealAnswerPage answerResults={answerResults}/>}
+      {props.roundState  === REVEAL && <RevealAnswerPage answerResults={props.revealState}/>}
       {props.roundState === AWAIT && <AwaitResponsePage players={props.awaitState}/>}
 
     </div>
