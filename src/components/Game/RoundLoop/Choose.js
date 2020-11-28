@@ -23,7 +23,7 @@ export default function ChooseAnswerPage (props) {
             checked={option.id === answerID}
             onChange={setAnswerID} 
             id={option.id}
-            answer={option.answer}     
+            answer={option.text}     
             />)
         }
         <ButtonContainer>
