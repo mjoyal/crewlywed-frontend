@@ -49,13 +49,13 @@ const useRoundLoop = (socket, userProfile) => {
       setRoundState('ANSWER'); 
     });
 
-    socket.on('awaitAnswer', (awaitData) => {
+    socket.on('awaitData', (awaitData) => {
       setAwait(awaitData);
       console.log(awaitData);
     })
   }, [socket]);
 
-  return {roundState, submitUserAnswer, sendChoice, currentSubmissions} ;
+  return {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState} ;
 };
 
 export { useRoundLoop };
