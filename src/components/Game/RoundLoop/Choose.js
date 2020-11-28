@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import AnswerCard from '../../AnswerCard';
 import Button from '../../Button';
@@ -8,17 +8,22 @@ import ButtonContainer from '../../ButtonContainer';
 export default function ChooseAnswerPage (props) {
   const [answerID, setAnswerID] = useState(null);
 
+  useEffect(() => {
+    console.log(answerID); 
+  }, [answerID])
+
   return (
     <>
       <h2 style={{fontWeight:'normal', textAlign:"center"}}> choose {props.name}'s answer! </h2>
       <form
         onSubmit={(event) => event.preventDefault()}>
         {
-          props.answerOptions.map( option => <AnswerCard
+          props.answerOptions.map( (option, index) => <AnswerCard
+            key={index}
             checked={option.id === answerID}
             onChange={setAnswerID} 
             id={option.id}
-            answer={option.answer}      
+            answer={option.answer}     
             />)
         }
         <ButtonContainer>
