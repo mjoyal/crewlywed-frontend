@@ -33,12 +33,18 @@ const useRoundLoop = (socket, userProfile) => {
     socket.on('choosePage', (choices) => {
       setCurrentSubmissions(choices); 
       console.log(choices) 
+
       // the server says the timer is up, display the choose page
       setRoundState('CHOOSE');
+      //reset await state
+      setAwait([]);
     });
 
     socket.on('revealPage', () => {
       setRoundState('REVEAL');
+
+      //reset await state
+      setAwait([]);
     })
 
     socket.on('roundScore', () => {
