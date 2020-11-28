@@ -34,7 +34,9 @@ export default function Lobby(props) {
         }
         {
           props.host &&
-          <Button onClick={props.startGame} disabled={props.players.length < 3}>Start Game</Button>
+          //NOTE: Commenting out the below line and replacing it w/ the one below that to make testing easier. ***NOTE TO SELF: After development, uncomment the below line and delete the one below that.
+          // <Button onClick={props.startGame} disabled={props.players.length < 3}>Start Game</Button>
+          <Button onClick={props.startGame}>Start Game</Button>
         }
       </div>
     </article>
