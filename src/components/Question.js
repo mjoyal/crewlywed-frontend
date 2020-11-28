@@ -1,20 +1,13 @@
 import React from 'react'; 
 import "../styles/Question.scss";
-import classNames from 'classnames';
 
 export default function Question (props) {
-  const questionClass = classNames('question');
-  const name = React.cloneElement(props.children[1], {className: props.spanClass});
+  const questionParts = props.question.split('$name');
 
   return (
-    <div className={questionClass}>
-      <img src={`${props.avatar}`} alt="player avatar"/>
-      <p>
-      {props.children[0]}
-      {name}
-      {props.children[2]}
-      </p>
+    <div className="question">
+      <img src={`${props.victimAvatar}`} alt="player avatar"/>
+      <p>{questionParts[0]}<span className={props.victimColorClass}>{props.victimName}</span>{questionParts[1]}</p>
     </div>
-
   ); 
 };

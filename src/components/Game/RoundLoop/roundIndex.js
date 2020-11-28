@@ -80,7 +80,14 @@ export default function RoundLoop (props) {
   return (
     <div className="roundLoop">
       {props.roundState !== ROUNDSCORE && <>
-        <Question avatar="images/avatar3.png" spanClass="span-1">how would <span>{props.name}</span> survive the apocalypse?</Question>
+        <Question
+          victimAvatar="images/avatar3.png"
+          victimColorClass="span-1"
+          question={props.question}
+          victimName={props.victimName}
+          isVictim={props.isVictim}
+        />
+        
         <Timer time={60} width={18}></Timer>
       </>}
       {props.roundState === ROUNDSCORE && <>
@@ -88,7 +95,14 @@ export default function RoundLoop (props) {
       </>}
 
       {props.roundState === ANSWER && <InputAnswerPage submitUserAnswer={props.submitUserAnswer}/>}
-      {props.roundState  === CHOOSE && <ChooseAnswerPage answerOptions={props.currentSubmissions} name={props.name} sendChoice={props.sendChoice} victim={props.victim}/>}
+      {props.roundState  === CHOOSE && 
+      <ChooseAnswerPage 
+        answerOptions={props.currentSubmissions} 
+        name={props.name} 
+        sendChoice={props.sendChoice} 
+        isVictim={props.isVictim}
+      />}
+
       {props.roundState  === REVEAL && <RevealAnswerPage answerResults={props.revealState}/>}
       {props.roundState === AWAIT && <AwaitResponsePage players={props.awaitState}/>}
 

@@ -15,7 +15,7 @@ export default function ChooseAnswerPage (props) {
   
   return (
     <>
-      <Message name={props.name} victim={props.victim}/>
+      <Message name={props.name} victim={props.isVictim}/>
       <form
         onSubmit={(event) => event.preventDefault()}>
         {
@@ -25,11 +25,11 @@ export default function ChooseAnswerPage (props) {
             onChange={setAnswerID} 
             id={option.id}
             answer={option.text}
-            victim={props.victim}
+            isVictim={props.isVictim}
             />)
         }
         {/* dont show the button to victim */}
-        { !props.victim && 
+        { !props.isVictim && 
           <ButtonContainer>
           <Button disabled={answerID === null} onClick={handleSubmit}>
             choose answer

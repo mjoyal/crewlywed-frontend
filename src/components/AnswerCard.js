@@ -13,7 +13,7 @@ export default function AnswerCard (props) {
 
   return (
     <>
-    { !props.victim && 
+    { !props.isVictim && 
 
       <div className={`answerCard${props.checked ? ' checked' : ''}`}
       onClick={() => props.onChange(props.id)}>
@@ -26,7 +26,7 @@ export default function AnswerCard (props) {
     }
 
     {
-      props.victim && 
+      props.isVictim && 
       <div className="answerCard">
         <p>{props.answer}</p>
       </div>
