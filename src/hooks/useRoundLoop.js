@@ -3,7 +3,8 @@ import { Socket } from 'socket.io-client';
 
 const useRoundLoop = (socket, userProfile) => {
   const [roundState, setRoundState] = useState('ANSWER'); 
-  
+  const [currentSubmissions, setCurrentSubmissions] = useState([]); 
+
   const submitUserAnswer = function (answer) {
     const round = 1; 
     const userAnswerInfo = {
@@ -23,14 +24,13 @@ const useRoundLoop = (socket, userProfile) => {
       round, 
       userProfile
     }; 
-
-    // send the choice on chooseAnswer button click
-    socket.emit('userChoice');
+    socket.emit('userChoice', userChoiceInfo);
     setRoundState('AWAIT'); 
   }
 
   useEffect(() => {
     socket.on('choosePage', (choices) => {
+      setCurrentSubmissions(choices); 
       console.log(choices) 
       // the server says the timer is up, display the choose page
       setRoundState('CHOOSE');
@@ -49,7 +49,7 @@ const useRoundLoop = (socket, userProfile) => {
     });
   }, [socket]);
 
-  return {roundState, submitUserAnswer, sendChoice} ;
+  return {roundState, submitUserAnswer, sendChoice, currentSubmissions} ;
 };
 
 export { useRoundLoop };

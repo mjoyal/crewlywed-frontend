@@ -35,6 +35,7 @@ export default function Game (props) {
           roundState={props.roundState}
           submitUserAnswer={props.submitUserAnswer}
           sendChoice={props.sendChoice}
+          currentSubmissions={props.currentSubmissions}
         />}
       {props.gameState === FINALSCORE && <FinalScore />}
     </div>
