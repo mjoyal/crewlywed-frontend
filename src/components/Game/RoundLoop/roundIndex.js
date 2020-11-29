@@ -82,7 +82,7 @@ export default function RoundLoop (props) {
       {props.roundState !== ROUNDSCORE && <>
         <Question
           victimAvatar={`images/avatar${props.victimAvatarId}.png`}
-          victimColorClass="span-1"
+          victimColorClass={props.victimColorClass}
           question={props.question}
           victimName={props.victimName}
           isVictim={props.isVictim}

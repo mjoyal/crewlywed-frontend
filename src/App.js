@@ -51,6 +51,7 @@ function App() {
   // trial for background-color with state
 
   const [backgroundColor, setBackgroundColor] = useState('body'); 
+  const [highlightColor, setHighlightColor] = useState(''); 
   /*
   userProfile :{
     name: null
@@ -61,9 +62,13 @@ function App() {
   */
 
  // change background color when avatarID updates, will put that in the dependency array
-  useEffect(() => {
-    document.body.classList.add(backgroundColor); 
-  }, [])
+ useEffect(() => {
+  setBackgroundColor(`color-${currentVictimAvatarID}`);
+  setHighlightColor(`span-${currentVictimAvatarID}`)
+  document.body.classList.add(backgroundColor); 
+}, [currentVictimAvatarID, backgroundColor])
+
+
 
   return (
 
@@ -131,6 +136,7 @@ function App() {
             victimName={currentVictimName}
             question={currentQuestionText}
             victimAvatarId={currentVictimAvatarID}
+            victimColorClass={highlightColor}
           />
         </Route>
 

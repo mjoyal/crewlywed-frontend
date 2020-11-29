@@ -42,6 +42,7 @@ export default function Game (props) {
           victimName={props.victimName}
           question={props.question}
           victimAvatarId={props.victimAvatarId}
+          victimColorClass={props.victimColorClass}
         />}
       {props.gameState === FINALSCORE && <FinalScore />}
     </div>
