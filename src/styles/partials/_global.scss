@@ -6,7 +6,7 @@
   padding: 0; 
 }
 
-body {
+.body {
   font-family: $normal-font;
   color: $main-blue;
   margin: $mobile-gutter-margin * 1%;
@@ -20,6 +20,7 @@ h1, h2, h3 {
 .roundLoop, 
 .game {
   @include flex(column); 
+
 }
 
 .logo-text {
@@ -33,4 +34,37 @@ h1, h2, h3 {
 
 .logo-small {
   max-width: 60%; 
+}
+
+
+.color-1 {
+  background-color: $background-green;
+}
+
+.color-2 {
+  background-color: $background-red-orange;
+}
+
+.color-3 {
+  background-color: $background-mageneta;
+}
+
+.color-4 {
+  background-color: $background-orange;
+}
+
+.color-5 {
+  background-color: $background-pink;
+}
+
+.color-6 {
+  background-color: $background-yellow;
+}
+
+.color-7 {
+  background-color: $background-monkey-blue;
+}
+
+.color-8 {
+  background-color: $background-purple;
 }
