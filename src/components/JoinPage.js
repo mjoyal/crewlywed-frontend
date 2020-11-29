@@ -1,6 +1,7 @@
 // import classNames from 'classnames';
 import TextInput from './TextInput';
 import Button from './Button';
+import LogoHeader from './LogoHeader';
 import "../styles/JoinPage.scss";
 import {Link, Redirect} from "react-router-dom";
 import {useState} from 'react';
@@ -17,7 +18,7 @@ export default function JoinPage (props) {
 
   return (
     <main>
-    <img src="images/logo.png" alt="logo"/>
+    <LogoHeader small/>
     <h2>join a game</h2>
     <TextInput
       label="your name"

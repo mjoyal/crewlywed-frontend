@@ -15,7 +15,7 @@ export default function NameCard (props) {
         <p>{props.username}</p>
       </div>
       {props.host && (
-        <img src="https://bit.ly/36ZTJgj" alt="host icon"/>
+        <img className="host-icon" src="images/hostIcon.png" alt="host icon"/>
       )}
     </div>
   ); 

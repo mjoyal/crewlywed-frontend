@@ -7,29 +7,24 @@ import '../../styles/Lobby.scss'
 
 export default function Lobby(props) {
   const gameCodeText = useRef(null);
-  const [codeCopied, setCodeCopied] = useState(false); 
+  const [copyButtonText, setCopyButtonText] = useState("copy code!"); 
 
   const copyCode = function (e) {
     gameCodeText.current.select();
     document.execCommand('copy'); 
-    setCodeCopied(true); 
+    setCopyButtonText("code copied!"); 
 
     setTimeout(() => {
-      setCodeCopied(false); 
+      setCopyButtonText("copy code!"); 
     }, 2000);
   };
 
   return (
     <article className="lobby">
-      <header>
-        {/* can make this prettier later  */}
-        {
-          codeCopied && 
-          <p className="copied-message">copied to clipboard!</p>
-        }
+      <header>  
         <h2>room code:</h2>
         <input ref={gameCodeText} spellCheck="false" readOnly className="room-code" type="text" value={props.roomCode}/>
-        <Button onClick={copyCode}>copy code!</Button>
+        <Button onClick={copyCode}>{copyButtonText}</Button>
         <Button onClick={() => console.log("how to play opened")}>how to play</Button>
       </header>
       <hr/>

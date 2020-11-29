@@ -5,8 +5,8 @@
 
 
 .button {
-  width:$mobile-col-6 * 1%;
-  // margin-bottom: .75rem;
+  width:$mobile-col-5 * 1%;
+  margin: $mobile-gutter-margin * 0.5%;
   background-color: $light-main-blue; 
   color: $main-blue;
   padding: 0.5rem 2rem; 

@@ -4,9 +4,6 @@
 
 .homePage {
   @include flex(column, space-around);
-  img {
-    width: 20rem; 
-  }
   p {
     text-align: center;
     padding-bottom: $mobile-col-2 * 0.75vh;

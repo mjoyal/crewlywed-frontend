@@ -1,6 +1,6 @@
 import './App.css';
 
-import {useEffect} from 'react';
+import {Component, useEffect, useState} from 'react';
 import { io } from 'socket.io-client';
 import {
   BrowserRouter as Router,
@@ -48,7 +48,9 @@ function App() {
   const { startGame, gameState} = useGameLoop(socket, userProfile); 
   const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState, revealState, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionText} = useRoundLoop(socket, userProfile); 
   
+  // trial for background-color with state
 
+  const [backgroundColor, setBackgroundColor] = useState('body'); 
   /*
   userProfile :{
     name: null
@@ -58,7 +60,13 @@ function App() {
   }
   */
 
+ // change background color when avatarID updates, will put that in the dependency array
+  useEffect(() => {
+    document.body.classList.add(backgroundColor); 
+  }, [])
+
   return (
+
     <Router>
 
       <Switch>
@@ -127,10 +135,9 @@ function App() {
         </Route>
 
       </Switch>
-   
-
+  
     </Router>
-   
+
   );
 }
 
