@@ -37,6 +37,9 @@ const useRoundLoop = (socket, userProfile) => {
 
   // state to save and display reveal data
   const [revealState, setRevealState] = useState([]);
+
+  //state to save and display score data
+  const [roundScoreState, setScore] = useState([]);
   // FUNCTIONALITY
 
   const submitUserAnswer = function (answer) {
@@ -89,7 +92,9 @@ const useRoundLoop = (socket, userProfile) => {
     })
 
     // Listen for when to show ROUNDSCORE (sent when timer expires for REVEAL):
-    socket.on('roundScore', () => {
+    socket.on('roundScore', (scoreData) => {
+      console.log(scoreData);
+      setScore(scoreData);
       setRoundState('ROUNDSCORE'); 
     });
 
@@ -153,7 +158,7 @@ const useRoundLoop = (socket, userProfile) => {
     console.log("currentQuestionText:", currentQuestionText);
   }, [roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID, currentVictimAvatarID, currentVictimName, currentQuestionText]);
   
-  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState} ;
+  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState, roundScoreState} ;
 };
 
 export { useRoundLoop };

@@ -45,8 +45,8 @@ function App() {
   const { createNewGame, createErrorMessage } = useCreateNewGame(socket);
   const { joinGame, joinErrorMessage } = useJoinGame(socket);
   const {lobbyInfo, players, userProfile} = useCreateLobby(socket); 
-  const { startGame, gameState} = useGameLoop(socket, userProfile); 
-  const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState, revealState, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionText, currentRoundNum, totalRounds} = useRoundLoop(socket, userProfile); 
+  const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState, revealState, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionText, roundScoreState, currentRoundNum, totalRounds} = useRoundLoop(socket, userProfile); 
+  const { startGame, gameState, finalScoreState} = useGameLoop(socket, userProfile); 
   
   // trial for background-color with state
 
@@ -132,6 +132,8 @@ function App() {
             victimName={currentVictimName}
             question={currentQuestionText}
             victimAvatarId={currentVictimAvatarID}
+            roundScoreState={roundScoreState}
+            finalScoreState={finalScoreState}
             currentRoundNum={currentRoundNum}
             totalRounds={totalRounds}
           />
