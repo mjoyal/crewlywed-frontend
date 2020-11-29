@@ -23,8 +23,8 @@ const useJoinGame = (socket) => {
   };
 
   // Get a list of avatars not in use, so the new player can get one of them:
-  const getAvatarsNotInUse = (gameID) => {
-    socket.emit('getAvatarsNotInUse', gameID)
+  const getAvatarsNotInUse = (joinGameData) => {
+    socket.emit('getAvatarsNotInUse', joinGameData)
   };
 
   // Pick a random avatar from the list of avatars not in use:
@@ -38,25 +38,25 @@ const useJoinGame = (socket) => {
   };
 
   // Create a new player:
-  const createNewPlayer = (avatarsResponseData) => {
+  const createNewPlayer = (joinGameData) => {
     const createNewPlayerData = {
-      username: playerName,
+      username: joinGameData.playerName,
       creator: false,
-      session_id: avatarsResponseData.gameID,
-      avatar_id: generateUniqueAvatar(avatarsResponseData.avatars)
+      session_id: joinGameData.gameID,
+      avatar_id: generateUniqueAvatar(joinGameData.avatars)
     }
     socket.emit('createNewPlayer', createNewPlayerData);
   };
 
   useEffect(() => {
     // Listen for server to send confirmation that a game is valid to join:
-    socket.on('joinGameReturn', gameID => {
+    socket.on('joinGameReturn', joinGameData => {
       setJoinErrorMessage("");
-      getAvatarsNotInUse(gameID);
+      getAvatarsNotInUse(joinGameData);
     });
     // Listen for server to send a list of avatar options for the new player:
-    socket.on('getAvatarsNotInUseReturn', avatarsResponseData => {
-      createNewPlayer(avatarsResponseData);
+    socket.on('getAvatarsNotInUseReturn', joinGameData => {
+      createNewPlayer(joinGameData);
     });
 
     //ERRORS:
