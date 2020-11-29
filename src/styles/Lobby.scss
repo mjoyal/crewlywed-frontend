@@ -1,7 +1,8 @@
 @import './partials/variables';
+@import 'partials/_helpers'; 
 
 .lobby {
-
+ 
   color:$main-blue;
   text-transform: lowercase;
   font-family: $normal-font;
@@ -11,7 +12,7 @@
   }
 
   & header h2{
-    margin:0;
+    // margin:0;
 
     font-size: 1rem;
     
@@ -38,15 +39,15 @@
     color: $main-pink; 
   }
 
-  & hr {
-    width: $mobile-col-6 + ($mobile-gutter-margin * 2) * 1%;
-    height: .2rem;
+  // & hr {
+  //   width: $mobile-col-6 + ($mobile-gutter-margin * 2) * 1%;
+  //   height: .2rem;
 
-    background-color: $main-blue;
+  //   background-color: $main-blue;
 
-    border:none;
-    border-radius: 10rem;
-  }
+  //   border:none;
+  //   border-radius: 10rem;
+  // }
 
   & .player-list{ 
     

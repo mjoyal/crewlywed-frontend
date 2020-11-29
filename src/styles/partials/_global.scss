@@ -9,6 +9,8 @@
 body {
   font-family: $normal-font;
   color: $main-blue;
+  margin: $mobile-gutter-margin * 1%;
+  background-color: $white-main-blue;
 }
 
 h1, h2, h3 {
