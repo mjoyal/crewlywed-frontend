@@ -27,7 +27,7 @@ const useRoundLoop = (socket, userProfile) => {
   const [currentVictimAvatarID, setCurrentVictimAvatarID] = useState(null);
   const [currentVictimName, setCurrentVictimName] = useState(null);
   const [currentQuestionID, setCurrentQuestionID] = useState(null);
-  const [currentQuestionText, setCurrentQuestionText] = useState(null);
+  const [currentQuestionText, setCurrentQuestionText] = useState('Placeholder question'); //need a string here as initialization value or else we can an error
 
   // The below is an array of players & their status (for use on the AWAIT page):
   const [awaitState, setAwait] = useState([]);
