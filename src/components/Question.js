@@ -3,7 +3,7 @@ import "../styles/Question.scss";
 
 export default function Question (props) {
   const questionParts = props.question.split('$name');
-
+  console.log(props.victimName); 
   return (
     <div className="question">
       <img src={`${props.victimAvatar}`} alt="player avatar"/>

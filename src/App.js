@@ -45,13 +45,14 @@ function App() {
   const { createNewGame, createErrorMessage } = useCreateNewGame(socket);
   const { joinGame, joinErrorMessage } = useJoinGame(socket);
   const {lobbyInfo, players, userProfile} = useCreateLobby(socket); 
-  const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState, revealState, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionText, roundScoreState, currentRoundNum, totalRounds} = useRoundLoop(socket, userProfile); 
+  const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState, revealState, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionText, roundScoreState, currentRoundNum, totalRounds, highlightColor} = useRoundLoop(socket, userProfile); 
   const { startGame, gameState, finalScoreState} = useGameLoop(socket, userProfile); 
   
   // trial for background-color with state
+  
+  // const [backgroundColor, setBackgroundColor] = useState('body'); 
+  // const [highlightColor, setHighlightColor] = useState(''); 
 
-  const [backgroundColor, setBackgroundColor] = useState('body'); 
-  const [highlightColor, setHighlightColor] = useState(''); 
   /*
   userProfile :{
     name: null
@@ -62,11 +63,12 @@ function App() {
   */
 
  // change background color when avatarID updates, will put that in the dependency array
- useEffect(() => {
-  setBackgroundColor(`color-${currentVictimAvatarID}`);
-  setHighlightColor(`span-${currentVictimAvatarID}`)
-  document.body.classList.add(backgroundColor); 
-}, [currentVictimAvatarID, backgroundColor])
+
+//  useEffect(() => {
+//   setBackgroundColor(`color-${currentVictimAvatarID}`);
+//   setHighlightColor(`span-${currentVictimAvatarID}`)
+//   document.body.classList.add(backgroundColor); 
+// }, [currentVictimAvatarID, backgroundColor])
 
 
 
