@@ -35,15 +35,16 @@ export default function QuestionResult (props) {
       <footer>
         {props.correct && (
           <div>
-          <p>{`winners: ${choosersCount}`}</p>
-          <p>{`${props.oneWinner? "+100 ": "+100 to each"}`}</p>
+
+          <p>{`${choosersCount > 0 ? `winners: ${choosersCount}`: `no winners`}`}</p>
+          {choosersCount !== 0 &&  <p>{`${choosersCount > 1 ? "+100 ": "+100 to each"}`}</p>}
           </div>
         )}
 
         {!props.correct && (
           <div>
           <p>{`fooled: ${choosersCount}`}</p>
-          <p>{`+${50 * props.choosers.length} to ${props.playername}`}</p>
+          <p>{`${props.choosers? `+${50 * props.choosers.length} to ${props.playername}`: ""}`}</p>
           </div>
         )}
         <div className="players">

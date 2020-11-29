@@ -13,6 +13,7 @@ export default function ChooseAnswerPage (props) {
     props.sendChoice(answerID); 
   }
   
+
   return (
     <>
       <Message name={props.name} victim={props.isVictim} victimName={props.victimName}/>
@@ -26,6 +27,7 @@ export default function ChooseAnswerPage (props) {
             id={option.id}
             answer={option.text}
             isVictim={props.isVictim}
+            isVictimAnswer={option.submitter_id === props.victimID}
             />)
         }
         {/* dont show the button to victim */}

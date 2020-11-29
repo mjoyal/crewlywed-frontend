@@ -2,15 +2,9 @@ import "../styles/AnswerCard.scss";
 import {useState} from 'react';
 
 export default function AnswerCard (props) {
-  // const [checked, setChecked] = useState(null)
 
-  // const styleChecked = function () {
-  //   if(checked) {
-  //     return setChecked(null)
-  //   }
-  //   return setChecked('checked')
-  // };
-
+  const notVictimAnswer = props.isVictim && !props.isVictimAnswer; 
+  console.log()
   return (
     <>
     { !props.isVictim && 
@@ -26,7 +20,7 @@ export default function AnswerCard (props) {
     }
 
     {
-      props.isVictim && 
+     notVictimAnswer &&
       <div className="answerCard">
         <p>{props.answer}</p>
       </div>

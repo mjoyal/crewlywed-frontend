@@ -152,7 +152,7 @@ const useRoundLoop = (socket, userProfile) => {
     console.log("currentVictimName:", currentVictimName);
     console.log("currentQuestionText:", currentQuestionText);
   }, [roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID, currentVictimAvatarID, currentVictimName, currentQuestionText]);
-
+  
   return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState} ;
 };
 

@@ -101,6 +101,7 @@ export default function RoundLoop (props) {
         victimName={props.victimName} 
         sendChoice={props.sendChoice} 
         isVictim={props.isVictim}
+        victimID={props.victimID}
       />}
 
       {props.roundState  === REVEAL && <RevealAnswerPage answerResults={props.revealState}/>}
