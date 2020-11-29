@@ -41,12 +41,13 @@ const useCreateNewGame = (socket) => {
   };
 
   // This tells the server to create a new row for the host in the players table of the DB:
-  const createNewHost = function(gameID) {
-    const username = hostName;
+  const createNewHost = function(createNewGameData) {
+    const username = createNewGameData.hostName;
+    const session_id = createNewGameData.gameID;
     const createNewHostData = {     
       username,
       creator: true,
-      session_id: gameID,
+      session_id,
       avatar_id: generateAvatarID()
     }
     socket.emit('createNewHost', createNewHostData);
@@ -54,8 +55,8 @@ const useCreateNewGame = (socket) => {
 
   useEffect(() => {
   // Listen for server to send confirmation that a new game was created:
-  socket.on('createNewGameReturn', gameID => {
-      createNewHost(gameID);
+  socket.on('createNewGameReturn', createNewGameData => {
+      createNewHost(createNewGameData);
     });
   // Listen for server to send error - blank name:
   socket.on('createGameErrorBlankName', message => {

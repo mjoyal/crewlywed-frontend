@@ -2,13 +2,17 @@ import classNames from 'classnames';
 import TextInput from './TextInput';
 import Button from './Button';
 import LogoHeader from './LogoHeader';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import "../styles/NewGamePage.scss";
 import {Link, Redirect} from "react-router-dom";
 
 export default function NewGamePage (props) {
 
   const [name, setName] = useState("");
+
+  useEffect(() => {
+    console.log("Name:", name);
+  }, [name])
 
   if(props.lobbyInfo) {
     return <Redirect to={`/${props.lobbyInfo}`} />
