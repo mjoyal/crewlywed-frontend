@@ -89,7 +89,8 @@ const useRoundLoop = (socket, userProfile) => {
     })
 
     // Listen for when to show ROUNDSCORE (sent when timer expires for REVEAL):
-    socket.on('roundScore', () => {
+    socket.on('roundScore', (scoreData) => {
+      console.log(scoreData);
       setRoundState('ROUNDSCORE'); 
     });
 
