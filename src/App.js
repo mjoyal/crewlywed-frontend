@@ -133,7 +133,7 @@ function App() {
             currentSubmissions={currentSubmissions}
             revealState={revealState}
             isVictim={userProfile.id === currentVictimID}
-            victimID = {currentVictimID}
+            userID = {userProfile.id}
             victimName={currentVictimName}
             question={currentQuestionText}
             victimAvatarId={currentVictimAvatarID}

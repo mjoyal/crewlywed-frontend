@@ -40,7 +40,7 @@ export default function Game (props) {
           revealState={props.revealState}
           isVictim={props.isVictim}
           victimName={props.victimName}
-          victimID= {props.victimID}
+          userID= {props.userID}
           question={props.question}
           victimAvatarId={props.victimAvatarId}
           victimColorClass={props.victimColorClass}

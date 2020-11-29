@@ -3,11 +3,12 @@ import {useState} from 'react';
 
 export default function AnswerCard (props) {
 
-  const notVictimAnswer = props.isVictim && !props.isVictimAnswer; 
+  const notVictimAnswer = props.isVictim && !props.isUserAnswer; 
+  const notUserAnswer = !props.isVictim && !props.isUserAnswer;
   console.log()
   return (
     <>
-    { !props.isVictim && 
+    { notUserAnswer && 
 
       <div className={`answerCard${props.checked ? ' checked' : ''}`}
       onClick={() => props.onChange(props.id)}>

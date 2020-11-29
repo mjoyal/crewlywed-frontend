@@ -27,7 +27,7 @@ export default function ChooseAnswerPage (props) {
             id={option.id}
             answer={option.text}
             isVictim={props.isVictim}
-            isVictimAnswer={option.submitter_id === props.victimID}
+            isUserAnswer={option.submitter_id === props.userID}
             />)
         }
         {/* dont show the button to victim */}
