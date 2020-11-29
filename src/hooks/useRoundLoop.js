@@ -77,10 +77,6 @@ const useRoundLoop = (socket, userProfile) => {
     setRoundState('AWAIT'); 
   };
 
-  const updateRound = function (newRoundID) {
-    socket.emit('currentRound', newRoundID);
-  }
-
   useEffect(() => {
     // TRANSITIONS:
     // Listen for when to show CHOOSE (sent when timer expires for ANSWER):
