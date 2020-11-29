@@ -2,7 +2,7 @@
 @import 'partials/_helpers'; 
 
 .lobby {
- 
+  @include flex(column, center, center); 
   color:$main-blue;
   text-transform: lowercase;
   font-family: $normal-font;
@@ -13,14 +13,13 @@
 
   & header h2{
     // margin:0;
-
     font-size: 1rem;
     
   }
 
   & header .room-code{
     margin: 0;
-
+    background-color: $white-main-blue;
     font-size: 2.875rem;
     font-family: $bold-font;
     color:$main-blue;
@@ -39,15 +38,15 @@
     color: $main-pink; 
   }
 
-  // & hr {
-  //   width: $mobile-col-6 + ($mobile-gutter-margin * 2) * 1%;
-  //   height: .2rem;
+  & hr {
+    width: $mobile-col-4 + ($mobile-gutter-margin * 2) * 1%;
+    height: .2rem;
+    margin-top: 0.5rem;
+    background-color: $main-blue;
 
-  //   background-color: $main-blue;
-
-  //   border:none;
-  //   border-radius: 10rem;
-  // }
+    border:none;
+    border-radius: 10rem;
+  }
 
   & .player-list{ 
     
@@ -58,13 +57,12 @@
     & .player-counter {
       display: flex;
       justify-content: space-between;
-
+      align-items: center;
       margin-left: ($mobile-col-1 + $mobile-gutter-margin) * 1%;
       width: $mobile-col-6 + ($mobile-gutter-margin * 2) * 1%;
-      
       font-size: 1rem;
     
-    & *{
+    & * {
       font-weight: normal;
       margin: 0;
     }

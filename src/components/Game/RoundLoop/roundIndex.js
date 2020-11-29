@@ -76,7 +76,7 @@ const responseTest = [
 ];
 
 export default function RoundLoop (props) {
-  const params = useParams();
+
   return (
     <div className="roundLoop">
       {props.roundState !== ROUNDSCORE && <>
