@@ -23,9 +23,8 @@ export default function Lobby(props) {
     <article className="lobby">
       <header>  
         <h2>room code:</h2>
-        <input ref={gameCodeText} spellcheck="false" readOnly className="room-code" type="text" value={props.roomCode}/>
+        <input ref={gameCodeText} spellCheck="false" readOnly className="room-code" type="text" value={props.roomCode}/>
         <Button onClick={copyCode}>{copyButtonText}</Button>
-        
         <Button onClick={() => console.log("how to play opened")}>how to play</Button>
       </header>
       <hr/>
