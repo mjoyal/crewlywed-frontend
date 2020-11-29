@@ -12,38 +12,42 @@ const dummyData = [
   // {id: 7, name: 'shaggy', score: 600, avatar: 'images/avatar7.png'},
 ];
 
-const winner = {id: 8, name: 'daphne', score: 200, avatar: 'images/crownAvatar8.png'}; 
+// const winner = {id: 8, name: 'daphne', score: 200, avatar: 'images/crownAvatar8.png'}; 
 // would be good to receive a list of players and then a single winner object. like above. 
 
 
-export default function FinalScore () {
-
-  const avatarScores = dummyData.map((avatarScore, index) => {
-    return (
-       <AvatarScore
+export default function FinalScore (props) {
+  const winner = props.finalScore ? props.finalScore[0] : {};
+  const avatarScores = props.finalScore.map((avatarScore, index) => {
+    if(index > 0) {
+      return (
+        <AvatarScore
           key={avatarScore.id}
-          name={avatarScore.name}
-          score={avatarScore.score}
-          avatar={avatarScore.avatar}
+          name={avatarScore.username}
+          score={avatarScore.total}
+          avatar={avatarScore.avatar_id}
           winner={false}
         />
-    );
-  })
+      );
+    }
+    else return null;
+  });
   return (
     <>
-    <h1>final score:</h1>
-    <main>
-     <AvatarScore
-          name={winner.name}
-          score={winner.score}
-          avatar={winner.avatar}
-          winner={true}
-        />
-      <div className="losers">
-      {avatarScores}
-      </div>
-      
-    </main>
+      <h1>final score:</h1>
+      <main>
+        <AvatarScore
+              nkey={winner.id}
+              name={winner.username}
+              score={winner.total}
+              avatar={winner.avatar_id}
+              winner={true}
+            />
+        <div className="losers">
+          {avatarScores}
+        </div>
+        
+      </main>
     </>
   );
 }

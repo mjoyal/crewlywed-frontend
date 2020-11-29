@@ -15,7 +15,7 @@ const dummyData = [
 ];
 
 
-export default function RoundScore () {
+export default function RoundScore (props) {
 
   // const dummyData = [1,2,3,4];
 
@@ -40,13 +40,13 @@ export default function RoundScore () {
   // } 
 
 
-  const avatarScores = dummyData.map((avatarScore, index) => {
+  const avatarScores = props.scoreData.map((avatarScore, index) => {
     return (
        <AvatarScore
           key={avatarScore.id}
-          name={avatarScore.name}
-          score={avatarScore.score}
-          avatar={avatarScore.avatar}
+          name={avatarScore.username}
+          score={avatarScore.total}
+          avatar={avatarScore.avatar_id}
           winner={false}
         />
     );
