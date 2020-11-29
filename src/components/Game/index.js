@@ -45,7 +45,7 @@ export default function Game (props) {
           victimAvatarId={props.victimAvatarId}
           roundScoreState={props.roundScoreState}
         />}
-      {props.gameState === FINALSCORE && <FinalScore />}
+      {props.gameState === FINALSCORE && <FinalScore finalScore={props.finalScoreState}/>}
     </div>
   );
 }

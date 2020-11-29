@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 
 const useGameLoop = (socket, userProfile) => {
   const [gameState, setGameState] = useState('LOBBY'); 
+  const [finalScoreState, setScore] = useState([]);
 
   const startGame = function () {
     // tell the server that the host has started the game
@@ -16,14 +17,15 @@ const useGameLoop = (socket, userProfile) => {
       setGameState('ROUNDLOOP'); 
     });
 
-    socket.on('finalScore', () => {
+    socket.on('finalScore', (finalData) => {
+      setScore(finalData);
       setGameState('FINALSCORE'); 
     });
 
   }, [socket]);
 
  
-  return {startGame, gameState} ;
+  return {startGame, gameState, finalScoreState} ;
 
 };
 
