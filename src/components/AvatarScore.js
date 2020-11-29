@@ -21,7 +21,7 @@ export default function AvatarScore (props) {
       {!props.winner && 
         <>
           <p>{props.name}</p>
-          <img src={`${props.avatar}`} alt="player avatar"/>
+          <img src={`/images/avatar${props.avatar}.png`} alt="player avatar"/>
           <p>{props.score}</p>
         </>
       }

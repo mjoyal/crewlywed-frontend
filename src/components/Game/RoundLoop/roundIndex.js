@@ -91,7 +91,7 @@ export default function RoundLoop (props) {
         <Timer time={60} width={18}></Timer>
       </>}
       {props.roundState === ROUNDSCORE && <>
-        <RoundScore/>
+        <RoundScore scoreData={props.roundScoreState}/>
       </>}
 
       {props.roundState === ANSWER && <InputAnswerPage submitUserAnswer={props.submitUserAnswer}/>}
