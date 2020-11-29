@@ -25,8 +25,12 @@
     color:$main-blue;
     text-align: center;
     border: none; 
+    user-select: none;
     &:focus {
       outline: none; 
+    }
+    &::selection {
+      color: $main-blue
     }
   }
 
