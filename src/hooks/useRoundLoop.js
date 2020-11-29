@@ -40,6 +40,18 @@ const useRoundLoop = (socket, userProfile) => {
 
   //state to save and display score data
   const [roundScoreState, setScore] = useState([]);
+
+
+  // color state 
+  const [backgroundColor, setBackgroundColor] = useState('body'); 
+  const [highlightColor, setHighlightColor] = useState(''); 
+
+  useEffect(() => {  
+    document.body.classList.add(backgroundColor); 
+  }, [currentVictimAvatarID, backgroundColor])
+
+  
+
   // FUNCTIONALITY
 
   const submitUserAnswer = function (answer) {
@@ -115,6 +127,8 @@ const useRoundLoop = (socket, userProfile) => {
       setCurrentVictimAvatarID(data[0].victim_avatar_id);
       setCurrentVictimName(data[0].victim_name);
       setCurrentQuestionText(data[0].question_text);
+      setBackgroundColor(`color-${data[0].victim_avatar_id}`);
+      setHighlightColor(`span-${data[0].victim_avatar_id}`)
     });
 
     socket.on('awaitData', (awaitData) => {
@@ -146,19 +160,19 @@ const useRoundLoop = (socket, userProfile) => {
 
   // console.log's for testing - will delete later:
   useEffect(() => {
-    console.log("roundState:", roundState);
-    console.log("allRoundsData:", allRoundsData);
-    console.log("totalRounds:", totalRounds);
-    console.log("currentRoundNum:", currentRoundNum);
-    console.log("currentRoundID:", currentRoundID);
-    console.log("currentVictimID:", currentVictimID);
-    console.log("currentQuestionID:", currentQuestionID);
-    console.log("currentVictimAvatarID:", currentVictimAvatarID);
+    // console.log("roundState:", roundState);
+    // console.log("allRoundsData:", allRoundsData);
+    // console.log("totalRounds:", totalRounds);
+    // console.log("currentRoundNum:", currentRoundNum);
+    // console.log("currentRoundID:", currentRoundID);
+    // console.log("currentVictimID:", currentVictimID);
+    // console.log("currentQuestionID:", currentQuestionID);
+    // console.log("currentVictimAvatarID:", currentVictimAvatarID);
     console.log("currentVictimName:", currentVictimName);
-    console.log("currentQuestionText:", currentQuestionText);
+    // console.log("currentQuestionText:", currentQuestionText);
   }, [roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID, currentVictimAvatarID, currentVictimName, currentQuestionText]);
   
-  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState, roundScoreState} ;
+  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState, roundScoreState, backgroundColor, highlightColor} ;
 };
 
 export { useRoundLoop };
