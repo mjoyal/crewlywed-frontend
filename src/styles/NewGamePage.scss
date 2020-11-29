@@ -4,9 +4,6 @@
 
 main {
   @include flex(column, center);
-  img {
-    width: 50%; 
-  }
   p {
     margin: 1em; 
     text-align: center;

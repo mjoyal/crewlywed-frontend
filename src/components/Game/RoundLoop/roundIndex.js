@@ -76,12 +76,12 @@ const responseTest = [
 ];
 
 export default function RoundLoop (props) {
-  const params = useParams();
+
   return (
     <div className="roundLoop">
       {props.roundState !== ROUNDSCORE && <>
         <Question
-          victimAvatar="images/avatar3.png"
+          victimAvatar={`images/avatar${props.victimAvatarId}.png`}
           victimColorClass="span-1"
           question={props.question}
           victimName={props.victimName}
@@ -98,7 +98,7 @@ export default function RoundLoop (props) {
       {props.roundState  === CHOOSE && 
       <ChooseAnswerPage 
         answerOptions={props.currentSubmissions} 
-        name={props.name} 
+        victimName={props.victimName} 
         sendChoice={props.sendChoice} 
         isVictim={props.isVictim}
         victimID={props.victimID}

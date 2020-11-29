@@ -7,6 +7,7 @@ import "../../styles/partials/_global.scss";
 import Lobby from './Lobby';
 import RoundLoop from './RoundLoop/roundIndex.js'
 import FinalScore from './FinalScore';
+import LogoHeader from '../LogoHeader';
 
 const LOBBY = 'LOBBY';
 const ROUNDLOOP = 'ROUNDLOOP';
@@ -18,7 +19,7 @@ export default function Game (props) {
   
   return (
     <div className="game">
-      <h2>crewlywed</h2>
+      <LogoHeader text/>
       {/* <p>This is the game controller! {params.id}</p> */}
       {props.gameState === LOBBY && 
         <Lobby
@@ -41,7 +42,7 @@ export default function Game (props) {
           victimName={props.victimName}
           victimID= {props.victimID}
           question={props.question}
-
+          victimAvatarId={props.victimAvatarId}
         />}
       {props.gameState === FINALSCORE && <FinalScore />}
     </div>
