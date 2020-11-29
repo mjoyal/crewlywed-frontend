@@ -8,10 +8,12 @@ const useRoundLoop = (socket, userProfile) => {
 
   // This is all of the rounds data for the game:
   const [allRoundsData, setAllRoundsData] = useState([]);
-      // allRoundsData format:
-        // [ {id: 30, victim_id: 16, question_id: 20},
-        //   {id: 31, victim_id: 16, question_id: 8},
-        //   {id: 32, victim_id: 16, question_id: 10} ]
+    /* 
+      allRoundsData format:
+        [ {id: 30, victim_id: 20, question_id: 10, question_text: 'What's $name's favorite color?', victim_avatar_id: 2, victim_name: 'Will'},
+        {id: 31, victim_id: 20, question_id: 5, question_text: 'What's $name's favorite movie?', victim_avatar_id: 2, victim_name: 'Will'},
+        {id: 32, victim_id: 20, question_id: 16, question_text: 'What's $name's favorite animal?', victim_avatar_id: 2, victim_name: 'Will'} ]
+    */
 
   // This is the total number of rounds that will be played during the game play, e.g. 24 (8 players * 3 rounds per player):
   const [totalRounds, setTotalRounds] = useState(null);
@@ -19,10 +21,13 @@ const useRoundLoop = (socket, userProfile) => {
   // This is the round number shown in the game play, e.g. 1:
   const [currentRoundNum, setCurrentRoundNum] = useState(1);
 
-  // The three below lines are the roundID, victimID, and questionID for the current round:
+  // The below lines are to keep track of all relevant data for the current round:
   const [currentRoundID, setCurrentRoundID] = useState(null);
   const [currentVictimID, setCurrentVictimID] = useState(null);
+  const [currentVictimAvatarID, setCurrentVictimAvatarID] = useState(null);
+  const [currentVictimName, setCurrentVictimName] = useState(null);
   const [currentQuestionID, setCurrentQuestionID] = useState(null);
+  const [currentQuestionText, setCurrentQuestionText] = useState(null);
 
   // The below is an array of players & their status (for use on the AWAIT page):
   const [awaitState, setAwait] = useState([]);
@@ -102,6 +107,9 @@ const useRoundLoop = (socket, userProfile) => {
       setCurrentRoundID(data[0].id);
       setCurrentVictimID(data[0].victim_id);
       setCurrentQuestionID(data[0].question_id);
+      setCurrentVictimAvatarID(data[0].victim_avatar_id);
+      setCurrentVictimName(data[0].victim_name);
+      setCurrentQuestionText(data[0].question_text);
     });
 
     socket.on('awaitData', (awaitData) => {
@@ -121,6 +129,9 @@ const useRoundLoop = (socket, userProfile) => {
       setCurrentRoundID(allRoundsData[currentRoundNum-1].id);
       setCurrentVictimID(allRoundsData[currentRoundNum-1].victim_id);
       setCurrentQuestionID(allRoundsData[currentRoundNum-1].question_id);
+      setCurrentVictimAvatarID(allRoundsData[currentRoundNum-1].victim_avatar_id);
+      setCurrentVictimName(allRoundsData[currentRoundNum-1].victim_name);
+      setCurrentQuestionText(allRoundsData[currentRoundNum-1].question_text);
     }
   }, [currentRoundNum]);
 
@@ -137,9 +148,12 @@ const useRoundLoop = (socket, userProfile) => {
     console.log("currentRoundID:", currentRoundID);
     console.log("currentVictimID:", currentVictimID);
     console.log("currentQuestionID:", currentQuestionID);
-  }, [roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID]);
+    console.log("currentVictimAvatarID:", currentVictimAvatarID);
+    console.log("currentVictimName:", currentVictimName);
+    console.log("currentQuestionText:", currentQuestionText);
+  }, [roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID, currentVictimAvatarID, currentVictimName, currentQuestionText]);
 
-  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState} ;
+  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState} ;
 };
 
 export { useRoundLoop };
