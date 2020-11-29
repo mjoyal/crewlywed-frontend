@@ -37,7 +37,7 @@ export default function QuestionResult (props) {
           <div>
 
           <p>{`${choosersCount > 0 ? `winners: ${choosersCount}`: `no winners`}`}</p>
-          {choosersCount !== 0 &&  <p>{`${choosersCount > 1 ? "+100 ": "+100 to each"}`}</p>}
+          {choosersCount !== 0 &&  <p>{`${choosersCount <= 1 ? `+100 to ${props.choosers[0].username}`: "+100 to each"}`}</p>}
           </div>
         )}
 
