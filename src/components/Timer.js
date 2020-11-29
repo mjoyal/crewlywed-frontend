@@ -19,6 +19,7 @@ export default function Timer (props) {
   // 
   return (
     <div className="timer-container">
+      <p>question {props.currentRoundNum} / {props.totalRounds}</p>
     <div className="timer">
       <div className={bar} style={{width: `${indicator}em`,  transition: `width ${props.time}s ease-in`}}>
       </div>
