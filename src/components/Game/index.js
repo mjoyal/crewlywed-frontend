@@ -43,6 +43,7 @@ export default function Game (props) {
           victimID= {props.victimID}
           question={props.question}
           victimAvatarId={props.victimAvatarId}
+          victimColorClass={props.victimColorClass}
           roundScoreState={props.roundScoreState}
           currentRoundNum={props.currentRoundNum}
           totalRounds={props.totalRounds}
