@@ -125,6 +125,7 @@ function App() {
             currentSubmissions={currentSubmissions}
             revealState={revealState}
             isVictim={userProfile.id === currentVictimID}
+            victimID = {currentVictimID}
             victimName={testVictimName}
             question={testQuestion}
           />

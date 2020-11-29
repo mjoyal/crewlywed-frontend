@@ -130,14 +130,16 @@ const useRoundLoop = (socket, userProfile) => {
 
   // console.log's for testing - will delete later:
   useEffect(() => {
-    console.log("roundState:", roundState);
-    console.log("allRoundsData:", allRoundsData);
-    console.log("totalRounds:", totalRounds);
-    console.log("currentRoundNum:", currentRoundNum);
-    console.log("currentRoundID:", currentRoundID);
-    console.log("currentVictimID:", currentVictimID);
-    console.log("currentQuestionID:", currentQuestionID);
-  }, [roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID]);
+    // console.log("roundState:", roundState);
+    // console.log("allRoundsData:", allRoundsData);
+    // console.log("totalRounds:", totalRounds);
+    // console.log("currentRoundNum:", currentRoundNum);
+    // console.log("currentRoundID:", currentRoundID);
+    // console.log("currentVictimID:", currentVictimID);
+    // console.log("currentQuestionID:", currentQuestionID);
+    console.log('currentSubmissions', currentSubmissions)
+    
+  }, [currentSubmissions]);
 
   return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState} ;
 };
