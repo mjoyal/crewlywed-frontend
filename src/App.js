@@ -9,13 +9,10 @@ import {
   Link
 } from "react-router-dom";
 
-import { useDataFlow } from "./hooks/useDataFlow.js";
 import { useCreateNewGame } from "./hooks/useCreateNewGame.js";
 import { useRoundLoop } from "./hooks/useRoundLoop.js";
 import { useJoinGame } from "./hooks/useJoinGame.js";
-
 import { useGameLoop } from "./hooks/useGameLoop.js";
-
 import { useCreateLobby } from "./hooks/useCreateLobby.js";
 
 
@@ -23,8 +20,6 @@ import HomePage from './components/HomePage';
 import JoinPage from './components/JoinPage';
 import NewGamePage from './components/NewGamePage';
 import Game from './components/Game/index.js';
-import Playground from './components/PlaygroundTest';
-import DataFlow from './components/DataFlowTest';
 
 const ENDPOINT = "http://localhost:8080";
 const socket = io(ENDPOINT);
@@ -74,13 +69,6 @@ function App() {
 
       <Switch>
 
-     {/* routes for testing */}
-
-        <Route exact path="/playground">
-            <Playground></Playground>
-        </Route>
-
-    {/* real routes  */}
         <Route exact path="/">
             <HomePage></HomePage>
         </Route>
