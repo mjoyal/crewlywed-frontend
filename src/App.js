@@ -14,7 +14,6 @@ import { useJoinGame } from "./hooks/useJoinGame.js";
 import { useGameLoop } from "./hooks/useGameLoop.js";
 import { useCreateLobby } from "./hooks/useCreateLobby.js";
 
-
 import HomePage from './components/HomePage';
 import JoinPage from './components/JoinPage';
 import NewGamePage from './components/NewGamePage';
@@ -35,8 +34,8 @@ function App() {
   const { createNewGame, createErrorMessage } = useCreateNewGame(socket);
   const { joinGame, joinErrorMessage } = useJoinGame(socket);
   const {lobbyInfo, players, userProfile} = useCreateLobby(socket); 
-  const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState, revealState, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionText, roundScoreState, currentRoundNum, totalRounds, highlightColor} = useRoundLoop(socket, userProfile); 
-  const { startGame, gameState, finalScoreState} = useGameLoop(socket, userProfile); 
+  const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState, revealState, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionText, roundScoreState, currentRoundNum, totalRounds, highlightColor, setBackgroundColor, backgroundColor, setHighlightColor} = useRoundLoop(socket, userProfile); 
+  const { startGame, gameState, finalScoreState} = useGameLoop(socket, userProfile, setBackgroundColor, backgroundColor, setHighlightColor); 
   
   return (
 
