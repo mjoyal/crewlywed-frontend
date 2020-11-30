@@ -1,7 +1,5 @@
 import "../styles/QuestionResult.scss";
 
-
-
 export default function QuestionResult (props) {
   const getAvatarPath = function () {
     if(props.path) {
@@ -22,7 +20,7 @@ export default function QuestionResult (props) {
   return (
     <article className="questionResult">
         <div style={{position:"relative"}}>
-          <img className="icon" src={icon} />
+          <img className="icon" src={icon} alt="icon"/>
         </div>
       <header>
 
