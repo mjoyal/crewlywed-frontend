@@ -35,7 +35,7 @@ export default function SimpleTimer (props) {
   return (
     
     <div className="timer-container" style={{display: display}}>
-      <p className="question-number">question {props.currentRoundNum} / {props.totalRounds}</p>
+      {/* <p className="question-number">question {props.currentRoundNum} / {props.totalRounds}</p> */}
       <div className="timer">
       <motion.div className={"timer-indicator"} initial={{width: 0}} animate={{width: indicator}} transition={{repeat: 2, duration: props.time}}></motion.div>
       </div>
