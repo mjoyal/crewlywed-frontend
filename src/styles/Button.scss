@@ -5,17 +5,26 @@
 
 
 .button {
-  width:$mobile-col-5 * 1%;
-  margin: $mobile-gutter-margin * 0.5%;
-  background-color: $light-main-blue; 
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  max-width: 16rem;
+  width:$mobile-col-6 * 1%;
+  // height: 3.2rem;
+  margin: .5rem;
+  padding: .75rem; 
+
   color: $main-blue;
-  padding: 0.5rem 2rem; 
   font-size: 1.625rem;
   font-family: $normal-font;
   text-transform: lowercase;
+  
+  background-color: $light-main-blue; 
   -webkit-box-shadow:  4px 4px 0px 0px $main-blue; 
   box-shadow: 4px 4px 0px 0px $main-blue;
   border: $border-size solid $main-blue; 
+
   // link styles
   text-decoration: none;
   &:hover {
@@ -37,10 +46,10 @@
     border: $border-size solid $disabled-blue; 
   }
 }
-.button-link {
-  width:$mobile-col-4 * 1%;
-  text-align: center; 
-}
+// .button-link {
+//   width:$mobile-col-6 * 1%;
+//   text-align: center; 
+// }
 
 .link {
   color: $main-blue;
