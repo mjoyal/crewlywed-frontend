@@ -1,6 +1,6 @@
 import AvatarScore from '../AvatarScore';
 import "../../styles/RoundScore.scss";
-
+import {Link} from "react-router-dom";
 
 const dummyData = [
   {id: 1, name: 'mac', score: 500, avatar: 'images/avatar1.png'},
@@ -46,7 +46,7 @@ export default function FinalScore (props) {
         <div className="losers">
           {avatarScores}
         </div>
-        
+        <Link className="button button-link" to="/">play again</Link>
       </main>
     </>
   );
