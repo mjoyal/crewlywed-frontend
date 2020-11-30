@@ -10,7 +10,7 @@
   box-sizing: border-box;
   font-family: $normal-font;
   color: $main-blue;
-  margin: $mobile-gutter-margin * 1%;
+  // margin: $mobile-gutter-margin * 1%;
   background-color: $white-main-blue;
 }
 
@@ -39,7 +39,11 @@ h1, h2, h3 {
 .logo-small {
   max-width: 60%; 
 }
-
+.color-null {
+  color: $main-blue;
+  font-family: $normal-font;
+  background-color: $white-main-blue;
+}
 
 .color-1 {
   background-color: $background-green;
