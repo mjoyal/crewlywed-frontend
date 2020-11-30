@@ -13,6 +13,49 @@ const LOBBY = 'LOBBY';
 const ROUNDLOOP = 'ROUNDLOOP';
 const FINALSCORE = 'FINALSCORE';
 
+const lobbyData = [
+  {
+    avatar_id:1,
+    creator:true,
+    username:"Loongest"
+  },
+  {
+    avatar_id:2,
+    host:false,
+    username:"Mac"
+  },
+  {
+    avatar_id:3,
+    host:false,
+    username:"Mac"
+  },
+  {
+    avatar_id:4,
+    host:false,
+    username:"Mac"
+  },
+  {
+    avatar_id:5,
+    host:false,
+    username:"Mac"
+  },
+  {
+    avatar_id:6,
+    host:false,
+    username:"Mac"
+  },
+  {
+    avatar_id:7,
+    host:false,
+    username:"Mac"
+  },
+  {
+    avatar_id:8,
+    host:false,
+    username:"Mac"
+  },
+]
+
 export default function Game (props) {
   const params = useParams();
 
@@ -24,7 +67,7 @@ export default function Game (props) {
       {props.gameState === LOBBY && 
         <Lobby
           roomCode={params.id}
-          players={props.players}
+          players={lobbyData}
           host={props.userProfile.creator}
           lobbyInfo={props.lobbyInfo}
           startGame={props.startGame}
