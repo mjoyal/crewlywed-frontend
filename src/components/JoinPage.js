@@ -33,9 +33,9 @@ export default function JoinPage (props) {
       onChange={(code) => setCode(code)}
     />
     <p className="joinInstructions" >choose a name your crew will recognize!</p>
+    <p>{props.joinErrorMessage}</p>
     <Button confirm onClick={event => props.joinGame(name, code)}>join game</Button>
     <Link className="link" to="/">back home</Link>
-    <p>{props.joinErrorMessage}</p>
     </main>
   ); 
 }
