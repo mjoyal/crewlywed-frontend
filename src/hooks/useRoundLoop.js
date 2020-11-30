@@ -47,8 +47,13 @@ const useRoundLoop = (socket, userProfile) => {
 
   useEffect(() => {  
     document.body.classList.add(backgroundColor); 
-  }, [currentVictimAvatarID, backgroundColor])
-  
+  }, [backgroundColor]);
+
+  useEffect(() => {
+    document.body.classList.remove(backgroundColor); 
+    setBackgroundColor(`color-${currentVictimAvatarID}`);
+    setHighlightColor(`span-${currentVictimAvatarID}`);
+  }, [currentVictimAvatarID]);
 
   // FUNCTIONALITY
 
@@ -106,7 +111,7 @@ const useRoundLoop = (socket, userProfile) => {
 
     // Listen for when to show ANSWER for next round (sent when timer expires for REVEAL):
     socket.on('roundOver', () => {
-      setCurrentRoundNum(prev => prev+1);
+      setCurrentRoundNum(prev => prev + 1);
       setRoundState('ANSWER');
     });
 
@@ -134,7 +139,7 @@ const useRoundLoop = (socket, userProfile) => {
   // Update states when currentRoundNum changes:
   useEffect(() => {
     if (currentRoundNum > totalRounds) {
-      console.log("No more rounds", currentRoundNum, totalRounds);
+      console.log("finalScore", roundScoreState);
       socket.emit('noMoreRounds')
     }
     else if (allRoundsData.length > 0) {
@@ -151,7 +156,7 @@ const useRoundLoop = (socket, userProfile) => {
     socket.emit('newRound', currentRoundID);
   }, [currentRoundID]);
   
-  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState, roundScoreState, backgroundColor, highlightColor} ;
+  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState, roundScoreState, highlightColor} ;
 };
 
 export { useRoundLoop };
