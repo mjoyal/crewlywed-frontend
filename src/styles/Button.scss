@@ -13,7 +13,7 @@
   width:$mobile-col-6 * 1%;
   // height: 3.2rem;
   margin: .5rem;
-  padding: .75rem; 
+  padding: .75rem 0rem; 
 
   color: $main-blue;
   font-size: 1.625rem;
@@ -33,7 +33,8 @@
 }
 
 button.button{
-  width:($mobile-col-6+($mobile-gutter-margin*2)) * 1%;
+  box-sizing: border-box;
+  width:($mobile-col-6) * 1%;
   max-width: 18rem;
 }
 

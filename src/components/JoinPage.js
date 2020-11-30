@@ -24,7 +24,7 @@ export default function JoinPage (props) {
       <TextInput
         label="your name"
         placeholder="name"
-        maxCount={8}
+        maxCount={10}
         onChange={(name) => setName(name)}
         error={props.joinErrorMessage == "please enter a name!" ? props.joinErrorMessage : undefined}
       />
