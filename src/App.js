@@ -38,7 +38,6 @@ function App() {
     });
   }, []);
 
-  const { avatar, getAvatar, username, score, getScore } = useDataFlow(socket);
   const { createNewGame, createErrorMessage } = useCreateNewGame(socket);
   const { joinGame, joinErrorMessage } = useJoinGame(socket);
   const {lobbyInfo, players, userProfile} = useCreateLobby(socket); 
@@ -76,16 +75,6 @@ function App() {
       <Switch>
 
      {/* routes for testing */}
-
-        <Route exact path = "/dataflow">
-            <DataFlow
-              getAvatar={getAvatar}
-              avatar={avatar}
-              getScore={getScore}
-              score={score}
-              username={username}
-            />
-        </Route>
 
         <Route exact path="/playground">
             <Playground></Playground>
