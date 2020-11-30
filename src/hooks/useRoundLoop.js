@@ -85,8 +85,6 @@ const useRoundLoop = (socket, userProfile) => {
     // Listen for when to show CHOOSE (sent when timer expires for ANSWER):
     socket.on('choosePage', (choices) => {
       setCurrentSubmissions(choices); 
-      console.log(choices) 
-
       // the server says the timer is up, display the choose page
       setRoundState('CHOOSE');
       //reset await state
@@ -96,7 +94,6 @@ const useRoundLoop = (socket, userProfile) => {
     // Listen for when to show REVEAL (sent when timer expires for CHOOSE):
     socket.on('revealPage', (revealData) => {
       setRoundState('REVEAL');
-      console.log("revealData:", revealData);
       setRevealState(revealData);
       //reset await state
       setAwait([]);
@@ -104,7 +101,6 @@ const useRoundLoop = (socket, userProfile) => {
 
     // Listen for when to show ROUNDSCORE (sent when timer expires for REVEAL):
     socket.on('roundScore', (scoreData) => {
-      console.log(scoreData);
       setScore(scoreData);
       setRoundState('ROUNDSCORE');
     });
@@ -132,14 +128,12 @@ const useRoundLoop = (socket, userProfile) => {
 
     socket.on('awaitData', (awaitData) => {
       setAwait(awaitData);
-      console.log(awaitData);
     });
   }, [socket]);
 
   // Update states when currentRoundNum changes:
   useEffect(() => {
     if (currentRoundNum > totalRounds) {
-      console.log("finalScore", roundScoreState);
       socket.emit('noMoreRounds')
     }
     else if (allRoundsData.length > 0) {

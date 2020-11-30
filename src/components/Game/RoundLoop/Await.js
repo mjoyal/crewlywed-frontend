@@ -1,5 +1,4 @@
 import React from 'react';
-
 import NameCard from '../../NameCard';
 
 export default function AwaitResponsePage (props) {

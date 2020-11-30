@@ -1,12 +1,11 @@
 import './App.css';
 
-import {Component, useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import { io } from 'socket.io-client';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import { useCreateNewGame } from "./hooks/useCreateNewGame.js";
@@ -38,30 +37,6 @@ function App() {
   const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState, revealState, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionText, roundScoreState, currentRoundNum, totalRounds, highlightColor, setBackgroundColor, backgroundColor, setHighlightColor} = useRoundLoop(socket, userProfile); 
   const { startGame, gameState, finalScoreState} = useGameLoop(socket, userProfile, setBackgroundColor, backgroundColor, setHighlightColor); 
   
-  // trial for background-color with state
-  
-  // const [backgroundColor, setBackgroundColor] = useState('body'); 
-  // const [highlightColor, setHighlightColor] = useState(''); 
-
-  /*
-  userProfile :{
-    name: null
-    id: null
-    avatarID: null
-    creator: false
-  }
-  */
-
- // change background color when avatarID updates, will put that in the dependency array
-
-//  useEffect(() => {
-//   setBackgroundColor(`color-${currentVictimAvatarID}`);
-//   setHighlightColor(`span-${currentVictimAvatarID}`)
-//   document.body.classList.add(backgroundColor); 
-// }, [currentVictimAvatarID, backgroundColor])
-
-
-
   return (
 
     <Router>

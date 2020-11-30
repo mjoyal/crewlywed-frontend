@@ -3,7 +3,6 @@ import LogoHeader from './LogoHeader';
 
 import {Link} from "react-router-dom";
 
-
 export default function HomePage () {
   return (
     <main className="homePage">

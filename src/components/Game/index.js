@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import "../../styles/partials/_global.scss";
@@ -16,7 +16,6 @@ const FINALSCORE = 'FINALSCORE';
 export default function Game (props) {
   const params = useParams();
 
-  
   return (
     <div className="game">
       <LogoHeader text/>

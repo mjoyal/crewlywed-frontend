@@ -1,5 +1,5 @@
 import "../styles/AvatarScore.scss";
-import classNames from 'classnames';
+
 
 export default function AvatarScore (props) {
 
