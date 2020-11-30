@@ -28,6 +28,7 @@ const useRoundLoop = (socket, userProfile) => {
   const [currentVictimName, setCurrentVictimName] = useState(null);
   const [currentQuestionID, setCurrentQuestionID] = useState(null);
   const [currentQuestionText, setCurrentQuestionText] = useState('Placeholder question'); //need a string here as initialization value or else we can an error
+  const [currentQuestionTextVictim, setCurrentQuestionTextVictim] = useState('Placeholder victim question');
 
   // The below is an array of players & their status (for use on the AWAIT page):
   const [awaitState, setAwait] = useState([]);
@@ -122,6 +123,7 @@ const useRoundLoop = (socket, userProfile) => {
       setCurrentVictimAvatarID(data[0].victim_avatar_id);
       setCurrentVictimName(data[0].victim_name);
       setCurrentQuestionText(data[0].question_text);
+      setCurrentQuestionTextVictim(data[0].question_text_victim);
       setBackgroundColor(`color-${data[0].victim_avatar_id}`);
       setHighlightColor(`span-${data[0].victim_avatar_id}`)
     });
@@ -143,6 +145,7 @@ const useRoundLoop = (socket, userProfile) => {
       setCurrentVictimAvatarID(allRoundsData[currentRoundNum-1].victim_avatar_id);
       setCurrentVictimName(allRoundsData[currentRoundNum-1].victim_name);
       setCurrentQuestionText(allRoundsData[currentRoundNum-1].question_text);
+      setCurrentQuestionTextVictim(allRoundsData[currentRoundNum-1].question_text_victim);
     }
   }, [currentRoundNum]);
 
@@ -150,7 +153,7 @@ const useRoundLoop = (socket, userProfile) => {
     socket.emit('newRound', currentRoundID);
   }, [currentRoundID]);
   
-  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState, roundScoreState, highlightColor} ;
+  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentQuestionTextVictim, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState, roundScoreState, highlightColor} ;
 };
 
 export { useRoundLoop };

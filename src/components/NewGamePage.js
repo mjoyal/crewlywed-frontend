@@ -9,10 +9,6 @@ export default function NewGamePage (props) {
 
   const [name, setName] = useState("");
 
-  useEffect(() => {
-    console.log("Name:", name);
-  }, [name])
-
   if(props.lobbyInfo) {
     return <Redirect to={`/${props.lobbyInfo}`} />
   }
