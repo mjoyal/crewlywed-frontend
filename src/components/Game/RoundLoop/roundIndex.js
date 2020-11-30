@@ -30,17 +30,18 @@ export default function RoundLoop (props) {
           isVictim={props.isVictim}
         />
         
-        <Timer
-          time={60} width={18}
-          currentRoundNum={props.currentRoundNum}
-          totalRounds={props.totalRounds}
-        />
       </>}
       {props.roundState === ROUNDSCORE && <>
         <RoundScore scoreData={props.roundScoreState}/>
       </>}
 
-      {props.roundState === ANSWER && <InputAnswerPage submitUserAnswer={props.submitUserAnswer}/>}
+      {props.roundState === ANSWER && 
+      <InputAnswerPage 
+        submitUserAnswer={props.submitUserAnswer}  
+        currentRoundNum={props.currentRoundNum}
+        totalRounds={props.totalRounds}
+      />}
+
       {props.roundState  === CHOOSE && 
       <ChooseAnswerPage 
         answerOptions={props.currentSubmissions} 
@@ -48,6 +49,8 @@ export default function RoundLoop (props) {
         sendChoice={props.sendChoice} 
         isVictim={props.isVictim}
         userID={props.userID}
+        currentRoundNum={props.currentRoundNum}
+        totalRounds={props.totalRounds}
       />}
 
       {props.roundState  === REVEAL && <RevealAnswerPage answerResults={props.revealState}/>}

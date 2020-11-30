@@ -29,6 +29,11 @@ export default function InputAnswerPage (props) {
       
       {/* <Question avatar="images/avatar1.png" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
       <Timer time={60} width={18}/> */}
+        <Timer
+          time={10} width={18}
+          currentRoundNum={props.currentRoundNum}
+          totalRounds={props.totalRounds}
+        />
       <TextArea label="your response" placeholder="enter your response here..." maxCount={50} onChange={handleTextArea}/>
       <Button 
         confirm 
