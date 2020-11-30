@@ -5,6 +5,7 @@ import LogoHeader from './LogoHeader';
 import {useEffect, useState} from 'react';
 import "../styles/NewGamePage.scss";
 import {Link, Redirect} from "react-router-dom";
+import ButtonContainer from './ButtonContainer';
 
 export default function NewGamePage (props) {
 
@@ -27,11 +28,15 @@ export default function NewGamePage (props) {
       placeholder="name"
       maxCount={8}
       onChange={(name) => setName(name)}
+      error = {props.createErrorMessage}
     />
     <p className="instructions">as the host, you can start the game when all of your crew has joined.</p>
-    <p>{props.createErrorMessage}</p>
-    <Button confirm onClick={event => props.createNewGame(name)}>create game</Button>
-    <Link className="link" to="/">back home</Link>
+    {/* <p>{props.createErrorMessage}</p> */}
+    <ButtonContainer>
+      <Link className="link" to="/">back home</Link>
+      <Button confirm onClick={event => props.createNewGame(name)}>create game</Button>
+    </ButtonContainer>
+
     </main>
   ); 
 }

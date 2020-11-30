@@ -32,6 +32,11 @@
   }
 }
 
+button.button{
+  width:($mobile-col-6+($mobile-gutter-margin*2)) * 1%;
+  max-width: 18rem;
+}
+
 .button-confirm {
   background-color: $light-main-blue; 
 }
@@ -53,4 +58,9 @@
 
 .link {
   color: $main-blue;
+}
+
+.button-container .link {
+  margin: .75rem 0 .5rem 0;
+  font-size: 1.5rem;
 }

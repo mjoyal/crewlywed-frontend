@@ -37,7 +37,9 @@ h1, h2, h3 {
 }
 
 .logo-small {
-  max-width: 60%; 
+  max-height: 37vh;
+  max-width: $mobile-col-6 * 1%;
+  width:auto;
 }
 .color-null {
   color: $main-blue;
