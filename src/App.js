@@ -36,8 +36,8 @@ function App() {
   const { createNewGame, createErrorMessage } = useCreateNewGame(socket);
   const { joinGame, joinErrorMessage } = useJoinGame(socket);
   const {lobbyInfo, players, userProfile} = useCreateLobby(socket); 
-  const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState, revealState, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionText, roundScoreState, currentRoundNum, totalRounds, highlightColor} = useRoundLoop(socket, userProfile); 
-  const { startGame, gameState, finalScoreState} = useGameLoop(socket, userProfile); 
+  const {roundState, submitUserAnswer, sendChoice, currentSubmissions, awaitState, revealState, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionText, roundScoreState, currentRoundNum, totalRounds, highlightColor, setBackgroundColor, backgroundColor, setHighlightColor} = useRoundLoop(socket, userProfile); 
+  const { startGame, gameState, finalScoreState} = useGameLoop(socket, userProfile, setBackgroundColor, backgroundColor, setHighlightColor); 
   
   // trial for background-color with state
   
