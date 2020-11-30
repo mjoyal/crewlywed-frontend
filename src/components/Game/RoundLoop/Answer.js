@@ -1,5 +1,4 @@
-import Timer from '../../Timer';
-import Question from '../../Question';
+import SimpleTimer from '../../SimpleTimer';
 import TextArea from '../../TextArea';
 import Button from '../../Button';
 import React, {useState} from 'react';
@@ -26,9 +25,11 @@ export default function InputAnswerPage (props) {
   };
   return (
     <main>
-      
-      {/* <Question avatar="images/avatar1.png" spanClass="span-1">how would <span>mac</span> survive the apocalypse?</Question>
-      <Timer time={60} width={18}/> */}
+      <SimpleTimer
+          time={10}
+          currentRoundNum={props.currentRoundNum}
+          totalRounds={props.totalRounds}
+        />
       <TextArea label="your response" placeholder="enter your response here..." maxCount={50} onChange={handleTextArea}/>
       <Button 
         confirm 

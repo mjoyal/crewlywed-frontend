@@ -17,3 +17,17 @@
   height: 100%; 
   background-color: $main-blue;
 }
+
+
+.simple-timer-container {
+  @include flex(row, space-between); 
+  width: 100%; 
+  font-family: $bold-font; 
+  padding-bottom: 0.75rem;
+  // border-bottom: 4px solid $main-blue; 
+
+}
+
+.question-number {
+  margin: 0; 
+}
