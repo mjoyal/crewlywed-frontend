@@ -1,4 +1,3 @@
-import SimpleTimer from '../../SimpleTimer';
 import TextArea from '../../TextArea';
 import Button from '../../Button';
 import React, {useState} from 'react';
@@ -25,11 +24,6 @@ export default function InputAnswerPage (props) {
   };
   return (
     <main>
-      <SimpleTimer
-          time={10}
-          currentRoundNum={props.currentRoundNum}
-          totalRounds={props.totalRounds}
-        />
       <TextArea label="your response" placeholder="enter your response here..." maxCount={50} onChange={handleTextArea}/>
       <Button 
         confirm 
