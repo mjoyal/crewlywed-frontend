@@ -41,7 +41,6 @@ const useRoundLoop = (socket, userProfile) => {
   //state to save and display score data
   const [roundScoreState, setScore] = useState([]);
 
-
   // color state 
   const [backgroundColor, setBackgroundColor] = useState('body'); 
   const [highlightColor, setHighlightColor] = useState(''); 
@@ -49,7 +48,6 @@ const useRoundLoop = (socket, userProfile) => {
   useEffect(() => {  
     document.body.classList.add(backgroundColor); 
   }, [currentVictimAvatarID, backgroundColor])
-
   
 
   // FUNCTIONALITY
@@ -77,10 +75,6 @@ const useRoundLoop = (socket, userProfile) => {
     setRoundState('AWAIT'); 
   };
 
-  const updateRound = function (newRoundID) {
-    socket.emit('currentRound', newRoundID);
-  }
-
   useEffect(() => {
     // TRANSITIONS:
     // Listen for when to show CHOOSE (sent when timer expires for ANSWER):
@@ -107,7 +101,7 @@ const useRoundLoop = (socket, userProfile) => {
     socket.on('roundScore', (scoreData) => {
       console.log(scoreData);
       setScore(scoreData);
-      setRoundState('ROUNDSCORE'); 
+      setRoundState('ROUNDSCORE');
     });
 
     // Listen for when to show ANSWER for next round (sent when timer expires for REVEAL):
@@ -135,10 +129,9 @@ const useRoundLoop = (socket, userProfile) => {
       setAwait(awaitData);
       console.log(awaitData);
     });
-    
   }, [socket]);
 
-  // Update current roundID, victimID, and questionID when currentRoundNum changes:
+  // Update states when currentRoundNum changes:
   useEffect(() => {
     if (currentRoundNum > totalRounds) {
       console.log("No more rounds", currentRoundNum, totalRounds);
@@ -156,21 +149,7 @@ const useRoundLoop = (socket, userProfile) => {
 
   useEffect(()=> {
     socket.emit('newRound', currentRoundID);
-  }, [currentRoundID])
-
-  // console.log's for testing - will delete later:
-  useEffect(() => {
-    // console.log("roundState:", roundState);
-    // console.log("allRoundsData:", allRoundsData);
-    // console.log("totalRounds:", totalRounds);
-    // console.log("currentRoundNum:", currentRoundNum);
-    // console.log("currentRoundID:", currentRoundID);
-    // console.log("currentVictimID:", currentVictimID);
-    // console.log("currentQuestionID:", currentQuestionID);
-    // console.log("currentVictimAvatarID:", currentVictimAvatarID);
-    console.log("currentVictimName:", currentVictimName);
-    // console.log("currentQuestionText:", currentQuestionText);
-  }, [roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentQuestionID, currentVictimAvatarID, currentVictimName, currentQuestionText]);
+  }, [currentRoundID]);
   
   return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState, roundScoreState, backgroundColor, highlightColor} ;
 };
