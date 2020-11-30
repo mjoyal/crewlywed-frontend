@@ -10,7 +10,6 @@ import {
 } from "react-router-dom";
 
 import { useDataFlow } from "./hooks/useDataFlow.js";
-import { useChat } from "./hooks/useChat.js";
 import { useCreateNewGame } from "./hooks/useCreateNewGame.js";
 import { useRoundLoop } from "./hooks/useRoundLoop.js";
 import { useJoinGame } from "./hooks/useJoinGame.js";
@@ -26,7 +25,6 @@ import NewGamePage from './components/NewGamePage';
 import Game from './components/Game/index.js';
 import Playground from './components/PlaygroundTest';
 import DataFlow from './components/DataFlowTest';
-import Chat from './components/ChatTest';
 
 const ENDPOINT = "http://localhost:8080";
 const socket = io(ENDPOINT);
@@ -41,7 +39,6 @@ function App() {
   }, []);
 
   const { avatar, getAvatar, username, score, getScore } = useDataFlow(socket);
-  const { joinRoom, sendMessage } = useChat(socket);
   const { createNewGame, createErrorMessage } = useCreateNewGame(socket);
   const { joinGame, joinErrorMessage } = useJoinGame(socket);
   const {lobbyInfo, players, userProfile} = useCreateLobby(socket); 
@@ -79,12 +76,6 @@ function App() {
       <Switch>
 
      {/* routes for testing */}
-        <Route exact path ="/chat">
-          <Chat
-            joinRoom={joinRoom}
-            sendMessage={sendMessage}
-          />
-        </Route>
 
         <Route exact path = "/dataflow">
             <DataFlow
