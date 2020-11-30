@@ -1,11 +1,13 @@
 import {useEffect, useState} from 'react';
 import "../styles/Timer.scss";
-
+import {motion} from 'framer-motion'; 
 
 export default function SimpleTimer (props) {
   const [time, setTime] = useState(props.time);
   const [display, setDisplay] = useState('flex')
-  
+  const [indicator, setIndicator] = useState(0);
+
+ let bar = "timer-indicator"; 
   useEffect(() => {
     if(props.hide) {
       return setDisplay('none'); 
@@ -14,6 +16,7 @@ export default function SimpleTimer (props) {
   }, [props.hide])
   
   useEffect(() => {
+    setIndicator(`14rem`); 
     const timer = function () {
       setTime((prev) => {
         return prev - 1; 
@@ -24,14 +27,20 @@ export default function SimpleTimer (props) {
     } else if (time === 0) {
       clearTimeout(timer); 
       setTime(props.time); 
+
     }
     
   }, [time]);
 
   return (
-    <div className="simple-timer-container" style={{display: display}}>
+    
+    <div className="timer-container" style={{display: display}}>
       <p className="question-number">question {props.currentRoundNum} / {props.totalRounds}</p>
-      <span>Time: {time}s</span>
+      <div className="timer">
+      <motion.div className={"timer-indicator"} initial={{width: 0}} animate={{width: indicator}} transition={{repeat: 2, duration: props.time}}></motion.div>
+      </div>
+      <span>{time}s</span>
     </div>
+
   ); 
 };
