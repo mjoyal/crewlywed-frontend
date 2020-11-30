@@ -10,10 +10,10 @@ div.nameCard {
   padding: 0 1rem;
   width: ($mobile-col-6 + ($mobile-gutter-margin * 2)) * 1%;
   max-width: 24rem;
-  height: $mobile-col-3 * 1vw;
+  height: $mobile-col-2 * 1vw;
   max-height: 8rem;
 
-  margin: .75rem;
+  margin: .25rem;
   // margin-left: ($mobile-col-1 + $mobile-gutter-margin) * 1%;
   font-family: $normal-font; 
   color: $main-blue;
