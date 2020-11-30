@@ -13,7 +13,6 @@ export default function AwaitResponsePage (props) {
         avatarID={player.avatar_id}
         username={player.username}
         active={player.answered} //update later
-        host={player.creator}
         key={index}
       />)}
 
