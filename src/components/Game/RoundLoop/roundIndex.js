@@ -88,11 +88,11 @@ export default function RoundLoop (props) {
           isVictim={props.isVictim}
         />
         
-        <Timer
+        {/* <Timer
           time={60} width={18}
           currentRoundNum={props.currentRoundNum}
           totalRounds={props.totalRounds}
-        />
+        /> */}
       </>}
       {props.roundState === ROUNDSCORE && <>
         <RoundScore scoreData={props.roundScoreState}/>

@@ -3,18 +3,21 @@
 @import 'partials/_global'; 
 
 .bigtext {
-  width: $mobile-col-8 * 1%;
+  width: ($mobile-col-8)* 1%;
+  max-width: 30rem;
   // height: $mobile-col-6 * 1vh;
   // might need to fiddle here 
   height: $mobile-col-4 * 1vh;
-
+  // margin: 0 auto; 
   color: $main-blue;
   font-family: $normal-font;
   transition: 1s ease-in-out;
 
+  box-sizing: content-box;
   &__textarea{
-    height:$mobile-col-6 * 1%;
-    width:$mobile-col-8 * 1%;
+    box-sizing: content-box;
+    height:17rem;
+    width:($mobile-col-8 - ($mobile-col-1 / 4))* 1%;
     
     padding: $mobile-col-1 / 4 * 1%;
 
@@ -39,10 +42,13 @@
   &__labels {
     display:flex;
     justify-content: space-between;
-
+    width:100%;
     & * {
-      margin-top: $mobile-gutter-margin/2 * 1%;
-      margin-bottom: $mobile-gutter-margin/2 * 1%;
+      margin: ($mobile-gutter-margin/2 * 1%) 0 ($mobile-gutter-margin/2 * 1%) 0 ;
+      // margin-bottom: $mobile-gutter-margin/2 * 1%;
+    }
+    & *:last-child{
+      text-align: right;
     }
   }
 
