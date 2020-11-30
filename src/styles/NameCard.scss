@@ -20,6 +20,7 @@ div.nameCard {
   font-size: 1.625rem;
 
   border: $border-size solid $main-blue;
+  background-color: $off-white;
   & div {
     @include flex(row, flex-start); 
   }
