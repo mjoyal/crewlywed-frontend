@@ -159,7 +159,7 @@ const useRoundLoop = (socket, userProfile) => {
     socket.emit('newRound', currentRoundID);
   }, [currentRoundID]);
   
-  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState, roundScoreState, highlightColor} ;
+  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentQuestionTextVictim, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState, roundScoreState, highlightColor} ;
 };
 
 export { useRoundLoop };

@@ -84,6 +84,7 @@ export default function RoundLoop (props) {
           victimAvatar={`images/avatar${props.victimAvatarId}.png`}
           victimColorClass={props.victimColorClass}
           question={props.question}
+          questionVictimText={props.questionVictimText}
           victimName={props.victimName}
           isVictim={props.isVictim}
         />
