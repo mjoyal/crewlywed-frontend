@@ -15,7 +15,6 @@ import { useJoinGame } from "./hooks/useJoinGame.js";
 import { useGameLoop } from "./hooks/useGameLoop.js";
 import { useCreateLobby } from "./hooks/useCreateLobby.js";
 
-
 import HomePage from './components/HomePage';
 import JoinPage from './components/JoinPage';
 import NewGamePage from './components/NewGamePage';
