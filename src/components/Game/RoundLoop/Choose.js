@@ -4,7 +4,7 @@ import AnswerCard from '../../AnswerCard';
 import Button from '../../Button';
 import ButtonContainer from '../../ButtonContainer';
 import Message from '../../Message';
-import Timer from '../../Timer';
+import SimpleTimer from '../../SimpleTimer';
 
 export default function ChooseAnswerPage (props) {
   const [answerID, setAnswerID] = useState(null);
@@ -17,8 +17,8 @@ export default function ChooseAnswerPage (props) {
 
   return (
     <>
-      <Timer
-          time={10} width={18}
+      <SimpleTimer
+          time={10} 
           currentRoundNum={props.currentRoundNum}
           totalRounds={props.totalRounds}
         />
