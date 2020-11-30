@@ -33,14 +33,16 @@ export default function SimpleTimer (props) {
   }, [time]);
 
   return (
-    
-    <div className="timer-container" style={{display: display}}>
-      {/* <p className="question-number">question {props.currentRoundNum} / {props.totalRounds}</p> */}
-      <div className="timer">
-      <motion.div className={"timer-indicator"} initial={{width: 0}} animate={{width: indicator}} transition={{repeat: 2, duration: props.time}}></motion.div>
+    <article>
+      <p className="question-number" style={{display: display}}>question {props.currentRoundNum} / {props.totalRounds}</p>
+      <div className="timer-container" style={{display: display}}>
+        <div className="timer">
+        <motion.div className={"timer-indicator"} initial={{width: 0}} animate={{width: indicator}} transition={{repeat: 2, duration: props.time}}></motion.div>
+        </div>
+        <span>{time}s</span>
       </div>
-      <span>{time}s</span>
-    </div>
+    </article>
+
 
   ); 
 };

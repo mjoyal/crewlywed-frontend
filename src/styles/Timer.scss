@@ -10,7 +10,7 @@
   width: 14rem; // perhaps a variable here (is there a way to pass from props.width?)
   background-color: $light-main-blue;
   border: $border-size solid $main-blue;
-  margin: 1em;
+  margin: 0.5em;
 }
 
 .timer-indicator {
@@ -23,5 +23,6 @@ article {
 }
 
 .question-number {
-  margin: 1em; 
+  margin: 0 0.5em; 
+  font-family: $bold-font; 
 }
