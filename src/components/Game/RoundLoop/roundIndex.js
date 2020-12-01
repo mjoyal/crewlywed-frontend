@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 import Question from '../../Question';
-import Timer from '../../Timer';
+// import Timer from '../../Timer';
+
+import SimpleTimer from '../../SimpleTimer';
 import RoundScore from './RoundScore';
 import "../../../styles/partials/_global.scss";
 import InputAnswerPage from './Answer.js';
@@ -18,6 +20,14 @@ const REVEAL = "REVEAL";
 const ROUNDSCORE = "ROUNDSCORE";
 
 export default function RoundLoop (props) {
+  const [hideTimer, setHideTimer] = useState(false); 
+
+  useEffect(() => {
+    if(props.roundState === REVEAL) {
+      return setHideTimer(true); 
+    }
+    setHideTimer(false);
+  }, [props.roundState]);; 
 
   return (
     <div className="roundLoop">
@@ -30,7 +40,12 @@ export default function RoundLoop (props) {
           victimName={props.victimName}
           isVictim={props.isVictim}
         />
-        
+        <SimpleTimer
+          time={10} 
+          currentRoundNum={props.currentRoundNum}
+          totalRounds={props.totalRounds}
+          hide={hideTimer}
+        />
       </>}
       {props.roundState === ROUNDSCORE && <>
         <RoundScore scoreData={props.roundScoreState}/>
