@@ -24,13 +24,6 @@ const socket = io(ENDPOINT);
 
 function App() {
 
-  //Test connection to socket:
-  useEffect(() => {
-    socket.on('connectMessage', message => {
-      console.log(message);
-    });
-  }, []);
-
   const { createNewGame, createErrorMessage } = useCreateNewGame(socket);
   const { joinGame, joinErrorMessage } = useJoinGame(socket);
   const {lobbyInfo, players, userProfile} = useCreateLobby(socket); 
