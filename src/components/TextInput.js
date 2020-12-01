@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import classNames from 'classnames';
 import '../styles/TextInput.scss';
 
@@ -10,13 +10,24 @@ export default function TextInput (props) {
     "littletext--full" : isFull
   });
 
+  
+  function setError() {
+    setIsFull(true);
+    setTimeout( () => {
+      setIsFull(false);
+    }, 2000);
+  }
+  
+  useEffect(() => {
+    if(props.error) {
+      setError()
+    }
+  }, [props.error]);
+
   function checkIsFull(event) {
     //will temporarily add error state styling to component
     if (event.target.value.length >= props.maxCount && !isFull) {
-      setIsFull(true);
-      setTimeout( () => {
-        setIsFull(false);
-      }, 2000);
+      setError()
     }
   }
   
@@ -49,7 +60,9 @@ export default function TextInput (props) {
         onKeyPress={checkIsFull}
         maxLength={props.maxCount}
         />
-      
+      {
+        props.error && <p className="littletext__error"> {props.error} </p>
+      }
     </div>
   )
 }

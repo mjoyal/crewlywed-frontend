@@ -5,16 +5,18 @@
 .answerCard {
   @include flex(row, left, center); 
 
+  background-color: $off-white;
   border: $border-size solid $main-blue; 
   -webkit-box-shadow:  4px 4px 0px 0px $main-blue; 
   box-shadow: 4px 4px 0px 0px $main-blue;
   font-size: 1.65rem;
 
-  margin: 1rem;
-  margin-left: $mobile-col-1 * 1%;
+  margin: .25rem;
+  // margin-left: $mobile-col-1 * 1%;
   padding: 0.5rem;
 
   width: ($mobile-col-6 + ($mobile-gutter-margin * 2)) * 1%;
+  max-width: 24rem;
   cursor: pointer;
 
   min-height: 90px;
@@ -85,4 +87,14 @@
   background-color: $light-main-blue; 
 }
 
+.answer-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 10rem;
+  width: 100%;
+}
 
+form {
+  width:100%;
+}

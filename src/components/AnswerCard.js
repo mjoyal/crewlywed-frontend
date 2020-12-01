@@ -5,7 +5,6 @@ export default function AnswerCard (props) {
 
   const notVictimAnswer = props.isVictim && !props.isUserAnswer; 
   const notUserAnswer = !props.isVictim && !props.isUserAnswer;
-
   return (
     <>
     { notUserAnswer && 

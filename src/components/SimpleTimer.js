@@ -16,7 +16,7 @@ export default function SimpleTimer (props) {
   }, [props.hide])
   
   useEffect(() => {
-    setIndicator(`14rem`); 
+    setIndicator(`100%`); 
     const timer = function () {
       setTime((prev) => {
         return prev - 1; 
@@ -33,11 +33,11 @@ export default function SimpleTimer (props) {
   }, [time]);
 
   return (
-    <article>
+    <article className="simple-timer">
       <p className="question-number" style={{display: display}}>question {props.currentRoundNum} / {props.totalRounds}</p>
       <div className="timer-container" style={{display: display}}>
         <div className="timer">
-        <motion.div className={"timer-indicator"} initial={{width: 0}} animate={{width: indicator}} transition={{repeat: 2, duration: props.time}}></motion.div>
+        <motion.div className={"timer-indicator"} initial={{width: 0}} animate={{width: indicator}} transition={{repeat: 2, ease:'easeOut', duration: props.time}}></motion.div>
         </div>
         <span>{time}s</span>
       </div>

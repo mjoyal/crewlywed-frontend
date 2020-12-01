@@ -5,11 +5,16 @@
 
 .avatarScore {
   @include flex(column); 
-
+  margin: 1rem .5rem;
   header {
     @include flex(row); 
     font-family: $bold-font;
     font-size: 1.5rem; 
+
+    & p {
+      font-size: 2rem;
+      margin:0;
+    }
   }
 
   footer {
@@ -18,7 +23,10 @@
   
     img {
       max-width: 6rem;
-    
+      
+      &.winner {
+        max-width: 10rem;
+      }
     }
     .score {
       margin: 0; 

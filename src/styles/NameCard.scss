@@ -3,33 +3,39 @@
 @import 'partials/_global'; 
 
 
-.nameCard {
-  @include flex(row); 
+div.nameCard {
+  @include flex(row, space-between, center); 
   box-sizing: border-box;
 
   padding: 0 1rem;
   width: ($mobile-col-6 + ($mobile-gutter-margin * 2)) * 1%;
+  max-width: 24rem;
   height: $mobile-col-2 * 1vw;
+  max-height: 8rem;
 
-  margin-bottom: .75rem;
-  margin-left: ($mobile-col-1 + $mobile-gutter-margin) * 1%;
+  margin: .25rem;
+  // margin-left: ($mobile-col-1 + $mobile-gutter-margin) * 1%;
   font-family: $normal-font; 
   color: $main-blue;
   font-size: 1.625rem;
 
   border: $border-size solid $main-blue;
-  div {
+  background-color: $off-white;
+  & div {
     @include flex(row, flex-start); 
   }
 
-  img {
+  & div img {
     max-width: 22%; 
+    // max-height: 7rem;
+    width:auto;
+    // height:$mobile-col-2 * 1vw;
   }
 
-  .host-icon {
+  & .host-icon {
     max-width: 12%;
   }
-  p {
+  & div p {
     margin: 1rem; 
     font-size: 1.625rem;
   }
@@ -42,4 +48,13 @@
       opacity: .5;
     }
   }
+}
+
+.player-list{ 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 10rem;
+  width: 100%;
+  
 }

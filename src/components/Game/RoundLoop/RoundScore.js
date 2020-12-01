@@ -16,10 +16,10 @@ export default function RoundScore (props) {
   })
   return (
     <>
-    <h1>current score:</h1>
-    <main className="roundScore">
-      {avatarScores}
-    </main>
+      <h1>current score:</h1>
+      <div className="roundScore">
+        {avatarScores}
+      </div>
     </>
   );
 }

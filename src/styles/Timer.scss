@@ -1,13 +1,19 @@
 @import './partials/_variables';
 @import './partials/_helpers';
 
+.simple-timer {
+  width:$mobile-col-8 * 1%;
+  max-width: 30rem;
+}
+
 .timer-container {
   @include flex(row); 
   font-family: $bold-font; 
+  width:100%;
 }
 .timer {
   height: 0.75rem; 
-  width: 14rem; // perhaps a variable here (is there a way to pass from props.width?)
+  width: 100%; // perhaps a variable here (is there a way to pass from props.width?)
   background-color: $light-main-blue;
   border: $border-size solid $main-blue;
   margin: 0.5em;

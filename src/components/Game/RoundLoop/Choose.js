@@ -20,23 +20,25 @@ export default function ChooseAnswerPage (props) {
       <Message name={props.name} victim={props.isVictim} victimName={props.victimName}/>
       <form
         onSubmit={(event) => event.preventDefault()}>
-        {
-          props.answerOptions.map( (option, index) => <AnswerCard
-            key={index}
-            checked={option.id === answerID}
-            onChange={setAnswerID} 
-            id={option.id}
-            answer={option.text}
-            isVictim={props.isVictim}
-            isUserAnswer={option.submitter_id === props.userID}
-            />)
-        }
+        <div className="answer-list">
+          {
+            props.answerOptions.map( (option, index) => <AnswerCard
+              key={index}
+              checked={option.id === answerID}
+              onChange={setAnswerID} 
+              id={option.id}
+              answer={option.text}
+              isVictim={props.isVictim}
+              isUserAnswer={option.submitter_id === props.userID}
+              />)
+          }
+        </div>
         {/* dont show the button to victim */}
         { !props.isVictim && 
           <ButtonContainer>
-          <Button disabled={answerID === null} onClick={handleSubmit}>
-            choose answer
-          </Button>
+            <Button disabled={answerID === null} onClick={handleSubmit}>
+              choose answer
+            </Button>
           </ButtonContainer>
         }
       </form>

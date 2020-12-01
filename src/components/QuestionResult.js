@@ -19,7 +19,7 @@ export default function QuestionResult (props) {
 
   return (
     <article className="questionResult">
-        <div style={{position:"relative"}}>
+        <div className="icon-container">
           <img className="icon" src={icon} alt="icon"/>
         </div>
       <header>
@@ -40,7 +40,7 @@ export default function QuestionResult (props) {
         )}
 
         {!props.correct && (
-          <div>
+          <div >
           <p>{`fooled: ${choosersCount}`}</p>
           <p>{`${props.choosers? `+${50 * props.choosers.length} to ${props.playername}`: ""}`}</p>
           </div>

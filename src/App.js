@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 
 import {useEffect} from 'react';
 import { io } from 'socket.io-client';
@@ -67,26 +67,28 @@ function App() {
           <Game 
             lobbyInfo={lobbyInfo}
             players={players}
-            userProfile={userProfile}
             startGame={startGame}
+            userProfile={userProfile}
+            userID = {userProfile.id}
+
             gameState={gameState}
             roundState={roundState}
-            submitUserAnswer={submitUserAnswer}
-            sendChoice={sendChoice}
-            awaitState={awaitState}
-            currentSubmissions={currentSubmissions}
-            revealState={revealState}
+            totalRounds={totalRounds}
+            currentRoundNum={currentRoundNum}
             isVictim={userProfile.id === currentVictimID}
-            userID = {userProfile.id}
-            victimName={currentVictimName}
             question={currentQuestionText}
             questionVictimText={currentQuestionTextVictim}
+            victimName={currentVictimName}
             victimAvatarId={currentVictimAvatarID}
             victimColorClass={highlightColor}
+            
+            submitUserAnswer={submitUserAnswer}
+            currentSubmissions={currentSubmissions}
+            sendChoice={sendChoice}
+            awaitState={awaitState}
+            revealState={revealState}
             roundScoreState={roundScoreState}
             finalScoreState={finalScoreState}
-            currentRoundNum={currentRoundNum}
-            totalRounds={totalRounds}
           />
         </Route>
 

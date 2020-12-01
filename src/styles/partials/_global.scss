@@ -7,35 +7,49 @@
 }
 
 body {
+  box-sizing: border-box;
   font-family: $normal-font;
   color: $main-blue;
-  margin: $mobile-gutter-margin * 1%;
+  // margin: $mobile-gutter-margin * 1%;
   background-color: $white-main-blue;
+  text-transform: lowercase;
+  font-weight: normal;
 }
 
 h1, h2, h3 {
   font-family: $bold-font; 
+  font-weight: normal;
 }
 
 .roundLoop, 
 .game {
   @include flex(column); 
-
+  width:100%;
 }
 
 .logo-text {
   margin: 0.5rem; 
-  max-width: 50%;  
+  max-width: 50%; 
+  max-height: 5rem;
 }
 
 .logo-big {
-  max-width: 90%; 
+  max-height: 60vh;
+  max-width: $mobile-col-8 * 1%;
+  width: auto;
+
 }
 
 .logo-small {
-  max-width: 60%; 
+  max-height: 37vh;
+  max-width: $mobile-col-6 * 1%;
+  width:auto;
 }
-
+.color-null {
+  color: $main-blue;
+  font-family: $normal-font;
+  background-color: $white-main-blue;
+}
 
 .color-1 {
   background-color: $background-green;

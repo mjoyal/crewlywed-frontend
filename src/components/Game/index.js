@@ -13,6 +13,58 @@ const LOBBY = 'LOBBY';
 const ROUNDLOOP = 'ROUNDLOOP';
 const FINALSCORE = 'FINALSCORE';
 
+const lobbyData = [
+  {
+    avatar_id:1,
+    creator:true,
+    username:"Loongest"
+  },
+  {
+    avatar_id:2,
+    host:false,
+    username:"Mac"
+  },
+  {
+    avatar_id:3,
+    host:false,
+    username:"Mac"
+  },
+  {
+    avatar_id:4,
+    host:false,
+    username:"Mac"
+  },
+  {
+    avatar_id:5,
+    host:false,
+    username:"Mac"
+  },
+  {
+    avatar_id:6,
+    host:false,
+    username:"Mac"
+  },
+  {
+    avatar_id:7,
+    host:false,
+    username:"Mac"
+  },
+  {
+    avatar_id:8,
+    host:false,
+    username:"Mac"
+  },
+]
+const scoreTest = [
+  {id: 1, avatar_id: 1, username:'mac', total:100, winner:true},
+  {id: 2, avatar_id: 2, username:'mac', total:100, winner:false},
+  {id: 3, avatar_id: 3, username:'mac', total:100, winner:false},
+  {id: 4, avatar_id: 4, username:'mac', total:100, winner:false},
+  {id: 5, avatar_id: 5, username:'mac', total:100, winner:false},
+  {id: 6, avatar_id: 2, username:'mac', total:100, winner:false},
+  {id: 7, avatar_id: 3, username:'mac', total:100, winner:false},
+  {id: 8, avatar_id: 4, username:'mac', total:100, winner:false}
+]
 export default function Game (props) {
   const params = useParams();
 
