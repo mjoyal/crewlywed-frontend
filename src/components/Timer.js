@@ -4,8 +4,7 @@ import {useEffect, useState} from 'react';
 export default function Timer (props) {
   const [time, setTime] = useState(props.time);
   const [indicator, setIndicator] = useState(0); 
-  
-  let bar = "timer-indicator"; 
+
   useEffect(() => {
     setIndicator(props.width); 
     const timer = function () {
@@ -24,7 +23,7 @@ export default function Timer (props) {
       <div className={bar} style={{width: `${indicator}em`,  transition: `width ${props.time}s ease-in`}}>
       </div>
     </div>
-    <span>{time}s</span>
+    <span>    Time: {time}s</span>
     </div>
   ); 
 };

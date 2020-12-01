@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+
 
 import Question from '../../Question';
-import Timer from '../../Timer';
+// import Timer from '../../Timer';
+
+import SimpleTimer from '../../SimpleTimer';
 import RoundScore from './RoundScore';
 import "../../../styles/partials/_global.scss";
 import InputAnswerPage from './Answer.js';
@@ -99,6 +101,14 @@ const responseTest = [
 ];
 
 export default function RoundLoop (props) {
+  const [hideTimer, setHideTimer] = useState(false); 
+
+  useEffect(() => {
+    if(props.roundState === REVEAL) {
+      return setHideTimer(true); 
+    }
+    setHideTimer(false);
+  }, [props.roundState]);; 
 
   return (
     <div className="roundLoop">
@@ -107,21 +117,28 @@ export default function RoundLoop (props) {
           victimAvatar={`images/avatar${props.victimAvatarId}.png`}
           victimColorClass={props.victimColorClass}
           question={props.question}
+          questionVictimText={props.questionVictimText}
           victimName={props.victimName}
           isVictim={props.isVictim}
         />
-        
-        {/* <Timer
-          time={60} width={18}
+        <SimpleTimer
+          time={10} 
           currentRoundNum={props.currentRoundNum}
           totalRounds={props.totalRounds}
-        /> */}
+          hide={hideTimer}
+        />
       </>}
       {props.roundState === ROUNDSCORE && <>
         <RoundScore scoreData={props.roundScoreState}/>
       </>}
 
-      {props.roundState === ANSWER && <InputAnswerPage submitUserAnswer={props.submitUserAnswer}/>}
+      {props.roundState === ANSWER && 
+      <InputAnswerPage 
+        submitUserAnswer={props.submitUserAnswer}  
+        currentRoundNum={props.currentRoundNum}
+        totalRounds={props.totalRounds}
+      />}
+
       {props.roundState  === CHOOSE && 
       <ChooseAnswerPage 
         answerOptions={answerOptions} 
@@ -129,6 +146,8 @@ export default function RoundLoop (props) {
         sendChoice={props.sendChoice} 
         isVictim={false}
         userID={props.userID}
+        currentRoundNum={props.currentRoundNum}
+        totalRounds={props.totalRounds}
       />}
 
       {props.roundState  === REVEAL && <RevealAnswerPage answerResults={props.revealState}/>}

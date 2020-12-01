@@ -1,5 +1,3 @@
-import Timer from '../../Timer';
-import Question from '../../Question';
 import TextArea from '../../TextArea';
 import Button from '../../Button';
 import React, {useState} from 'react';

@@ -27,7 +27,8 @@ const useRoundLoop = (socket, userProfile) => {
   const [currentVictimAvatarID, setCurrentVictimAvatarID] = useState(null);
   const [currentVictimName, setCurrentVictimName] = useState(null);
   const [currentQuestionID, setCurrentQuestionID] = useState(null);
-  const [currentQuestionText, setCurrentQuestionText] = useState('Placeholder question'); //need a string here as initialization value or else we can an error
+  const [currentQuestionText, setCurrentQuestionText] = useState('Placeholder question goes here'); //need a string here as initialization value or else we can an error
+  const [currentQuestionTextVictim, setCurrentQuestionTextVictim] = useState('Placeholder victim question goes here');
 
   // The below is an array of players & their status (for use on the AWAIT page):
   const [awaitState, setAwait] = useState([]);
@@ -85,8 +86,6 @@ const useRoundLoop = (socket, userProfile) => {
     // Listen for when to show CHOOSE (sent when timer expires for ANSWER):
     socket.on('choosePage', (choices) => {
       setCurrentSubmissions(choices); 
-      console.log(choices) 
-
       // the server says the timer is up, display the choose page
       setRoundState('CHOOSE');
       //reset await state
@@ -96,7 +95,6 @@ const useRoundLoop = (socket, userProfile) => {
     // Listen for when to show REVEAL (sent when timer expires for CHOOSE):
     socket.on('revealPage', (revealData) => {
       setRoundState('REVEAL');
-      console.log("revealData:", revealData);
       setRevealState(revealData);
       //reset await state
       setAwait([]);
@@ -104,7 +102,6 @@ const useRoundLoop = (socket, userProfile) => {
 
     // Listen for when to show ROUNDSCORE (sent when timer expires for REVEAL):
     socket.on('roundScore', (scoreData) => {
-      console.log(scoreData);
       setScore(scoreData);
       setRoundState('ROUNDSCORE');
     });
@@ -126,20 +123,19 @@ const useRoundLoop = (socket, userProfile) => {
       setCurrentVictimAvatarID(data[0].victim_avatar_id);
       setCurrentVictimName(data[0].victim_name);
       setCurrentQuestionText(data[0].question_text);
+      setCurrentQuestionTextVictim(data[0].question_text_victim);
       setBackgroundColor(`color-${data[0].victim_avatar_id}`);
       setHighlightColor(`span-${data[0].victim_avatar_id}`)
     });
 
     socket.on('awaitData', (awaitData) => {
       setAwait(awaitData);
-      console.log(awaitData);
     });
   }, [socket]);
 
   // Update states when currentRoundNum changes:
   useEffect(() => {
     if (currentRoundNum > totalRounds) {
-      console.log("finalScore", roundScoreState);
       socket.emit('noMoreRounds')
     }
     else if (allRoundsData.length > 0) {
@@ -149,6 +145,7 @@ const useRoundLoop = (socket, userProfile) => {
       setCurrentVictimAvatarID(allRoundsData[currentRoundNum-1].victim_avatar_id);
       setCurrentVictimName(allRoundsData[currentRoundNum-1].victim_name);
       setCurrentQuestionText(allRoundsData[currentRoundNum-1].question_text);
+      setCurrentQuestionTextVictim(allRoundsData[currentRoundNum-1].question_text_victim);
     }
   }, [currentRoundNum]);
 
@@ -156,7 +153,7 @@ const useRoundLoop = (socket, userProfile) => {
     socket.emit('newRound', currentRoundID);
   }, [currentRoundID]);
   
-  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState, roundScoreState, highlightColor} ;
+  return {roundState, allRoundsData, totalRounds, currentRoundNum, currentRoundID, currentVictimID, currentVictimName, currentVictimAvatarID, currentQuestionID, currentQuestionText, currentQuestionTextVictim, currentSubmissions, awaitState, submitUserAnswer, sendChoice, revealState, roundScoreState, highlightColor} ;
 };
 
 export { useRoundLoop };

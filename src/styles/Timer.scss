@@ -7,13 +7,22 @@
 }
 .timer {
   height: 0.75rem; 
-  width: 18rem; // perhaps a variable here (is there a way to pass from props.width?)
+  width: 14rem; // perhaps a variable here (is there a way to pass from props.width?)
   background-color: $light-main-blue;
   border: $border-size solid $main-blue;
-  margin: 1em;
+  margin: 0.5em;
 }
 
 .timer-indicator {
   height: 100%; 
   background-color: $main-blue;
+}
+
+article {
+  @include flex(column, flex-start, flex-start);
+}
+
+.question-number {
+  margin: 0 0.5em; 
+  font-family: $bold-font; 
 }

@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import TextInput from './TextInput';
 import Button from './Button';
 import LogoHeader from './LogoHeader';
@@ -10,10 +9,6 @@ import ButtonContainer from './ButtonContainer';
 export default function NewGamePage (props) {
 
   const [name, setName] = useState("");
-
-  useEffect(() => {
-    console.log("Name:", name);
-  }, [name])
 
   if(props.lobbyInfo) {
     return <Redirect to={`/${props.lobbyInfo}`} />

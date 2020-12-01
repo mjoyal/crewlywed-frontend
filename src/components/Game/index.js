@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import "../../styles/partials/_global.scss";
@@ -59,7 +59,6 @@ const lobbyData = [
 export default function Game (props) {
   const params = useParams();
 
-  
   return (
     <div className="game">
       <LogoHeader text/>
@@ -85,6 +84,7 @@ export default function Game (props) {
           victimName={props.victimName}
           userID= {props.userID}
           question={props.question}
+          questionVictimText={props.questionVictimText}
           victimAvatarId={props.victimAvatarId}
           victimColorClass={props.victimColorClass}
           roundScoreState={props.roundScoreState}

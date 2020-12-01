@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 import AnswerCard from '../../AnswerCard';
 import Button from '../../Button';
 import ButtonContainer from '../../ButtonContainer';
 import Message from '../../Message';
+import SimpleTimer from '../../SimpleTimer';
 
 export default function ChooseAnswerPage (props) {
   const [answerID, setAnswerID] = useState(null);
