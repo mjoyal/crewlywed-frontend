@@ -56,41 +56,137 @@ const answerOptions = [
 
 const answerResults = [
   {
-    playerName:"mac",
-    avatarID:1,
+    playername:"mac",
+    avatarid:1,
     correct:true,
     answer:"form a tribe full of babes",
     choosers:[
       { 
-        name: "will",
-        avatarID: 2
+        username: "will",
+        avatarid: 2
       },
       { 
-        name: "chantal",
-        avatarID: 3
+        username: "chantal",
+        avatarid: 3
       }
     ]
   },
   {
-    playerName:"will",
-    avatarID:2,
+    playername:"will",
+    avatarid:2,
     correct:false,
     answer:"skateboard away",
     choosers:[
       { 
-        name: "will",
-        avatarID: 2
+        username: "will",
+        avatarid: 2
       },
       { 
-        name: "chantal",
-        avatarID: 3
+        username: "chantal",
+        avatarid: 3
+      }
+    ]
+  },
+  {
+    playername:"mac",
+    avatarid:1,
+    correct:false,
+    answer:"form a tribe full of babes",
+    choosers:[
+      { 
+        username: "will",
+        avatarid: 2
+      },
+      { 
+        username: "chantal",
+        avatarid: 3
+      }
+    ]
+  },
+  {
+    playername:"will",
+    avatarid:2,
+    correct:false,
+    answer:"skateboard away",
+    choosers:[
+      { 
+        username: "will",
+        avatarid: 2
+      },
+      { 
+        username: "chantal",
+        avatarid: 3
+      }
+    ]
+  },
+  {
+    playername:"mac",
+    avatarid:1,
+    correct:false,
+    answer:"form a tribe full of babes",
+    choosers:[
+      { 
+        username: "will",
+        avatarid: 2
+      },
+      { 
+        username: "chantal",
+        avatarid: 3
+      }
+    ]
+  },
+  {
+    playername:"will",
+    avatarid:2,
+    correct:false,
+    answer:"skateboard away",
+    choosers:[
+      { 
+        username: "will",
+        avatarid: 2
+      },
+      { 
+        username: "chantal",
+        avatarid: 3
+      }
+    ]
+  },
+  {
+    playername:"mac",
+    avatarid:1,
+    correct:false,
+    answer:"form a tribe full of babes",
+    choosers:[
+      { 
+        username: "will",
+        avatarid: 2
+      },
+      { 
+        username: "chantal",
+        avatarid: 3
+      }
+    ]
+  },
+  {
+    playername:"will",
+    avatarid:2,
+    correct:false,
+    answer:"skateboard away",
+    choosers:[
+      { 
+        username: "will",
+        avatarid: 2
+      },
+      { 
+        username: "chantal",
+        avatarid: 3
       }
     ]
   }
 ]
 
 const responseTest = [
-  {id: 1, avatar_id: 1, username:'mac', creator:true, answered:true},
+  {id: 1, avatar_id: 1, username:'mac', creator:false, answered:true},
   {id: 2, avatar_id: 2, username:'mac', creator:false, answered:false},
   {id: 3, avatar_id: 3, username:'mac', creator:false, answered:true},
   {id: 4, avatar_id: 4, username:'mac', creator:false, answered:false},
@@ -150,7 +246,7 @@ export default function RoundLoop (props) {
         totalRounds={props.totalRounds}
       />}
 
-      {props.roundState  === REVEAL && <RevealAnswerPage answerResults={props.revealState}/>}
+      {props.roundState  === REVEAL && <RevealAnswerPage answerResults={answerResults}/>}
       {props.roundState === AWAIT && <AwaitResponsePage players={responseTest}/>}
 
     </div>

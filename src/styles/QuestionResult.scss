@@ -4,11 +4,15 @@
 
 .questionResult {
   border: $border-size solid $main-blue; 
-  margin: 1rem; 
+  max-width: 24rem;
+  width:($mobile-col-6 + ($mobile-gutter-margin * 2)) * 1%;
+  margin: .25rem .25rem; 
   padding: 0.75rem; 
 
+  background-color: $off-white;
   header {
-    @include flex(row, space-between, center);
+    @include flex(row, flex-start, center);
+    width:100%;
     border-bottom: 2px solid $main-blue; 
     div {
       @include flex(column, flex-start, center);
@@ -28,6 +32,10 @@
   img {
     max-width: 4em; 
   }
+  .icon-container {
+    position: relative;
+    width:100%
+  }
   .icon {
     position: absolute;
     right: -1.5rem;
@@ -41,4 +49,12 @@
     font-size: 150%; 
    }
  
+}
+
+.reveal-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  // margin-bottom: 10rem;
+  width: 100%;
 }

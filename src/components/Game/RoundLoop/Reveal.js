@@ -6,11 +6,13 @@ export default function RevealAnswerPage (props) {
 
   return (
     <>
-      <h2> round complete </h2>
-      {
-        props.answerResults.map(answer => <QuestionResult 
-          {...answer} />)
-      }
+      <h2 style={{margin:'1rem 0rem'}}> round complete </h2>
+      <div className="reveal-list">
+        { props.answerResults && props.answerResults.length > 0 &&
+          props.answerResults.map(answer => <QuestionResult 
+            {...answer} />)
+        }
+      </div>
     </>
   )
 }
