@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 
 import Question from '../../Question';
-// import Timer from '../../Timer';
-
-import SimpleTimer from '../../SimpleTimer';
+import Timer from '../../Timer';
 import RoundScore from './RoundScore';
 import "../../../styles/partials/_global.scss";
 import InputAnswerPage from './Answer.js';
@@ -40,7 +38,7 @@ export default function RoundLoop (props) {
           victimName={props.victimName}
           isVictim={props.isVictim}
         />
-        <SimpleTimer
+        <Timer
           time={10} 
           currentRoundNum={props.currentRoundNum}
           totalRounds={props.totalRounds}

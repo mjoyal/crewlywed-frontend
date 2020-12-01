@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import "../styles/Timer.scss";
 import {motion} from 'framer-motion'; 
 
-export default function SimpleTimer (props) {
+export default function Timer (props) {
   const [time, setTime] = useState(props.time);
   const [display, setDisplay] = useState('flex')
   const [indicator, setIndicator] = useState(0);
