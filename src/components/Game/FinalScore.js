@@ -1,6 +1,7 @@
 import AvatarScore from '../AvatarScore';
 import "../../styles/RoundScore.scss";
 import {Link} from "react-router-dom";
+import ButtonContainer from '../ButtonContainer';
 
 export default function FinalScore (props) {
   const winner = props.finalScore ? props.finalScore[0] : {};
@@ -32,7 +33,10 @@ export default function FinalScore (props) {
         <div className="losers">
           {avatarScores}
         </div>
-        <Link className="button button-link" to="/">play again</Link>
+        <ButtonContainer>
+          <Link className="button button-link" to="/">play again</Link>
+        </ButtonContainer>
+
       </main>
     </>
   );

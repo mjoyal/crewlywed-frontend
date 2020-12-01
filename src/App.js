@@ -70,7 +70,7 @@ function App() {
             userProfile={userProfile}
             startGame={startGame}
             gameState={gameState}
-            roundState={'REVEAL'}
+            roundState={'ROUNDSCORE'}
             submitUserAnswer={submitUserAnswer}
             sendChoice={sendChoice}
             awaitState={awaitState}

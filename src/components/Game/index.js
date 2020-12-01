@@ -55,7 +55,16 @@ const lobbyData = [
     username:"Mac"
   },
 ]
-
+const scoreTest = [
+  {id: 1, avatar_id: 1, username:'mac', total:100, winner:true},
+  {id: 2, avatar_id: 2, username:'mac', total:100, winner:false},
+  {id: 3, avatar_id: 3, username:'mac', total:100, winner:false},
+  {id: 4, avatar_id: 4, username:'mac', total:100, winner:false},
+  {id: 5, avatar_id: 5, username:'mac', total:100, winner:false},
+  {id: 6, avatar_id: 2, username:'mac', total:100, winner:false},
+  {id: 7, avatar_id: 3, username:'mac', total:100, winner:false},
+  {id: 8, avatar_id: 4, username:'mac', total:100, winner:false}
+]
 export default function Game (props) {
   const params = useParams();
 
@@ -91,7 +100,7 @@ export default function Game (props) {
           currentRoundNum={props.currentRoundNum}
           totalRounds={props.totalRounds}
         />}
-      {props.gameState === FINALSCORE && <FinalScore finalScore={props.finalScoreState}/>}
+      {props.gameState === FINALSCORE && <FinalScore finalScore={scoreTest}/>}
     </div>
   );
 }

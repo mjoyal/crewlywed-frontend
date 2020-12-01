@@ -3,6 +3,12 @@
 @import 'partials/_global'; 
 
 .roundScore, 
-.losers {
-   @include grid(1fr 1fr 1fr);
+.losers, main.losers, main.roundScore {
+  //  @include grid(1fr 1fr 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  width:100vw;
+  max-width: 31rem;
+  justify-content: center;
+  margin-bottom: 10rem;
 }

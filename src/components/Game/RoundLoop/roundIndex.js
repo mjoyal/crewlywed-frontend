@@ -196,6 +196,16 @@ const responseTest = [
   {id: 4, avatar_id: 4, username:'mac', creator:false, answered:false},
 ];
 
+const scoreTest = [
+  {id: 1, avatar_id: 1, username:'mac', total:100, winner:false},
+  {id: 2, avatar_id: 2, username:'mac', total:100, winner:false},
+  {id: 3, avatar_id: 3, username:'mac', total:100, winner:false},
+  {id: 4, avatar_id: 4, username:'mac', total:100, winner:false},
+  {id: 5, avatar_id: 5, username:'mac', total:100, winner:false},
+  {id: 6, avatar_id: 2, username:'mac', total:100, winner:false},
+  {id: 7, avatar_id: 3, username:'mac', total:100, winner:false},
+  {id: 8, avatar_id: 4, username:'mac', total:100, winner:false}
+]
 export default function RoundLoop (props) {
   const [hideTimer, setHideTimer] = useState(false); 
 
@@ -225,7 +235,7 @@ export default function RoundLoop (props) {
         />
       </>}
       {props.roundState === ROUNDSCORE && <>
-        <RoundScore scoreData={props.roundScoreState}/>
+        <RoundScore scoreData={scoreTest}/>
       </>}
 
       {props.roundState === ANSWER && 

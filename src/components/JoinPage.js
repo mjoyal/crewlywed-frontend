@@ -25,14 +25,14 @@ export default function JoinPage (props) {
         placeholder="name"
         maxCount={10}
         onChange={(name) => setName(name)}
-        error={props.joinErrorMessage == "please enter a name!" ? props.joinErrorMessage : undefined}
+        error={props.joinErrorMessage === "please enter a name!" ? props.joinErrorMessage : undefined}
       />
       <TextInput
         label="room code"
         placeholder="room code"
         maxCount={5}
         onChange={(code) => setCode(code)}
-        error={props.joinErrorMessage != "please enter a name!" ? props.joinErrorMessage : undefined}
+        error={props.joinErrorMessage !== "please enter a name!" ? props.joinErrorMessage : undefined}
       />
       <p className="joinInstructions" >choose a name your crew will recognize!</p>
       {/* <p>{props.joinErrorMessage}</p> */}
