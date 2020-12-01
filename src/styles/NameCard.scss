@@ -49,3 +49,12 @@ div.nameCard {
     }
   }
 }
+
+.player-list{ 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 10rem;
+  width: 100%;
+  
+}

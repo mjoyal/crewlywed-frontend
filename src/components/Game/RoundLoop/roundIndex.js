@@ -19,16 +19,36 @@ const ROUNDSCORE = "ROUNDSCORE";
 
 const answerOptions = [
   {
-    answer:"skateboard away",
+    text:"skateboard away",
     id:1
   },
   {
-    answer:"sass the zombies away",
+    text:"sass the zombies away",
     id:2
   },
   {
-    answer:"form a tribe full of babes",
+    text:"form a tribe full of babes",
     id:3
+  },
+  {
+    text:"I need to make something a total of seventy characters so I'm writing.",
+    id:4
+  },
+  {
+    text:"sass the zombies away",
+    id:5
+  },
+  {
+    text:"form a tribe full of babes",
+    id:6
+  },
+  {
+    text:"skateboard away",
+    id:7
+  },
+  {
+    text:"sass the zombies away",
+    id:8
   }
 ]
 
@@ -68,11 +88,14 @@ const answerResults = [
 ]
 
 const responseTest = [
-  {id: 1, avatarID: 1, username:'mac', creator:true, answered:true},
-  {id: 2, avatarID: 2, username:'mac', creator:false, answered:false},
-  {id: 3, avatarID: 3, username:'mac', creator:false, answered:false},
-  {id: 4, avatarID: 4, username:'mac', creator:false, answered:false},
-  {id: 5, avatarID: 5, username:'mac', creator:false, answered:false}
+  {id: 1, avatar_id: 1, username:'mac', creator:true, answered:true},
+  {id: 2, avatar_id: 2, username:'mac', creator:false, answered:false},
+  {id: 3, avatar_id: 3, username:'mac', creator:false, answered:true},
+  {id: 4, avatar_id: 4, username:'mac', creator:false, answered:false},
+  {id: 5, avatar_id: 5, username:'mac', creator:false, answered:false},
+  {id: 2, avatar_id: 2, username:'mac', creator:false, answered:false},
+  {id: 3, avatar_id: 3, username:'mac', creator:false, answered:true},
+  {id: 4, avatar_id: 4, username:'mac', creator:false, answered:false},
 ];
 
 export default function RoundLoop (props) {
@@ -101,15 +124,15 @@ export default function RoundLoop (props) {
       {props.roundState === ANSWER && <InputAnswerPage submitUserAnswer={props.submitUserAnswer}/>}
       {props.roundState  === CHOOSE && 
       <ChooseAnswerPage 
-        answerOptions={props.currentSubmissions} 
+        answerOptions={answerOptions} 
         victimName={props.victimName} 
         sendChoice={props.sendChoice} 
-        isVictim={props.isVictim}
+        isVictim={false}
         userID={props.userID}
       />}
 
       {props.roundState  === REVEAL && <RevealAnswerPage answerResults={props.revealState}/>}
-      {props.roundState === AWAIT && <AwaitResponsePage players={props.awaitState}/>}
+      {props.roundState === AWAIT && <AwaitResponsePage players={responseTest}/>}
 
     </div>
   );
