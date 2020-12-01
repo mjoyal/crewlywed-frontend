@@ -50,7 +50,7 @@ export default function Lobby(props) {
         </div>
       </article>
       {
-        true &&
+        props.host &&
         // <Button onClick={props.startGame} disabled={props.players.length < 3}>Start Game</Button>
         <ButtonContainer>
           <Button onClick={props.startGame} disabled={false}>Start Game</Button>

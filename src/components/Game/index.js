@@ -75,7 +75,7 @@ export default function Game (props) {
       {props.gameState === LOBBY && 
         <Lobby
           roomCode={params.id}
-          players={lobbyData}
+          players={props.players}
           host={props.userProfile.creator}
           lobbyInfo={props.lobbyInfo}
           startGame={props.startGame}
@@ -100,7 +100,7 @@ export default function Game (props) {
           currentRoundNum={props.currentRoundNum}
           totalRounds={props.totalRounds}
         />}
-      {props.gameState === FINALSCORE && <FinalScore finalScore={scoreTest}/>}
+      {props.gameState === FINALSCORE && <FinalScore finalScore={props.finalScoreState}/>}
     </div>
   );
 }

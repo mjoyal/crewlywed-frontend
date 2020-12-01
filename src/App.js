@@ -67,26 +67,28 @@ function App() {
           <Game 
             lobbyInfo={lobbyInfo}
             players={players}
-            userProfile={userProfile}
             startGame={startGame}
-            gameState={gameState}
-            roundState={'ROUNDSCORE'}
-            submitUserAnswer={submitUserAnswer}
-            sendChoice={sendChoice}
-            awaitState={awaitState}
-            currentSubmissions={currentSubmissions}
-            revealState={revealState}
-            isVictim={userProfile.id === currentVictimID}
+            userProfile={userProfile}
             userID = {userProfile.id}
-            victimName={currentVictimName}
+
+            gameState={gameState}
+            roundState={roundState}
+            totalRounds={totalRounds}
+            currentRoundNum={currentRoundNum}
+            isVictim={userProfile.id === currentVictimID}
             question={currentQuestionText}
             questionVictimText={currentQuestionTextVictim}
+            victimName={currentVictimName}
             victimAvatarId={currentVictimAvatarID}
             victimColorClass={highlightColor}
+            
+            submitUserAnswer={submitUserAnswer}
+            currentSubmissions={currentSubmissions}
+            sendChoice={sendChoice}
+            awaitState={awaitState}
+            revealState={revealState}
             roundScoreState={roundScoreState}
             finalScoreState={finalScoreState}
-            currentRoundNum={currentRoundNum}
-            totalRounds={totalRounds}
           />
         </Route>
 

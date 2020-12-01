@@ -28,7 +28,7 @@ export default function ChooseAnswerPage (props) {
               onChange={setAnswerID} 
               id={option.id}
               answer={option.text}
-              isVictim={false}
+              isVictim={props.isVictim}
               isUserAnswer={option.submitter_id === props.userID}
               />)
           }
@@ -36,9 +36,9 @@ export default function ChooseAnswerPage (props) {
         {/* dont show the button to victim */}
         { !props.isVictim && 
           <ButtonContainer>
-          <Button disabled={answerID === null} onClick={handleSubmit}>
-            choose answer
-          </Button>
+            <Button disabled={answerID === null} onClick={handleSubmit}>
+              choose answer
+            </Button>
           </ButtonContainer>
         }
       </form>

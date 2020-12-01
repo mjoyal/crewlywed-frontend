@@ -210,7 +210,7 @@ export default function RoundLoop (props) {
   const [hideTimer, setHideTimer] = useState(false); 
 
   useEffect(() => {
-    if(props.roundState === REVEAL) {
+    if(props.roundState === REVEAL || props.roundState === ROUNDSCORE) {
       return setHideTimer(true); 
     }
     setHideTimer(false);
@@ -235,7 +235,7 @@ export default function RoundLoop (props) {
         />
       </>}
       {props.roundState === ROUNDSCORE && <>
-        <RoundScore scoreData={scoreTest}/>
+        <RoundScore scoreData={props.roundScoreState}/>
       </>}
 
       {props.roundState === ANSWER && 
@@ -247,17 +247,17 @@ export default function RoundLoop (props) {
 
       {props.roundState  === CHOOSE && 
       <ChooseAnswerPage 
-        answerOptions={answerOptions} 
+        answerOptions={props.currentSubmissions} 
         victimName={props.victimName} 
         sendChoice={props.sendChoice} 
-        isVictim={false}
+        isVictim={props.isVictim}
         userID={props.userID}
         currentRoundNum={props.currentRoundNum}
         totalRounds={props.totalRounds}
       />}
 
-      {props.roundState  === REVEAL && <RevealAnswerPage answerResults={answerResults}/>}
-      {props.roundState === AWAIT && <AwaitResponsePage players={responseTest}/>}
+      {props.roundState  === REVEAL && <RevealAnswerPage answerResults={props.revealState}/>}
+      {props.roundState === AWAIT && <AwaitResponsePage players={props.awaitState}/>}
 
     </div>
   );
