@@ -8,7 +8,7 @@ import ButtonContainer from '../ButtonContainer.js';
 
 export default function Lobby(props) {
   const gameCodeText = useRef(null);
-  const [copyButtonText, setCopyButtonText] = useState("copy code!"); 
+  const [copyButtonText, setCopyButtonText] = useState("copy code"); 
 
   const copyCode = function (e) {
     gameCodeText.current.select();
@@ -16,7 +16,7 @@ export default function Lobby(props) {
     setCopyButtonText("code copied!"); 
 
     setTimeout(() => {
-      setCopyButtonText("copy code!"); 
+      setCopyButtonText("copy code"); 
     }, 2000);
   };
 
@@ -53,7 +53,7 @@ export default function Lobby(props) {
         props.host &&
         // <Button onClick={props.startGame} disabled={props.players.length < 3}>Start Game</Button>
         <ButtonContainer>
-          <Button onClick={props.startGame} disabled={false}>Start Game</Button>
+          <Button onClick={props.startGame} disabled={false}>start game!</Button>
           
         </ButtonContainer>
       }
