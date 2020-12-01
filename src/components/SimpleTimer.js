@@ -7,7 +7,7 @@ export default function SimpleTimer (props) {
   const [display, setDisplay] = useState('flex')
   const [indicator, setIndicator] = useState(0);
 
- let bar = "timer-indicator"; 
+ 
   useEffect(() => {
     if(props.hide) {
       return setDisplay('none'); 
