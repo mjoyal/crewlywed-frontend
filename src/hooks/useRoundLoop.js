@@ -85,7 +85,12 @@ const useRoundLoop = (socket, userProfile) => {
     // TRANSITIONS:
     // Listen for when to show CHOOSE (sent when timer expires for ANSWER):
     socket.on('choosePage', (choices) => {
-      socket.emit('newRoundScorePage');
+      if (choices[0]) {
+        const roundID = choices[0].round_id;
+        socket.emit('newRevealPage', roundID);  
+      } else {
+        socket.emit('newRevealPage');
+      }
       setCurrentSubmissions(choices); 
       // the server says the timer is up, display the choose page
       setRoundState('CHOOSE');
@@ -95,7 +100,7 @@ const useRoundLoop = (socket, userProfile) => {
 
     // Listen for when to show REVEAL (sent when timer expires for CHOOSE):
     socket.on('revealPage', (revealData) => {
-      socket.emit('newRevealPage');
+      socket.emit('newRoundScorePage');
       setRoundState('REVEAL');
       setRevealState(revealData);
       //reset await state
