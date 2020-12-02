@@ -37,7 +37,7 @@ export default function ChooseAnswerPage (props) {
         { !props.isVictim && 
           <ButtonContainer>
             <Button disabled={answerID === null} onClick={handleSubmit}>
-              choose answer
+              choose answer!
             </Button>
           </ButtonContainer>
         }

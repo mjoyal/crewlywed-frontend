@@ -34,11 +34,11 @@ export default function JoinPage (props) {
         onChange={(code) => setCode(code)}
         error={props.joinErrorMessage !== "please enter a name!" ? props.joinErrorMessage : undefined}
       />
-      <p className="joinInstructions" >choose a name your crew will recognize!</p>
+      <p className="joinInstructions" style={{fontSize: "1.5rem"}}>choose a name your crew will recognize!</p>
       {/* <p>{props.joinErrorMessage}</p> */}
       <ButtonContainer>
         <Link className="link" to="/">back home</Link>
-        <Button confirm onClick={event => props.joinGame(name, code)}>join game</Button>
+        <Button confirm onClick={event => props.joinGame(name, code)}>join game!</Button>
       </ButtonContainer>
     </main>
   ); 

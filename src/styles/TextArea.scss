@@ -18,7 +18,7 @@
     box-sizing: content-box;
     height:17rem;
     width:($mobile-col-8 - ($mobile-col-1 / 4))* 1%;
-    
+    text-transform: lowercase;
     padding: $mobile-col-1 / 4 * 1%;
 
     font-size: 1.625rem;

@@ -15,7 +15,7 @@ export default function SimpleTimer (props) {
     return setDisplay('flex'); 
   }, [props.hide])
   
-  useEffect(() => {
+  useEffect(() => { //hello friends :) 
     setIndicator(`100%`); 
     const timer = function () {
       setTime((prev) => {
@@ -27,7 +27,6 @@ export default function SimpleTimer (props) {
     } else if (time === 0) {
       clearTimeout(timer); 
       setTime(props.time); 
-
     }
     
   }, [time]);
@@ -37,7 +36,7 @@ export default function SimpleTimer (props) {
       <p className="question-number" style={{display: display}}>question {props.currentRoundNum} / {props.totalRounds}</p>
       <div className="timer-container" style={{display: display}}>
         <div className="timer">
-        <motion.div className={"timer-indicator"} initial={{width: 0}} animate={{width: indicator}} transition={{repeat: 2, ease:'easeOut', duration: props.time}}></motion.div>
+        <motion.div className={"timer-indicator"} initial={{width: 0}} animate={{width: indicator}} transition={{repeat: 2, ease:'linear', duration: props.time}}></motion.div>
         </div>
         <span>{time}s</span>
       </div>

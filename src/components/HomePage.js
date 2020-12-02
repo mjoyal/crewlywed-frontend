@@ -10,7 +10,7 @@ export default function HomePage () {
   return (
     <main className="homePage">
       <LogoHeader big/>
-      <p>Test your knowledge and fool your friends.<br></br> A simple, catchy two-liner.</p>
+      <p style={{fontSize: "1.5rem"}}>the newlywed game for you & your crew!</p>
       <ButtonContainer>
         <Link className="button button-link" to="/new">host game</Link>
         <Link className="button button-link" to="/join">join game</Link>
