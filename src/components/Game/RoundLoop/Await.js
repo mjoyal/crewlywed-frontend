@@ -8,7 +8,7 @@ export default function AwaitResponsePage (props) {
       <h2 style={{textAlign:"center", fontWeight:"normal", margin:'1rem 0'}}>
         answers submitted:
       </h2>
-      <div class="player-list">
+      <div className="player-list">
         {props.players.map((player, index) => <NameCard 
           avatarID={player.avatar_id}
           username={player.username}
