@@ -20,6 +20,7 @@ import NewGamePage from './components/NewGamePage';
 import Game from './components/Game/index.js';
 
 const ENDPOINT = process.env.REACT_APP_SOCKET_URL || "http://localhost:8080";
+// const ENDPOINT = "http://localhost:8080";
 const socket = io(ENDPOINT);
 
 function App() {
