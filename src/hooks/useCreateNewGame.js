@@ -24,7 +24,7 @@ const useCreateNewGame = (socket) => {
   const createNewGame = function (name) {
     hostName = name.toLowerCase();
     const gameCode = generateGameCode();
-    const numRounds = 1; //hardcoded at 1 for now
+    const numRounds = 3; //hardcoded at 3 for now
     const createNewGameData = {
       gameCode,
       numRounds,

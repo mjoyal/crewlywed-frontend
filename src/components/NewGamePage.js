@@ -25,7 +25,7 @@ export default function NewGamePage (props) {
       onChange={(name) => setName(name)}
       error = {props.createErrorMessage}
     />
-    <p className="instructions" style={{fontSize: "1.5rem"}}>since you're the host, you'LL get to start<br></br>the game once your crew joins!</p>
+    <p className="instructions" style={{fontSize: "1.5rem", maxWidth: "20rem"}}>since you're the host, you'll get to start the game once your crew joins!</p>
     {/* <p>{props.createErrorMessage}</p> */}
     <ButtonContainer>
       <Link className="link" to="/">back home</Link>
