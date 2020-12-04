@@ -42,7 +42,7 @@ export default function RoundLoop (props) {
           isVictim={props.isVictim}
         />
         <SimpleTimer
-          time={15} 
+          time={45} 
           currentRoundNum={props.currentRoundNum}
           totalRounds={props.totalRounds}
           hide={hideTimer}
